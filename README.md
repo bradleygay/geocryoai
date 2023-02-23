@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:06f0557b0939e16e2681cf7e06364744dfeb27e28944a9c9f9a27ee9197ef813
-size 477
+# GeoCryoAI | Dissertation Research
+Permafrost Carbon Dynamics in the Arctic System with Earth Observation Data and Feedback Neural Networks
+<br>
+### Geogrge Mason University | SConv1DLSTMAE
+_Permafrost thaw, terrestrial carbon cycle dynamics, and heat transfer in Arctic soils_
