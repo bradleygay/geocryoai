@@ -1,5 +1,6 @@
 # GeoCryoAI | Dissertation and Postdoctoral Research on Permafrost Carbon Dynamics and AI
 Dissertation: Investigating High-Latitude Permafrost Carbon Dynamics with Artificial Intelligence and Earth System Data Assimilation
+<br>
 ERL Manuscript (Second Review): Investigating Permafrost Carbon Dynamics in Alaska with Artificial Intelligence
 <br>
 ## Bradley A. Gay, PhD
