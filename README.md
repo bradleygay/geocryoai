@@ -1,6 +1,8 @@
 # GeoCryoAI
 ## Investigating Permafrost Carbon Dynamics in Alaska with Artificial Intelligence
-### Environmental Research Letters Manuscript (In Press)
+### Environmental Research Letters
+#### https://doi.org/10.1088/1748-9326/ad0607
 #### Bradley A. Gay, PhD
-###### Jet Propulsion Laboratory | California Institute of Technology, NASA Postdoctoral Program Fellow
-###### George Mason University, Dissertation: Investigating High-Latitude Permafrost Carbon Dynamics with Artificial Intelligence and Earth System Data Assimilation
+##### Jet Propulsion Laboratory | California Institute of Technology, NASA Postdoctoral Program Fellow
+##### George Mason University
+###### Dissertation: Investigating High-Latitude Permafrost Carbon Dynamics with Artificial Intelligence and Earth System Data Assimilation
