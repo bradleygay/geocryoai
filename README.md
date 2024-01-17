@@ -1,4 +1,3 @@
-![image](https://github.com/bradleygay/geocryoai/assets/39241665/26161bd5-7ba0-49e9-8ba6-56f616a76d77)
 # GeoCryoAI
 The GeoCryoAI architecture integrates a hybridized multimodal deep learning architecture of stacked convolutionally layered memory-encoded bidirectional recurrent neural networks to simultaneously ingest and analyze in situ measurements, remote sensing observations, and process-based modeling outputs with disparate spatiotemporal sampling and data densities. 
 ## Relevant Manuscripts
@@ -14,5 +13,5 @@ Gay, B.A., Pastick, N.J., Züfle, A.E., Armstrong, A.H., Miner, K.R., Qu, J.J., 
 #### Dissertation, George Mason University
 ##### https://www.proquest.com/dissertations-theses/investigating-high-latitude-permafrost-carbon/docview/2826111475/se-2
 Gay, B. A. (2023). Investigating High-Latitude Permafrost Carbon Dynamics with Artificial Intelligence and Earth System Data Assimilation. (Order No. 30488695, George Mason University). ProQuest Dissertations and Theses, 281. Retrieved from https://www.proquest.com/dissertations-theses/investigating-high-latitude-permafrost-carbon/docview/2826111475/se-2
-#### Bradley A. Gay, PhD
-##### Jet Propulsion Laboratory | California Institute of Technology, NASA Postdoctoral Program Fellow
+### Bradley A. Gay, PhD
+### Jet Propulsion Laboratory | California Institute of Technology, NASA Postdoctoral Program Fellow
