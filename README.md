@@ -1,5 +1,5 @@
 # GeoCryoAI
-The GeoCryoAI architecture integrates a hybridized multimodal deep learning architecture of stacked convolutionally layered memory-encoded bidirectional recurrent neural networks to simultaneously ingest and analyze in situ measurements, remote sensing observations, and process-based modeling outputs with disparate spatiotemporal sampling and data densities.
+GeoCryoAI is a novel hybridized ensemble learning framework composed of stacked convolutional layers and memory-encoded recurrent neural networks. This multimodal deep learning architecture simultaneously ingests and analyzes _in situ_ measurements, remote sensing observations, and process-based modeling outputs exhibiting disparate spatiotemporal sampling and data densities.
 ###### Bradley A. Gay, PhD | NASA Postdoctoral Program Fellow | Jet Propulsion Laboratory, California Institute of Technology
 ### Relevant Manuscripts
 #### Forecasting Permafrost Carbon Dynamics in Alaska with GeoCryoAI
