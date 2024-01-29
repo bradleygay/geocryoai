@@ -4,7 +4,7 @@ GeoCryoAI is a hybridized ensemble learning framework composed of stacked convol
 ### Relevant Manuscripts
 #### Forecasting Permafrost Carbon Dynamics in Alaska with GeoCryoAI
 ##### Journal of Geophysical Research, Machine Learning and Computation (2024)
-Gay, B. A., Pastick, N. J., Watts, J. D., et al. Forecasting Permafrost Carbon Dynamics in Alaska with GeoCryoAI. Journal of Geophysical Research, Machine Learning and Computation. In Prep
+Gay, B. A., Pastick, N. J., Watts, J. D., et al. Forecasting Permafrost Carbon Dynamics in Alaska with GeoCryoAI. Journal of Geophysical Research, Machine Learning and Computation. Under Review.
 #### Investigating Permafrost Carbon Dynamics in Alaska with Artificial Intelligence
 ##### American Geophysical Union, Earth and Space Science Open Archive (2023)
 Gay, B. A., Züfle, A. E., Armstrong, A. H., et al. Investigating Permafrost Carbon Dynamics in Alaska with Artificial Intelligence. ESS Open Archive. December 26, 2023. https://doi.org/10.22541/essoar.170355056.64772303/v1
