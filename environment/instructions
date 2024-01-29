@@ -1,0 +1,7 @@
+Utilize the following command(s) to create the environment necessary to install dependencies and run the code and notebooks with the data files included.
+
+Access and install the original environment created in MacOS system with the following command:
+conda env create --file ai.yml
+
+Access and install the environment file for reproducibility across MacOS, Windows, and Linux systems with the following command:
+conda env create --file ai_history.yml
