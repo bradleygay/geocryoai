@@ -7,3 +7,11 @@ conda env create --file ai.yml
 Access, install, and rename the environment file for reproducibility across MacOS, Windows, and Linux systems with the following commands:
 conda env create --file ai_history.yml
 conda rename -n ai_history ai 
+
+In the Guacamole Codespace, allow the terminal to run queries and first, create the environment from the geocryoai directory
+cd environment
+conda env create -f ai.yml
+cd
+
+Navigate to the GeoCryoAI_Codebase.ipynb notebook in the notebooks directory:
+cd notebooks
