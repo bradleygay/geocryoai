@@ -330,7 +330,7 @@ dependencies:
   - markdown=3.6=pyhd8ed1ab_0
   - markdown-it-py=3.0.0=pyhd8ed1ab_0
   - markupsafe=2.1.5=py39h17cfd9d_0
-  - matplotlib=3.9.2=py39hdf13c20_0
+  - matplotlib=3.9.2=py39hdf13c20_1
   - matplotlib-base=3.9.2=py39h1398496_0
   - matplotlib-inline=0.1.7=pyhd8ed1ab_0
   - mdit-py-plugins=0.4.1=pyhd8ed1ab_0
@@ -440,6 +440,7 @@ dependencies:
   - pykdtree=1.3.12=py39h161d348_1
   - pykml=0.2.0=pyhd8ed1ab_1
   - pylatex=1.4.2=pyhd8ed1ab_0
+  - pylatexenc=2.10=pyhd8ed1ab_0
   - pyobjc-core=10.3.1=py39h336d860_0
   - pyobjc-framework-cocoa=10.3.1=py39h336d860_0
   - pypandoc=1.13=pyhd8ed1ab_0
@@ -655,6 +656,8 @@ dependencies:
       - hitran-api==1.2.2.2
       - html2text==2024.2.26
       - httptools==0.6.1
+      - ibm-cloud-sdk-core==3.21.0
+      - ibm-platform-services==0.57.1
       - imageio==2.34.1
       - iniconfig==2.0.0
       - isodate==0.6.1
@@ -692,6 +695,7 @@ dependencies:
       - pandocfilters==1.5.1
       - parsy==2.1
       - pathos==0.3.2
+      - pbr==6.1.0
       - planetary-computer==1.0.0
       - plotly==5.22.0
       - pluggy==1.5.0
@@ -732,6 +736,10 @@ dependencies:
       - python-graphviz==0.20.3
       - pyts==0.13.0
       - pywaffle==1.1.0
+      - qiskit==1.2.2
+      - qiskit-aer==0.15.1
+      - qiskit-ibm-provider==0.11.0
+      - qiskit-ibm-runtime==0.30.0
       - qtconsole==5.5.2
       - qtpy==2.4.1
       - rasterio==1.3.10
@@ -740,13 +748,16 @@ dependencies:
       - requests-oauthlib==2.0.0
       - rioxarray==0.15.0
       - rsa==4.9
+      - rustworkx==0.15.1
       - scikit-image==0.22.0
       - sentinelsat==1.2.1
       - smart-open==7.0.4
       - sparse==0.15.4
       - stack-data==0.6.3
       - starlette==0.37.2
+      - stevedore==5.3.0
       - striprtf==0.0.26
+      - symengine==0.11.0
       - tenacity==8.3.0
       - tensorboard==2.16.2
       - tensorboard-data-server==0.7.2
@@ -770,7 +781,7 @@ dependencies:
       - ujson==5.10.0
       - uncertain-panda==0.3.0
       - uncertainties==3.2.2
-      - urllib3==1.26.18
+      - urllib3==2.2.3
       - uvicorn==0.30.1
       - uvloop==0.19.0
       - vaex==4.17.0
@@ -789,6 +800,7 @@ dependencies:
       - xesmf==0.8.7
       - xlrd==2.0.1
       - xls2xlsx==0.2.0
+      - xlsxwriter==3.2.0
       - xxhash==3.4.1
       - zipp==3.18.2
 prefix: /Users/bgay/miniforge3/envs/tf
