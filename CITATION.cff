@@ -2,6 +2,4 @@ version https://git-lfs.github.com/spec/v1
 oid sha256:f200aecab5641e111fd9e06ba3f412780980f672a862ee2a38a81dde1a518bd8
 size 465
 
-Please cite our paper and software when utilizing, interacting with, and/or learning from these materials: Gay, B.A., Pastick, N.J., Watts, J.D., Armstrong, A.H., Miner, K.N., & Miller, C.E. (2024). GeoCryoAI (Version v1.0.0) [Computer software]. Jet Propulsion Laboratory, California Institute of Technology. https://github.com/bradleygay/geocryoai
-
-We hope these companion resources, at the very least, spurs new insights, perspective, engaging conversations, and builds community by fostering an open and accessible environment to push the boundaries of science, technology, and research together.
+Gay, B., Pastick, N., Watts, J., Armstrong, A., Miner, K., & Miller, C. (2024). GeoCryoAI (Version 1.0.0) [Computer software]. https://github.com/bradleygay/geocryoai
