@@ -1,5 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f200aecab5641e111fd9e06ba3f412780980f672a862ee2a38a81dde1a518bd8
-size 465
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Gay"
+  given-names: "Bradley"
+  orcid: "https://orcid.org/0000-0003-2617-2559"
+- family-names: "Pastick"
+  given-names: "Neal"
+  orcid: "https://orcid.org/0000-0002-8169-3018"
+- family-names: "Watts"
+  given-names: "Jennifer"
+  orcid: "https://orcid.org/0000-0001-7207-8999"
+- family-names: "Armstrong"
+  given-names: "Amanda"
+  orcid: "https://orcid.org/0000-0002-9123-8924"
+- family-names: "Miner"
+  given-names: "Kimberley"
+  orcid: "https://orcid.org/0000-0002-1006-1283"
+- family-names: "Miller"
+  given-names: "Charles"
+  orcid: "https://orcid.org/0000-0002-9380-4838"
+title: "geocryoai"
+version: 1.0.0
+doi: 10.3334/ORNLDAAC/2371
+date-released: 2024-02-22
+url: "https://github.com/bradleygay/geocryoai"
+
 
 Gay, B., Pastick, N., Watts, J., Armstrong, A., Miner, K., & Miller, C. (2024). GeoCryoAI (Version 1.0.0) [Computer software]. https://github.com/bradleygay/geocryoai
