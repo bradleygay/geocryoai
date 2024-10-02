@@ -8,3 +8,5 @@
 ##### Gay, B. A., Züfle, A. E., Armstrong, A. H., et al. Investigating High-Latitude Permafrost Carbon Dynamics with Artificial Intelligence and Earth System Data Assimilation, December 26, 2023. ESS Open Archive. https://doi.org/10.22541/essoar.170355053.35677457/v1
 ##### Gay, B.A., Pastick, N.J., Züfle, A.E., Armstrong, A.H., Miner, K.R., Qu, J.J., 2023. Investigating permafrost carbon dynamics in Alaska with artificial intelligence. Environmental Research Letters 18. https://doi.org/10.1088/1748-9326/ad0607
 ##### Gay, B. A., (2023). Investigating High-Latitude Permafrost Carbon Dynamics with Artificial Intelligence and Earth System Data Assimilation. (Order No. 30488695, George Mason University). ProQuest Dissertations and Theses, 281. Retrieved from https://www.proquest.com/dissertations-theses/investigating-high-latitude-permafrost-carbon/docview/2826111475/se-2
+
+If these resources prove helpful and are incorporated, repurposed, and/or modules are extracted and reused, please cite this repository and the JGR-MLC manuscript above. Thank you!
