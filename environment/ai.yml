@@ -3,6 +3,8 @@ channels:
   - apple
   - conda-forge
 dependencies:
+  - absl-py=2.1.0=pyhd8ed1ab_0
+  - accelerate=0.34.2=pyhd8ed1ab_0
   - access=1.1.9=pyhd8ed1ab_1
   - accessible-pygments=0.0.5=pyhd8ed1ab_0
   - affine=2.4.0=pyhd8ed1ab_0
@@ -21,6 +23,7 @@ dependencies:
   - argon2-cffi=23.1.0=pyhd8ed1ab_0
   - argon2-cffi-bindings=21.2.0=py39h0f82c59_4
   - arrow=1.3.0=pyhd8ed1ab_0
+  - arviz=0.17.1=pyhd8ed1ab_2
   - asciitree=0.3.3=py_2
   - asf_search=7.1.4=pyhd8ed1ab_0
   - asf_search-base=7.1.4=pyhd8ed1ab_0
@@ -48,7 +51,10 @@ dependencies:
   - basemap-data-hires=1.3.2=pyhd8ed1ab_3
   - bayesian-optimization=1.5.1=pyhd8ed1ab_0
   - beautifulsoup4=4.12.3=pyha770c72_0
+  - blackjax=1.2.4=pyhd8ed1ab_0
   - blake3=0.3.3=py39haff01fd_2
+  - blas=2.122=openblas
+  - blas-devel=3.9.0=22_osxarm64_openblas
   - bleach=6.1.0=pyhd8ed1ab_0
   - blinker=1.8.2=pyhd8ed1ab_0
   - blosc=1.21.5=hc338f07_0
@@ -70,6 +76,7 @@ dependencies:
   - cads-api-client=1.2.0=pyhd8ed1ab_0
   - cairo=1.16.0=h73a0509_1014
   - cartopy=0.23.0=py39h998126f_1
+  - cctools_osx-arm64=973.0.1=h7a0f565_13
   - cdsapi=0.7.1=pyhd8ed1ab_0
   - certifi=2024.8.30=pyhd8ed1ab_0
   - cf_xarray=0.9.4=pyhd8ed1ab_0
@@ -79,7 +86,13 @@ dependencies:
   - cftime=1.6.4=py39h914ef23_1
   - charls=2.3.4=hbdafb3b_0
   - charset-normalizer=3.3.2=pyhd8ed1ab_0
+  - chex=0.1.86=pyhd8ed1ab_0
   - ciso8601=2.3.1=py39h17cfd9d_0
+  - clang=16.0.1=h1e5164c_0
+  - clang-16=16.0.1=default_he7141eb_0
+  - clang_osx-arm64=16.0.1=hdccda30_1
+  - clangxx=16.0.1=default_ha0f6327_0
+  - clangxx_osx-arm64=16.0.1=h0c1d50e_1
   - click=8.1.7=unix_pyh707e725_0
   - click-plugins=1.1.1=py_0
   - cligj=0.7.2=pyhd8ed1ab_1
@@ -94,7 +107,10 @@ dependencies:
   - colorcet=3.1.0=pyhd8ed1ab_0
   - colorlog=6.8.2=py39h2804cbe_0
   - comm=0.2.2=pyhd8ed1ab_0
+  - compiler-rt=16.0.1=h30b49de_0
+  - compiler-rt_osx-arm64=16.0.1=h30b49de_0
   - configobj=5.0.8=pyhd8ed1ab_0
+  - cons=0.4.6=pyhd8ed1ab_0
   - contourpy=1.3.0=py39h157d57c_1
   - cramjam=2.8.3=py39h8fec3ad_0
   - cryptography=42.0.2=py39hbc7c26c_0
@@ -128,11 +144,13 @@ dependencies:
   - email_validator=2.2.0=hd8ed1ab_0
   - entrypoints=0.4=pyhd8ed1ab_0
   - esda=2.5.1=pyhd8ed1ab_1
+  - etuples=0.3.9=pyhd8ed1ab_0
   - executing=2.0.1=pyhd8ed1ab_0
   - expat=2.6.2=hebf3989_0
   - fastapi=0.112.1=pyhd8ed1ab_0
   - fasteners=0.17.3=pyhd8ed1ab_0
   - fastparquet=2024.5.0=py39h161d348_0
+  - fastprogress=1.0.3=pyhd8ed1ab_0
   - ffmpeg=5.1.2=gpl_hf318d42_106
   - fftw=3.3.10=nompi_h6637ab6_110
   - filelock=3.15.4=pyhd8ed1ab_0
@@ -189,6 +207,7 @@ dependencies:
   - hpack=4.0.0=pyh9f0ad1d_0
   - httpcore=1.0.5=pyhd8ed1ab_0
   - httpx=0.27.0=pyhd8ed1ab_0
+  - huggingface_hub=0.25.1=pyhd8ed1ab_0
   - hyperframe=6.0.1=pyhd8ed1ab_0
   - icu=70.1=h6b3803e_0
   - identify=2.6.0=pyhd8ed1ab_0
@@ -214,6 +233,9 @@ dependencies:
   - ipywidgets=8.1.5=pyhd8ed1ab_0
   - isoduration=20.11.0=pyhd8ed1ab_0
   - jasper=2.0.33=hc3cd1e9_1
+  - jax=0.4.20=pyhd8ed1ab_0
+  - jaxlib=0.4.14=cpu_py39hf52c407_1
+  - jaxopt=0.8.3=pyhd8ed1ab_0
   - jedi=0.19.1=pyhd8ed1ab_0
   - jinja2=3.1.4=pyhd8ed1ab_0
   - joblib=1.4.2=pyhd8ed1ab_0
@@ -245,6 +267,7 @@ dependencies:
   - lazy-loader=0.4=pyhd8ed1ab_1
   - lazy_loader=0.4=pyhd8ed1ab_1
   - lcms2=2.14=h8193b64_0
+  - ld64_osx-arm64=609=h297e91e_13
   - lerc=4.0.0=h9a09cb3_0
   - libabseil=20230125.3=cxx17_h13dd4ca_0
   - libaec=1.1.3=hebf3989_0
@@ -257,6 +280,7 @@ dependencies:
   - libbrotlidec=1.0.9=h1a8c8d9_9
   - libbrotlienc=1.0.9=h1a8c8d9_9
   - libcblas=3.9.0=22_osxarm64_openblas
+  - libclang-cpp16=16.0.1=default_he7141eb_0
   - libcrc32c=1.1.2=hbdafb3b_0
   - libcurl=8.1.2=h912dcd9_0
   - libcxx=18.1.8=h167917d_0
@@ -285,6 +309,7 @@ dependencies:
   - liblapack=3.9.0=22_osxarm64_openblas
   - liblapacke=3.9.0=22_osxarm64_openblas
   - libllvm14=14.0.6=hd1a9a77_4
+  - libllvm16=16.0.1=h1e5164c_0
   - libnetcdf=4.8.1=mpi_mpich_hcc2321e_2
   - libnghttp2=1.58.0=ha4dd798_0
   - libopenblas=0.3.27=openmp_h517c56d_1
@@ -319,7 +344,9 @@ dependencies:
   - lightning-utilities=0.11.5=pyhd8ed1ab_0
   - linkify-it-py=2.0.3=pyhd8ed1ab_0
   - llvm-openmp=18.1.8=hde57baf_0
+  - llvm-tools=16.0.1=h1e5164c_0
   - locket=1.0.0=pyhd8ed1ab_0
+  - logical-unification=0.4.6=pyhd8ed1ab_0
   - lxml=4.9.2=py39h0520ce3_0
   - lz4=4.3.3=py39hf99b9d6_0
   - lz4-c=1.9.4=hb7217d7_0
@@ -338,6 +365,7 @@ dependencies:
   - metis=5.1.1=hebf3989_2
   - metpy=1.6.3=pyhd8ed1ab_0
   - mgwr=2.2.1=pyhd8ed1ab_0
+  - minikanren=1.0.3=pyhd8ed1ab_0
   - mintpy=1.6.1=pyhd8ed1ab_0
   - mistune=3.0.2=pyhd8ed1ab_0
   - mizani=0.10.0=pyhd8ed1ab_0
@@ -376,10 +404,15 @@ dependencies:
   - numcodecs=0.12.1=py39hbf7db11_1
   - numpy=1.26.4=py39h7aa2656_0
   - numpy_groupies=0.11.1=pyhd8ed1ab_0
+  - numpyro=0.15.3=pyhd8ed1ab_0
+  - nutpie=0.10.0=py39h7958472_0
   - oauthlib=3.2.2=pyhd8ed1ab_0
+  - openblas=0.3.27=openmp_h560b219_1
   - openh264=2.3.1=hb7217d7_2
   - openjpeg=2.5.0=h5d4e404_1
   - openssl=3.1.7=h8359307_0
+  - opt_einsum=3.4.0=pyhd8ed1ab_0
+  - optax=0.2.2=pyhd8ed1ab_1
   - optuna=4.0.0=pyhd8ed1ab_0
   - orc=1.9.0=h858f345_1
   - ordered-set=4.1.0=pyhd8ed1ab_0
@@ -441,6 +474,8 @@ dependencies:
   - pykml=0.2.0=pyhd8ed1ab_1
   - pylatex=1.4.2=pyhd8ed1ab_0
   - pylatexenc=2.10=pyhd8ed1ab_0
+  - pymc=5.12.0=hd8ed1ab_0
+  - pymc-base=5.12.0=pyhd8ed1ab_0
   - pyobjc-core=10.3.1=py39h336d860_0
   - pyobjc-framework-cocoa=10.3.1=py39h336d860_0
   - pypandoc=1.13=pyhd8ed1ab_0
@@ -453,9 +488,12 @@ dependencies:
   - pysolar=0.11=pyhd8ed1ab_0
   - pysolid=0.3.3=py39h69b410c_2
   - pystac=1.10.1=pyhd8ed1ab_0
+  - pytensor=2.19.0=py39h6f77bc9_1
+  - pytensor-base=2.19.0=py39h47e51b9_1
   - python=3.9.18=hfa1ae8a_0_cpython
   - python-dateutil=2.9.0=pyhd8ed1ab_0
   - python-fastjsonschema=2.20.0=pyhd8ed1ab_0
+  - python-graphviz=0.20.3=pyhe28f650_1
   - python-json-logger=2.0.7=pyhd8ed1ab_0
   - python-multipart=0.0.9=pyhd8ed1ab_0
   - python-tzdata=2024.1=pyhd8ed1ab_0
@@ -484,8 +522,8 @@ dependencies:
   - richdem=2.3.0=py39hf45f784_2
   - rpds-py=0.19.0=py39h0019b8a_0
   - rtree=1.3.0=py39hb4cb7af_1
+  - safetensors=0.4.5=py39h9c3e640_0
   - scikit-learn=1.5.1=py39h3c33c8b_0
-  - scipy=1.13.1=py39h3d5391c_0
   - seaborn=0.13.2=hd8ed1ab_2
   - seaborn-base=0.13.2=pyhd8ed1ab_2
   - segregation=2.5=pyhd8ed1ab_1
@@ -494,6 +532,7 @@ dependencies:
   - shap=0.45.1=cpu_py39hcccac43_0
   - shapely=1.8.5=py39hda9c22c_1
   - shellingham=1.5.4=pyhd8ed1ab_0
+  - sigtool=0.1.3=h44b9a77_0
   - simplejson=3.19.2=py39h17cfd9d_0
   - six=1.16.0=pyh6c4a22f_0
   - sleef=3.6.1=hf6b88df_1
@@ -537,6 +576,7 @@ dependencies:
   - svt-av1=1.4.1=h7ea286d_0
   - sympy=1.13.2=pypyh2585a3b_103
   - tabulate=0.9.0=pyhd8ed1ab_1
+  - tapi=1100.0.11=he4954df_0
   - tbb=2021.10.0=h1995070_2
   - tblib=3.0.0=pyhd8ed1ab_0
   - tensorflow-deps=2.9.0=0
@@ -582,6 +622,7 @@ dependencies:
   - widgetsnbextension=4.0.13=pyhd8ed1ab_0
   - x264=1!164.3095=h57fd34a_2
   - x265=3.5=hbc6ce65_3
+  - xarray-einstats=0.7.0=pyhd8ed1ab_0
   - xbatcher=0.3.0=pyhd8ed1ab_0
   - xcdat=0.6.0=pyhd8ed1ab_0
   - xerces-c=3.2.4=h627aa08_1
@@ -604,7 +645,6 @@ dependencies:
   - zstd=1.5.6=hb46c0d2_0
   - pip:
       - about-time==4.2.1
-      - absl-py==2.1.0
       - aggdraw==1.3.18.post0
       - aiohttp-cors==0.7.0
       - alive-progress==3.1.5
@@ -733,7 +773,6 @@ dependencies:
       - python-daemon==3.0.1
       - python-docx==1.1.2
       - python-dotenv==1.0.1
-      - python-graphviz==0.20.3
       - pyts==0.13.0
       - pywaffle==1.1.0
       - qiskit==1.2.2
@@ -750,6 +789,7 @@ dependencies:
       - rsa==4.9
       - rustworkx==0.15.1
       - scikit-image==0.22.0
+      - scipy==1.13.1
       - sentinelsat==1.2.1
       - smart-open==7.0.4
       - sparse==0.15.4
