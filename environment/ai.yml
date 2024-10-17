@@ -668,6 +668,7 @@ dependencies:
       - docopt==0.6.2
       - earthpy==0.9.4
       - ease-lonlat==0.0.3.5
+      - eddy-footprint==0.2.3
       - eiffel2==0.0.4
       - email-validator==2.1.1
       - eofs==1.4.1
@@ -678,8 +679,10 @@ dependencies:
       - fiona==1.9.6
       - flatbuffers==24.3.25
       - fontawesomefree==6.5.1
+      - fuzzywuzzy==0.18.0
       - gast==0.5.4
       - geojson==3.1.0
+      - geojsoncontour==0.4.0
       - geomet==1.1.0
       - georaster==1.25
       - google-api-core==2.19.0
@@ -756,6 +759,7 @@ dependencies:
       - pydantic-settings==2.4.0
       - pydap==3.4.1
       - pydotplus==2.0.2
+      - pyffp==0.0.2
       - pygrib==2.1.5
       - pymongo==4.7.3
       - pypdf2==3.0.1
@@ -797,6 +801,7 @@ dependencies:
       - starlette==0.37.2
       - stevedore==5.3.0
       - striprtf==0.0.26
+      - style==1.1.0
       - symengine==0.11.0
       - tenacity==8.3.0
       - tensorboard==2.16.2
@@ -821,6 +826,7 @@ dependencies:
       - ujson==5.10.0
       - uncertain-panda==0.3.0
       - uncertainties==3.2.2
+      - update==0.0.1
       - urllib3==2.2.3
       - uvicorn==0.30.1
       - uvloop==0.19.0
