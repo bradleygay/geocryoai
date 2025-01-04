@@ -19,9 +19,9 @@
 ###### This repository contains large data files that have been chunked for storage. To reconstruct the original files:
 ###### 1. Clone the repository
 ###### 2. Install required packages:
-    ###### pip install h5py pandas numpy
+    pip install h5py pandas numpy
 ###### 3. Run the reconstruction script:
-    ###### python chunk_reassembly.py
+    python chunk_reassembly.py
 ###### The script will reconstruct:
-    ###### - ensemble_tensor.h5 (from h5_chunks)
-    ###### - final_fcfch4alt_monthly_1km_ds.parquet (from parquet_chunks)
+>> ensemble_tensor.h5 (from h5_chunks)
+>> final_fcfch4alt_monthly_1km_ds.parquet (from parquet_chunks)
