@@ -14,7 +14,7 @@
 > ###### Gay, B.A., Pastick, N.J., Züfle, A.E., Armstrong, A.H., Miner, K.R., Qu, J.J., 2023. Investigating permafrost carbon dynamics in Alaska with artificial intelligence. Environmental Research Letters 18. https://doi.org/10.1088/1748-9326/ad0607 </br>
 > ###### Gay, B. A., (2023). Investigating High-Latitude Permafrost Carbon Dynamics with Artificial Intelligence and Earth System Data Assimilation. (Order No. 30488695, George Mason University). ProQuest Dissertations and Theses, 281. Retrieved from https://www.proquest.com/dissertations-theses/investigating-high-latitude-permafrost-carbon/docview/2826111475/se-2 </br>
 
-
+</br>
 ##### Large Data Files
 ###### This repository contains large data files that have been chunked for storage. To reconstruct the original files:
 ###### 1. Clone the repository
