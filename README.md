@@ -23,5 +23,5 @@
 ###### 3. Run the reconstruction script:
     python chunk_reassembly.py
 ###### The script will reconstruct:
-    ensemble_tensor.h5 (from h5_chunks)
-    final_fcfch4alt_monthly_1km_ds.parquet (from parquet_chunks)
+    - ensemble_tensor.h5 (from h5_chunks)
+    - final_fcfch4alt_monthly_1km_ds.parquet (from parquet_chunks)
