@@ -2,8 +2,8 @@
 ##### GeoCryoAI is a hybridized ensemble learning framework composed of stacked convolutional layers and memory-encoded recurrent neural networks. This multimodal deep learning architecture simultaneously ingests and analyzes _in situ_ measurements, airborne remote sensing observations, and process-based modeling outputs exhibiting disparate spatiotemporal sampling and data densities.
 ##### Bradley A. Gay, PhD | NASA Postdoctoral Program Fellow | JPL, California Institute of Technology
 ###### _If these resources prove helpful and are incorporated, repurposed, and/or modules are extracted and reused, please cite this repository, the companion dataset and source code in the ORNL DAAC, and the JGR-MLC manuscript._
-> ###### Gay, B. A., Pastick, N. J., Watts, J. D., et al., 2024. Decoding the Spatiotemporal Complexities of the Permafrost Carbon Feedback with Multimodal Ensemble Learning. Journal of Geophysical Research, Machine Learning and Computation. Under Review. </br>
-> ###### Gay, B.A., et al. 2024. GeoCryoAI | Decoding the Spatiotemporal Complexities of the Permafrost Carbon Feedback with Multimodal Ensemble Learning. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/2371 </br>
+> ###### Gay, B. A., Pastick, N. J., Watts, J. D., et al., 2025. Decoding the Spatiotemporal Complexities of the Permafrost Carbon Feedback with Multimodal Ensemble Learning. Journal of Geophysical Research, Machine Learning and Computation. Under Review. </br>
+> ###### Gay, B.A., et al. 2025. GeoCryoAI | Decoding the Spatiotemporal Complexities of the Permafrost Carbon Feedback with Multimodal Ensemble Learning. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/2371 </br>
 > ###### Gay, B., Pastick, N., Watts, J., Armstrong, A., Miner, K., & Miller, C. (2024). geocryoai (Version 1.0.0) [Computer software]. https://www.github.com/bradleygay/geocryoai </br>
 
 ### Relevant Manuscripts
