@@ -1,0 +1,17 @@
+{
+  "n_blocks": 2,
+  "initial_filters": 24,
+  "activation_0": "swish",
+  "use_bn_0": false,
+  "activation_1": "relu",
+  "use_bn_1": false,
+  "dec_activation_1": "relu",
+  "use_bn_dec_1": false,
+  "dec_activation_0": "swish",
+  "use_bn_dec_0": false,
+  "learning_rate": 0.001,
+  "activation_2": "swish",
+  "use_bn_2": false,
+  "dec_activation_2": "relu",
+  "use_bn_dec_2": false
+}
