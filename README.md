@@ -7,7 +7,7 @@
 > ###### Gay, B., Pastick, N., Watts, J., Armstrong, A., Miner, K., & Miller, C. (2024). geocryoai (Version 1.0.0) [Computer software]. https://www.github.com/bradleygay/geocryoai </br>
 
 ### Relevant Manuscripts
-> ###### Gay, B. A., Pastick, N. J., Watts, J. D., et al., 2024. Decoding the Spatiotemporal Complexities of the Permafrost Carbon Feedback with Multimodal Ensemble Learning. Journal of Geophysical Research, Machine Learning and Computation. Under Review. </br>
+> ###### Gay, B. A., Pastick, N. J., Watts, J. D., et al., 2025. Decoding the Spatiotemporal Complexities of the Permafrost Carbon Feedback with Multimodal Ensemble Learning. Journal of Geophysical Research, Machine Learning and Computation. Under Review. </br>
 > ###### Gay, B. A., Pastick, N. J., Watts, J. D., et al., 2024. Forecasting Permafrost Carbon Dynamics in Alaska with Earth Observation Data and Artificial Intelligence, ESS Open Archive. https://essopenarchive.org/users/524229/articles/1225858-forecasting-permafrost-carbon-dynamics-in-alaska-with-earth-observation-data-and-artificial-intelligence </br>
 > ###### Gay, B. A., Züfle, A. E., Armstrong, A. H., et al. Investigating Permafrost Carbon Dynamics in Alaska with Artificial Intelligence, December 26, 2023. ESS Open Archive. https://doi.org/10.22541/essoar.170355056.64772303/v1 </br>
 > ###### Gay, B. A., Züfle, A. E., Armstrong, A. H., et al. Investigating High-Latitude Permafrost Carbon Dynamics with Artificial Intelligence and Earth System Data Assimilation, December 26, 2023. ESS Open Archive. https://doi.org/10.22541/essoar.170355053.35677457/v1 </br>
