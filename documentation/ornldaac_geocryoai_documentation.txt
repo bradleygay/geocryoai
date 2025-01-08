@@ -1,0 +1,1809 @@
+---------------------------------------------------------------------
+Dataset Working Title: GeoCryoAI Permafrost Carbon Feedback Modalities, Thaw Depth and Carbon Flux in Alaska, 1963-2022 [1800-2100] (01052667eb)
+Documentation Revision Date: 2024-12-19
+Dataset Version: 1
+
+---------------------------------------------------------------------
+SUMMARY
+This publication employs an artificial intelligence-driven model GeoCryoAI to quantify permafrost thaw dynamics and greenhouse gas emissions in Alaska. The serialized datasets consist of pre-processed multimodal data (i.e., thaw depth, ALT, thaw subsidence; CO2 flux, CH4 flux) acquired from in situ and flux tower sites (e.g., CALM, GTNP, ABoVE SMALT, ABoVE ReSALT, USGS, UAF, GMU; AmeriFlux, NEON), remote sensing platforms (e.g., UAVSAR, AVIRIS-NG), and process-based modeling products (e.g., SIBBORK-TTE, TCFM-Arctic). These ground-based measurements (1 m to 1 km), airborne observations (0.66 m to 5 m), and model-derived products (10 m to 1 km) were resampled (i.e., 1 km footprints), standardized, transformed, and assimilated into GeoCryoAI, a hybridized process-constrained ensemble learning framework that simultaneously ingests, scales, and analyzes this dataset after resolving disparate spatiotemporal sampling and data densities. Mechanical probing, borehole temperatures, and ground penetrating radar were used to quantify active layer thickness during the field season (Chen, A.A., 2015). In addition, CH4 and CO2 flux measurements were derived from the AmeriFlux and NEON flux tower networks. Additional GeoCryoAI inputs include UAVSAR-based synthetic aperture radar (SAR) backscattering with subsequent interferometric SAR (InSAR) phase unwrapping and vertical displacement, as well as AVIRIS-NG-based CH4 and CO2 imaging spectroscopy. Model outputs were generated from two PBMs: SIBBORK-TTE derived thaw subsidence and TCFM-Arctic generated carbon flux outputs. In situ, active layer thickness measurements and derived thaw depth from PBMs were transformed to negative thaw derivatives to represent the monthly rate of change in active layer thickness measurements and thaw depth outputs concerning height displacement at depth. Scale is evaluated across data modes to accurately reflect and simulate the physical system dynamics at higher dimensions by reducing variability through convolution while retaining bias during resampling and harmonization. Specifically, we adopt a top-down fast-pass approach to account for scaling discontinuity by simulating localized and regional land-atmosphere interactions and nonlinearities. Then, a discretized bottom-up slow-pass approach emulates and captures process-based terrestrial dynamics, subsurface features, and the interactions among state variables reflected in model parameterization. For multimodal equivalency, we down-sampled data to a 1 km grid. Mean interpolation was avoided initially to preserve biophysical indicators and ensure information legacies were propagated. Our objective was to quantify how the Arctic is changing in response to climate change and what quantifiable evidence of the permafrost carbon feedback may we measure and simulate to better understand and simulate the risks and uncertainty of this chaotic nonlinear feedback and its impact on the earth system. GeoCryoAI is a hybridized process-constrained ensemble learning framework consisting of stacked convolutionally layered long short-term memory-encoded recurrent neural networks. This architecture leverages a multimodal composite of in situ measurements (Gay et al., 2023), airborne remote sensing observations, and PBM outputs to ensure biogeophysical processes are emulated by physical laws while improving the performance and predictive accuracy of the model. Moreover, this framework integrates optimization equations, regularization cost functions, and a Bayesian Optimization search algorithm to populate a hyperparameter dictionary, reconcile data mismatches, expedite convergence, and minimize error residuals during teacher forcing. Our approach overcomes traditional model inefficiencies and resolves spatiotemporal disparities by providing a novel methodology for assimilating contemporaneous multimodal information across scales. GeoCryoAI ingests 53.59 billion measurements and observations to scale, learn, simulate, and forecast the primary constituents of the PCF with prognostic and retrospective capabilities. It is critical to corroborate and reconcile the conservation of energy balance promulgated by carbon loss from permafrost degradation and thaw subsidence.
+
+This dataset contains a total of three primary directories, each comprised of two highly dynamic subdirectories wherein the primary dataset constituents' delegate in accordance with the specified filename nomenclature. For example, the first subdirectory contained within the first primary directory is  documentation, which stores the documentation of this research while hosting relevant imagery (images subdirectory) and other pertinent details associated with a small but significant result, concept, epiphany, et c., is tasked with distributing, managing, and other pertinent details (appendix) related to characterize the permafrost carbon feedback. The remaining two primary directories include the preprocessing_dataset and model_dataset directories; the former is tasked with generating the harmonized dataset at two spatial resolutions, i.e., native v. 1 km resolution for harmonization and assimilation purposes. The harmonized dataset can function as a standalone data product available for synthesis; and/or this harmonized resource may serve as an input for a variety of modeling, benchmark, and/or statistical analyses. For this research study, we develop this harmonized dataset to serve as the input dataset for our modeling framework. Alternatively, the model_dataset directory is tasked with simulation, forecasting, and deliverable generation, i.e., compiling, testing, repairing, and analyses. These deliverables are packaged and gzip compressed into tar archives consisting of metadata (i.e., cost functions, architecture lifecycle plot graphs, multimodal flexible framework, codebase open access) and four deliverables (PDFs) expounding on the statistical testing employed, uncertainty quantification and propagation results, simulation and prediction results corresponding to each dependent variable's coevolution over a period of 300 years (i.e., fc, fch4, ALT), and finally a comprehensive workflow diagram and high-resolution plot graph of the terminating architecture of the GeoCryoAI model. Intermediate files and supplementary source code are available but are not included in this data product due to file size limitations and to maintain both brevity and clarity; however, such intermediate files are available for open distribution from the author upon request. More specifically, some of these intermediate files are available in the GitHub repository for demonstration purposes. The details characterizing the dataset will be provided in the data documentation, i.e., spatial coverage extends to the State of Alaska (-169.03904, 56.0346, -139.99904, 73.014599999999) and the temporal coverage spans 60 years of observation to 300 years of observation and simulation, i.e., 1963-2022, 1800-2100).
+
+Browse Image: image1.png
+Image File Name: /geocryoai/doc/documentation/images/image1.png
+Image Description: The flowchart elements above elucidate on the model architecture and assembly, which includes model compilation, hyperparameter tuning, optimization, fitting, inverse transformation, evaluation, prediction, and error quantification, expanding on previous teacher forcing methods (Gay et al. 2023; Gay, B.A., et al. 2024).
+
+Documentation filename: /geocryoai/doc/documentation/ornldaac_geocryoai_documentation.txt
+
+Investigator(s)
+Bradley A. Gay, bradley.a.gay@jpl.nasa.gov, 0000-0003-2617-2559
+
+Manuscript Coauthorship
+Neal J. Pastick, njpastick@usgs.gov, 0000-0002-8169-3018
+Jennifer D. Watts, jwatts@woodwellclimate.org, 0000-0001-7207-8999
+Amanda H. Armstrong, amanda.h.armstrong@nasa.gov, 0000-0002-9123-8924
+Kimberley N. Miner, kimberley.n.miner@jpl.nasa.gov, 0000-0002-1006-1283
+Charles E. Miller, charles.e.miller@jpl.nasa.gov, 0000-0002-9380-4838
+
+---------------------------------------------------------------------
+DATASET OVERVIEW
+This publication employs an artificial intelligence-driven model GeoCryoAI to quantify permafrost thaw dynamics and greenhouse gas emissions in Alaska. The serialized datasets consist of pre-processed multimodal data (i.e., thaw depth, ALT, thaw subsidence; CO2 flux, CH4 flux) acquired from in situ and flux tower sites (e.g., CALM, GTNP, ABoVE SMALT, ABoVE ReSALT, USGS, UAF, GMU; AmeriFlux, NEON), remote sensing platforms (e.g., UAVSAR, AVIRIS-NG), and process-based modeling products (e.g., SIBBORK-TTE, TCFM-Arctic). These ground-based measurements (1 m to 1 km), airborne observations (0.66 m to 5 m), and model-derived products (10 m to 1 km) were resampled (i.e., 1 km footprints), standardized, transformed, and assimilated into GeoCryoAI, a hybridized process-constrained ensemble learning framework that simultaneously ingests, scales, and analyzes this dataset after reconciling disparate spatiotemporal sampling and data densities. The details characterizing the dataset will be provided in the data documentation, i.e., spatial coverage extends to the State of Alaska and the temporal coverage spans 60 years, i.e., 1963-2022. Mechanical probing, borehole temperatures, and ground penetrating radar were used to quantify active layer thickness during the field season (Chen, A.A., 2015). In addition, CH4 and CO2 flux measurements were derived from the AmeriFlux and NEON flux tower networks. Additional GeoCryoAI inputs include UAVSAR-based synthetic aperture radar (SAR) backscattering with subsequent interferometric SAR (InSAR) phase unwrapping and vertical displacement, as well as AVIRIS-NG-based CH4 and CO2 imaging spectroscopy. Model outputs were generated from two PBMs: SIBBORK-TTE derived thaw subsidence and TCFM-Arctic generated carbon flux outputs. In situ, active layer thickness measurements and derived thaw depth from PBMs were transformed to negative thaw derivatives to represent the monthly rate of change in active layer thickness measurements and thaw depth outputs concerning height displacement at depth. Scale is evaluated across data modes to accurately reflect and simulate the physical system dynamics at higher dimensions by reducing variability through convolution while retaining bias during resampling and harmonization. Specifically, we adopt a top-down fast-pass approach to account for scaling discontinuity by simulating localized and regional land-atmosphere interactions and nonlinearities. Then, a discretized bottom-up slow-pass approach emulates and captures process-based terrestrial dynamics, subsurface features, and the interactions among state variables reflected in model parameterization. For multimodal equivalency, we down-sampled data to a 1 km grid. Mean interpolation was avoided initially to preserve biophysical indicators and ensure information legacies were propagated. Concluding pre-processing, resampling, scaling, and transforming, the multimodal dataset was assimilated into the GeoCryoAI framework. 
+
+MODEL OVERVIEW
+GeoCryoAI is a hybridized process-constrained ensemble learning framework consisting of stacked convolutionally layered long short-term memory-encoded recurrent neural networks. This architecture leverages a multimodal composite of in situ measurements (Gay et al., 2023), airborne remote sensing observations, and PBM outputs to ensure biogeophysical processes are emulated by physical laws while improving the performance and predictive accuracy of the model. Moreover, this framework integrates optimization equations, regularization cost functions, and a Bayesian Optimization search algorithm to populate a hyperparameter dictionary, reconcile data mismatches, expedite convergence, and minimize error residuals during teacher forcing. Our approach overcomes traditional model inefficiencies and resolves spatiotemporal disparities by providing a novel methodology for assimilating contemporaneous multimodal information across scales. GeoCryoAI ingests 53.59 billion measurements and observations to scale, learn, simulate, and forecast the primary constituents of the PCF with prognostic and retrospective capabilities. It is essential to corroborate how permafrost degradation and thaw subsidence affect carbon loss by conserving energy balance.
+
+Related Publication(s)
+Gay, B.A., Pastick, N.J., Watts, J.D., Armstrong, A.H., Miner, K.R., & Miller, C.E. (2024). Decoding the Spatiotemporal Complexities of the Permafrost Carbon Feedback with Multimodal Ensemble Learning, Journal of Geophysical Research, Machine Learning and Computation, In Revision (2).
+Gay, B.A., Pastick, N.J., Zuefle, A.E., Armstrong, A.H., Miner, K.R., & Qu, J.J. (2023). Investigating permafrost carbon dynamics in Alaska with artificial intelligence, Environmental Research Letters 18, 125001. https://iopscience.iop.org/article/10.1088/1748-9326/ad0607/
+Gay, B., Pastick, N., Watts, J., Armstrong, A., Miner, K., & Miller, C. (2024). geocryoai (Version 1.0.0) [Computer software]. https://github.com/bradleygay/geocryoai/tree/main/ [https://doi.org/10.3334/ORNLDAAC/2371]
+
+Related Dataset(s)
+ALT
+ABoVE, GTNP, CALM, NEON
+https://doi.org/10.3334/ORNLDAAC/1598
+https://doi.org/10.3334/ORNLDAAC/1759
+https://doi.org/10.3334/ORNLDAAC/1701
+https://doi.org/10.3334/ORNLDAAC/1903
+https://doi.org/10.3334/ORNLDAAC/1266
+https://doi.org/10.3334/ORNLDAAC/1579
+https://doi.org/10.3334/ORNLDAAC/2177
+https://doi.org/10.3334/ORNLDAAC/1579
+https://doi.org/10.3334/ORNLDAAC/1355
+https://doi.org/10.3334/ORNLDAAC/1265
+UAVSAR
+https://doi.org/10.3334/ORNLDAAC/2150
+https://doi.org/10.3334/ORNLDAAC/2004
+https://doi.org/10.3334/ORNLDAAC/1796
+
+CH4, CO2
+AmeriFlux
+https://doi.org/10.3334/ORNLDAAC/1562
+https://doi.org/10.3334/ORNLDAAC/1934
+https://doi.org/10.3334/ORNLDAAC/1935
+https://doi.org/10.3334/ORNLDAAC/1692
+https://doi.org/10.3334/ORNLDAAC/1762
+https://doi.org/10.3334/ORNLDAAC/1620
+AVIRIS-NG
+https://doi.org/10.3334/ORNLDAAC/2009
+https://doi.org/10.3334/ORNLDAAC/2362
+TCFM-Arctic
+https://doi.org/10.3334/ORNLDAAC/2121
+
+Acknowledgments
+BG’s participation was supported by an appointment to the NASA Postdoctoral Program at the Jet Propulsion Laboratory, California Institute of Technology. This research was sponsored by the National Aeronautics and Space Administration (NASA) under contract with Oak Ridge Associated Universities (80NM0018D0004). Much appreciation is extended to the following networks, individuals, and institutions responsible for the life cycle of this work, in particular, field support and reconnaissance as well as preprocessing efforts resolving field data inventory and data management: CALM, GTNP, AmeriFlux, National Ecological Observatory Network, Bonanza Creek LTER, Toolik Field Station, Kevin Schaefer, Paul Montesano, Mary Farina, Jacqueline Hung, Sue Natali, Heather Greaves, Helene Genet, Woodwell Climate Research Center, National Science Foundation, University of Alaska - Fairbanks, and the Institute of Arctic Biology. AmeriFlux data were made available through the data portal (https://ameriflux.lbl.gov) and processing maintained by the AmeriFlux Management Project, supported by the U.S. Department of Energy Office of Science, Office of Biological and Environmental Research, under contract number DE-AC02-05CH11231. The views and conclusions contained in this document are those of the authors and should not be interpreted as representing the official policies, either expressed or implied, of the National Aeronautics and Space Administration (NASA) or the U.S. Government. The U.S. Government is authorized to reproduce and distribute reprints for Government purposes, notwithstanding any copyright notation herein. Any use of trade, firm, or product names is for descriptive purposes only and does not imply endorsement by the U.S. Government.
+
+---------------------------------------------------------------------
+Global Change Master Directory (GCMD) Keywords
+earth science, climate indicators, biospheric indicators, carbon flux, 
+	       			   climate feedbacks, coupled system feedbacks, cryospheric feedbacks,
+	       			   terrestrial hydrosphere indicators, permafrost melt,
+	       cryosphere, frozen ground, active layer, ground ice, permafrost, seasonally frozen ground,
+	       land surface, periglacial processes, 
+	       spectral/engineering, infrared wavelengths, infrared radiance,
+				     radar, radar backscatter, return power,
+				     sensor characteristics, electrical properties, geolocation, phase and amplitude, 
+	       terrestrial hydrosphere, snow/ice, freeze/thaw, transition direction, 
+earth science services, data analysis and visualization, calibration/validation, calibration, validation,
+							 data analysis, data visualization,
+							 geographic information systems, 
+							 image processing,
+							 statistical applications,
+			data management/data handling, archiving, cataloging, data access/retrieval,
+						       data mining,
+						       subsetting/supersetting, spatial subsetting, temporal subsetting, variable subsetting,
+						       transformation/conversion,
+			machine learning training data, labels, raster label, vector label,
+							source, raster source, vector source,
+			models, carbon cycle/carbon budget models, component process models, coupled climate models, cryosphere models, digital elevation/digital models, dynamic vegetation/ecosystem models, earth science reanalyses/
+			assimilation, hydrologic and terrestrial water cycle models, land surface models, 
+				machine learning models, classification, deep learning, convolutional neural networks, recurrent neural networks, ensemble models, boosting, neural networks, object detection, regression, self-
+				supervised, semi-supervised, supervised, unsupervised, 
+				physical/laboratory models, solar-atmospheric/space weather models, species distribution models, weather research/forecasting models,
+platforms, air-based platforms, jet, gulfstream III, nasa er-2, propeller, twin otter cirpas,
+	   land-based platforms, field sites, data collections, field surveys,
+	   other, field investigation, maps,
+		  models, cesm, climate models, clm-lsm, data analysis, dem, ecmwf, ecmwf era5, merra-2, observation based, reanalysis models,
+		  multi-sensor analysis,
+		  physical models, analytical lab, laboratory,
+		  reports, publications,
+	   space-based platforms, earth observation satellites, landsat, nisar, 
+instruments, earth remote sensing instruments, active remote sensing, imaging radars, sar, uavsar, 
+					       passive remote sensing, spectrometers/radiometers, imaging spectrometers/radiometers, aviris-ng,
+	     in situ/laboratory instruments, conductivity sensors, corers, data analysis, pressure/height meters, probes, profilers/sounders, recorders/loggers, samplers, spectrometers/radiometers, temperature/humidity sensors,
+projects, ABoVE, 
+locations, geographic region, arctic, northern hemisphere, polar, 
+	   continental, north america, united states of america, alaska,
+horizontal resolution ranges, 1 km - < 10 km or approximately .01 degree - < .5 degree, 1 meter - < 30 meters, 500 meters - < 1 km, point resolution,
+vertical resolution ranges, 1 meter - < 10 meters, 100 meters - < 1 km, point resolution,
+temporal resolution ranges, 1 minute - < 1 hour, 1 second - < 1 minute, annual, daily - < weekly, diurnal, hourly - < daily, monthly - < annual, multi-year, seasonal, subannual, varies, weekly - < monthly,
+data format, ascii, binary, bsq, csv, geojson, geotiff, hdf5, jpeg, json, kml, kmz, netcdf-4, parquet, pdf, png, safe, shapefile, tar, text file, tiff, wkt, word, xml, yaml
+
+---------------------------------------------------------------------
+DATASET CHARACTERISTICS
+The spatial coverage and study domain consists of the State of Alaska (1.723 million km2), covering 26.92% of the Arctic-Boreal Vulnerability Experiment (ABoVE) Domain (6.4 million km2) and 11.88% of the Arctic landscape (14.5 million km2). Sites were identified as suitable for investigation and were selected in alignment with in situ and flux tower collections, UAVSAR and AVIRIS-NG flight operations, and SIBBORK-TTE and TCFM-Arctic model simulations (Open Access; Brazhnik et al., 2016; Watts et al., 2023). Mechanical probing, borehole temperatures, and ground penetrating radar were used to quantify active layer thickness during the field season (Chen, A.A., 2015). In addition, CH4 and CO2 flux measurements were derived from the AmeriFlux and NEON flux tower networks. Additional GeoCryoAI inputs include UAVSAR-based synthetic aperture radar (SAR) backscattering with subsequent interferometric SAR (inSAR) phase unwrapping and vertical displacement as well as AVIRIS-NG-based CH4 and CO2 imaging spectroscopy. Model outputs were generated from two process-based models: SIBBORK-TTE derived thaw subsidence and TCFM-Arctic generated carbon flux outputs. All products and outputs were upscaled and down-sampled to 1 km for ease of nesting and spatial alignment. We rescaled temporal heterogeneity as well to align these measurements in time; additionally, we ensured the sampling frequency remained in alignment throughout the modalities. These datasets are concatenated, scaled, and flattened to specific modalities. Concluding pre-processing, resampling, scaling, and transforming, the multimodal dataset was assimilated into the GeoCryoAI framework. The fusion of ground-based measurements, remote sensing observations, PBM outputs, and AI may further elucidate PCF dynamics in space, time, and state by minimizing multimodal loss via radar return pooling, dropout, and concatenation with other pixelated arrays derived from remote imaging platforms, modeling reanalysis, and ground-based observations. GeoCryoAI performs well statistically but also effectively captures the stochastic drivers of permafrost degradation and carbon release in the Arctic system (Table 3); (2) the model's ability to capture and predict the spatiotemporal variability of permafrost degradation and GHG emissions across the State of Alaska provides significant insight into how different regions and biomes of the Arctic are responding to warming temperatures, e.g., CH4 hotspot identification near emergent herbaceous wetlands and littoral zones underscores how the model may provide insight into wetland dynamics and how these ecotones contribute to the Arctic carbon cycle; and (3) the results demonstrate the capacity of GeoCryoAI to simulate the impact of abrupt changes, specifically thermokarst events, including retrogressive thaw slumps. In addition, this study underscores the significance of thaw-induced climate change exacerbated by the PCF. It highlights the importance of resolving spatiotemporal variability of ALT as a sensitive harbinger of change.
+
+Spatial Coverage: Alaska, United States
+
+Bounding Box: [-170.0, 54.00, -139.00, 72.00]
+EPSG: 3410
+Grid Mapping: Cylindrical Equal Area
+Description: NSIDC EASE-Grid 2.0 Global (EPSG:6933)
+Longitude of Central Meridian: 0
+Standard Parallel: 30
+False Easting: 0
+False Northing: 0
+
+Spatial Resolution: The spatial resolution of the harmonized multimodal data product is 1000 m, i.e. 1 km. More specificity regarding distributions and sensor-specific resolutions are delineated below.
+
+Horizontal distance between measurements: points (transects, grids, stationary), 1-1000 m
+Vertical height in atmospheric column: 0.19-22.55 m (flux tower height distribution, x̄ = 5.132476581190603 m); 10.6-13.8 km (airborne remote sensing flight altitude distribution)
+Depth in soil: < 3 m
+
+Temporal Coverage: 1800-01-01 00:00:00 to 2100-12-01 00:00:00 (in situ: 1963-06-13 00:00:00 to 2022-12-31 23:59:59)
+
+Temporal Resolution: daily, monthly, seasonal, annual
+The temporal resolution characterizing this multimodal dataset employs a wide frequency of sampling, i.e., daily, monthly, seasonal, annual. Alternatively, we up-sampled the less frequent sampling protocols to a temporal resolution of per-second. Airborne remote sensing campaigns (e.g., repeat-pass interferometric synthetic aperture radar [UAVSAR]; single-look radiance retrieval from a visible/near-infrared imaging spectrometer [AVIRIS-NG]) afford high-resolved spectral responses; however, the temporal coverage is constrained by logistics, funding, maintenance capital, and technology. More specifically, the temporal scope of this study is limited to the lower bounds of each modal unit set, i.e., in situ flux tower measurements (i.e., AmeriFlux) provide fine sampling frequency, remote sensing observations afford greater sampling density but with intermittent data retrievals (i.e., seasonal, interannual) and/or data record limitations from spaceborne payloads due to finite lifespans. In this context, the finest temporal resolution is per-second while the coarsest temporal resolution is 1072 days (with the exception of single-pass sampling often adopted in field survey protocol). To periodically capture diurnal variability coupled with monthly, seasonal, and interannual trends is critical for increasing data heterogeneity for ML methods, reducing the effects of spatiotemporal autocorrelation, and multi-scale representation.  In addition, utilizing ERA5 reanalysis data eases the constraints with open accessibility to decadal hourly wind vector and boundary layer height components to compute flux estimations from CH4 and CO2 enhancement maps derived from AVIRIS-NG radiance acquisitions and a column-wise match filter script. The temporal resolution was selected
+
+The following fields are persistent across modalities, each dataset anchored with spatiotemporal bounds and a filename that personifies the covariate preserved within each specified modality. Furthermore, these bounds frame the harmonized data product to ensure consistent fidelity and data morphology, e.g., data type, shape, metadata. These fields include the following: datetime (YYYY-MM-DD), lat i.e., latitude (º), lon i.e., longitude (º), methane flux (fch4), carbon dioxide flux (fc), and active layer thickness (ALT). More specifically, the PCF covariates are derived from a multimodal confederation of ground-based instruments, eddy covariance flux towers, multiple field campaigns, airborne remote sensing platforms, process-based modeling frameworks, and artificial intelligence advancements tthat collectively engage, inform, and support the vast monitoring networks for over 60 years.
+
+---------------------------------------------------------------------
+FILE NAMING CONVENTION
+The simplified logic governing the file nomenclature consists of this template: {source}_{modality}_{covariate}_{resolution}. This approach mirrored much of airborne science and instrument engineers adapt into their workflow for its simplicity and universality. File nomenclature and logic convention follows these operations: arrays are stored as .npy binary files, dataframes are stored as .csv and .parquet files, multidimensional datasets are stored as GeoTIFF and HDF5 files, and finally, GIS data packages, imagery collections, and codebase are stored in .tar.gz formatting. We enumerate on the logic surrounding file structure and nomenclature; namely, the main directory (i.e., geocryoai) describes the scope of this research and the model associated with the study, i.e., GeoCryoAI. Each parent directory describes the generalized task relevance; specifically, the doc directory contains the study's documentation, the preprocessing_dataset repository contains relevant source content and preprocessing files necessary for the construction and simulations of the modeling framework. Finally, the modeling_dataset contains the source codebase and architecture of the GeoCryoAI framework, input and output files, and postprocessing deliverables. An iterative list of the data modalities, spatiotemporal characteristics, and scaling operations are notated and enumerated below as well as under File Descriptions, Data File Properties, and Data Details.
+
+Documentation directory: /geocryoai/documentation
+Documentation filename: /geocryoai/documentation/ornldaac_geocryoai_documentation.txt
+Documentation images: /geocryoai/documentation/images
+Documentation appendices: /geocryoai/documentation/appendix/
+
+File Descriptions
+/geocryoai/
+	/geocryoai/documentation/
+*		/geocryoai/documentation/ornldaac_geocryoai_documentation.txt
+		/geocryoai/documentation/geocryoai_tree_diagram.txt
+		/geocryoai/documentation/architecture.pdf
+		/geocryoai/documentation/flow_diagram.pdf
+		/geocryoai/documentation/images/
+			/geocryoai/documentation/images/image1.png
+			/geocryoai/documentation/images/image2.png
+			/geocryoai/documentation/images/image3.png
+			/geocryoai/documentation/images/image4.png
+		/geocryoai/documentation/appendix/
+			/geocryoai/documentation/appendix/amfx_monitoringperiod.png
+			/geocryoai/documentation/appendix/amflx_weightedaggfluxes_plot.png
+			/geocryoai/documentation/appendix/weighted_daily_flux_aggregates_fch4mgCkm2_fcgCkm2.png
+			/geocryoai/documentation/appendix/weighted_daily_flux_aggregates_fch4mgCm2_fcgCm2.png
+			/geocryoai/documentation/appendix/insitu_fc_harmonization_testing.pdf
+			/geocryoai/documentation/appendix/insitu_fch4_harmonization_testing.pdf
+			/geocryoai/documentation/appendix/fc_fch4_unc.pdf
+			/geocryoai/documentation/appendix/uavsar_table.xlsx
+			/geocryoai/documentation/appendix/sibbork.docx
+			/geocryoai/documentation/appendix/uncertainty.rtf
+	/geocryoai/preprocessing/
+		/geocryoai/preprocessing/code/
+			/geocryoai/preprocessing/code/scripts/
+				/geocryoai/preprocessing/code/scripts/combinatorial/
+					/geocryoai/preprocessing/code/scripts/combinatorial/combine_to_final_df.py
+					/geocryoai/preprocessing/code/scripts/combinatorial/combine_all_data_df.py
+				/geocryoai/preprocessing/code/scripts/utilities/
+					/geocryoai/preprocessing/code/scripts/utilities/geocryoai_treestructure.py
+				/geocryoai/preprocessing/code/scripts/acquisition/
+					/geocryoai/preprocessing/code/scripts/acquisition/download_s1sar_extract.py
+					/geocryoai/preprocessing/code/scripts/download-all-above_uavsar_aviris.py
+					/geocryoai/preprocessing/code/scripts/tcfm_download_all.py
+					/geocryoai/preprocessing/code/scripts/aviris_download_all.py
+					/geocryoai/preprocessing/code/scripts/uavsar_download_all.py
+				/geocryoai/preprocessing/code/scripts/modal/
+					/geocryoai/preprocessing/code/scripts/modal/insitu.py
+					/geocryoai/preprocessing/code/scripts/modal/uavsar.py
+					/geocryoai/preprocessing/code/scripts/modal/aviris/
+						/geocryoai/preprocessing/code/scripts/modal/aviris/srcfinder/*
+			/geocryoai/preprocessing/code/environment/
+				/geocryoai/preprocessing/code/environment/geocryoai.yml
+			/geocryoai/preprocessing/code/notebook/
+				/geocryoai/preprocessing/code/notebook/JGRMLC_GeoCryoAI_Preprocessing_Codebase.ipynb
+		/geocryoai/preprocessing/data/
+			/geocryoai/preprocessing/data/ds/
+				/geocryoai/preprocessing/data/ds/by_covariate/
+					/geocryoai/preprocessing/data/ds/by_covariate/fch4_df.parquet
+					/geocryoai/preprocessing/data/ds/by_covariate/fc_df.parquet
+					/geocryoai/preprocessing/data/ds/by_covariate/alt_df.parquet
+				/geocryoai/preprocessing/data/ds/merged/
+*					/geocryoai/preprocessing/data/ds/merged/final_fcfch4alt_monthly_1km_ds.parquet
+			/geocryoai/preprocessing/data/stats/
+					/geocryoai/preprocessing/data/stats/fch4_acf_pacf.png
+					/geocryoai/preprocessing/data/stats/fc_acf_pacf_firstdiff.png
+					/geocryoai/preprocessing/data/stats/fc_acf_pacf.png
+					/geocryoai/preprocessing/data/stats/alt_acf_pacf.png
+			/geocryoai/preprocessing/data/archived/*
+/geocryoai/
+	/geocryoai/modeling/
+		/geocryoai/modeling/data/
+			/geocryoai/modeling/data/input/
+				/geocryoai/modeling/data/input/ensemble_tensor.h5
+				/geocryoai/modeling/data/input/fch4/
+					/geocryoai/modeling/data/input/fch4/fch4_tensor.h5
+					/geocryoai/modeling/data/input/fch4/fch4_df_nonan_norm.parquet
+					/geocryoai/modeling/data/input/fch4/fch4_df.parquet
+				/geocryoai/modeling/data/input/fc/
+					/geocryoai/modeling/data/input/fc/fc_tensor.h5
+					/geocryoai/modeling/data/input/fc/fc_df_nonan_norm.parquet
+					/geocryoai/modeling/data/input/fc/fc_df.parquet
+				/geocryoai/modeling/data/input/alt/
+					/geocryoai/modeling/data/input/alt/alt_tensor.h5
+					/geocryoai/modeling/data/input/alt/alt_df_nonan_norm.parquet
+					/geocryoai/modeling/data/input/alt/alt_df.parquet
+			/geocryoai/modeling/data/output/
+				/geocryoai/modeling/data/output/fch4/*
+				/geocryoai/modeling/data/output/fc/*
+				/geocryoai/modeling/data/output/alt/*
+		/geocryoai/modeling/code/
+			/geocryoai/modeling/code/environment/
+				/geocryoai/modeling/code/environment/geocryoai.yml
+			/geocryoai/modeling/code/notebook/
+				/geocryoai/modeling/code/notebook/JGRMLC_GeoCryoAI_Modeling_Codebase.ipynb
+
+The upscaled harmonized 1-km monthly dataset (.h5) was read-in as a dataset and subsequent table via PyArrow wherein further manual-defined bounding coordinates were supplied to ensure spatial representation was accounted and excluded for followed by the conversion to a Pandas dataframe and Parquet file. Identification of duplicate entries and NaN values were reconciled and/or dropped appropriately. Thereafter, a Pandas dataframe was created to visualize the construction and fidelity of the dataset; following the creation of the dataframe and coincident sorting of datetime values and index resetting, dropping, and setting datetime to index and subsequent alignment. Consequently, column-based selection proceeded thereafter, i.e., ['datetime','lat','lon') in addition to resetting the index once again, selecting unique locations, i.e., rows without duplicates. The coarse spatial depiction of your world defined to the study area remain the bounds (i.e., with a pletnora of conversions, transformations, computations, and unit notation. This revised dataframe is saved to the corresponding directory for task delegation and reconciliation. Upon saving, in order to further convert this file into a cohesive, harmonized scalable dataset, we first aggregated and concatenated monthly resampled batches into a list of datasets along the datetime dimension, which were further processed into one final dataset prior to final pre-processing. However, this particular stage of the process was challenging for RAM and the system. To handle the size of this dataset iteratively, sequentially, and with precision, we first loaded the dataset into chunks, converted the datetime to a Pandas datetime object followed by dataset splitting by year to ease processing management. Processing each year required performing aggregation and implementing an index resetting to retain groupby columns for propagation purposesconduct temporal and spatial autocorrelation testing. This step was saved to disk in .parquet formatting and progress was monitored as this process iterated through each year. In some cases and scenarios, dask dataframe, dask local cluster, intermediate files, and advanced combinatorial mechanisms were necessary to push the stock and study's momentum forward. The penultimate step required loading of a .parquet directory containing these pre-processed intermediate files, chunks, batches, etc. with Polars, filtering columns appropriately (i.e., datetime, lat, lon, alt_mean, alt_max, alt_min, fch4, fc), and combining this data into a single combined dataframe in .parquet formatting and snappy compression. Finally, we generated and configured a Dask cluster, split the single .parquet combined file into smaller chunks, process these chunks iteratively and sequentially; this is followed by loading the partition, grouping by and aggregating the Dask dataframe, and saving the processed partition to disk appropriately. Thereafter, we combined all processed partitions for the purpose of repartitioning the combined dataset to ensure proper distribution. The final dataset characterizing the aggregated repartitioned resampled dataset is grouped by datetime, latitude, and longitude values, aggregated with statistical testing, and split into eight partitions. These processed partitions were combined, repartitioned, and configured with .parquet formatting.
+
+The specificity characterizing each modality's filenaming schemata, logic, and nomenclature are delineated below each modality's sub-heading and enumerated covariates below, e.g., in situ, remote sensing, modeling; active layer thickness, methane flux, carbon dioxide flux. The asterisks to the left of the tree filenames above indicate primary dataset utilized in the construction of the final harmonized data product, e.g., /geocryoai/preprocessing_dataset/output/df.parquet signifies the aggregated form of the harmonized product that is in a digestible format suitable for deep learning integration and analyses. The HDF5-formatted harmonized product is provided in the model_dataset with attributes, spatial projection metadata, and other pertinent information related to unit notation, scale factorization, object properties, and temporal bounds. Conversely, the asterisks to the right of the tree elements are used to indicate that these are further defined and explored in the following section, categorized by modality and covariate, respectively.
+
+IN SITU
+ALT
+ABoVE, USGS | 1963-2022: Active layer thickness, i.e., depth of thaw (cm, m); range: -3.39 - 0.00 m
+NEON | 2016-2022: Permafrost measures, m; range: -1.90 - 0.00 m
+Base variables: ['siteID', 'decimalLatitude', 'decimalLongitude', 'collectDate']
+Critical variables: ['groundSurfToWaterDist', 'groundSurfToThawDist', 'thawProbeDepth1', 'thawProbeDepth2', 'thawProbeDepth3', 'thawProbeDepth4', 'thawProbeDepth5', 'thawProbeDepth6', 'thawProbeDepth7', 'thawProbeDepth8', 'thawProbeDepth9', 'thawProbeDepth10', 'thawProbeDepthAverage', 'thawProbeDepthStdDev']
+Priority variables: ['thawProbeDepthAverage', 'thawProbeDepthStdDev']
+CH4, CO2
+AmeriFlux, NEON | 1994-2022: Eddy covariance (EC) tower record (Alaska), nmol CH4 m-2 hh-1, µmol CO2 m-2 hh-1; FC range: -51.29-43.56 µmol C m-2 s-1, FCH4 range: -3700.93-2533.07 nmol C m-2 s-1
+Base variables: ['Site_ID', 'Datetime', 'Lat', 'Lon', 'Height']
+Critical variables: ['USTAR', 'WS', 'WD', 'P', 'TA', 'H', 'ZL', 'TAU', 'FCH4', 'FC']
+Priority variables: ['FCH4', 'FC']
+
+REMOTE SENSING
+ALT
+UAVSAR, 2017-2019, 2022 (m)
+(71.45293800000002, -141.94902494, 61.270790160000004, -166.5250014)
+194 GeoTIFFs (i.e., 194 inSAR vertical height displacement (thaw subsidence) GeoTIFFs over a period of four years (2017-2019, 2022).
+55 flight lines. Seasonal and interannual airborne campaigns.
+CH4, CO2
+AVIRIS-NG (mg C m-2 day-1, g C m-2 day-1)
+AVIRIS-NG CH4 and CO2 flux estimation was scaled from m-2 to km-2 (scaling factors: , )
+(71.37207550310292, -134.81252481575495, 58.13357708665399, -166.6681235412699)
+
+MODELING
+ALT
+SIBBORK-TTE, 1800-2100 (m)
+(69.40153475054717, -141.14304460852338, 61.17048012776077, -165.9626606326271)
+CH4, CO2
+TCFM-Arctic (mg C m-2 day-1, g C m-2 day-1)
+
+FINAL HARMONIZED DATASET
+IN SITU, REMOTE SENSING, MODELING
+ALT, CH4, CO2
+1800-2100 (m, g C m-2 day-1, mg C m-2 day-1)
+(72.00, -139.00, 54.00, -170.00)
+
+Active Layer Thickness (ALT)
+datetime	lat		lon		alt_mean	alt_max		alt_min
+2018-11-10	67.519653	-161.745560	-0.649518	-0.649518	-0.649518
+2018-11-10	59.818256	-164.709595	-0.649518	-0.649518	-0.649518
+2018-11-10	59.818256	-164.736542	-0.649518	-0.649518	-0.649518
+2018-11-10	59.818256	-164.790436	-0.649518	-0.649518	-0.649518
+2018-11-10	59.818256	-164.871277	-0.649518	-0.649518	-0.649518
+...	...	...	...	...	...	...
+2009-09-01	67.189590	-158.107864	-0.530000	-0.530000	-0.530000
+2009-09-01	67.189590	-159.859344	-0.530000	-0.530000	-0.530000
+2009-09-01	67.189590	-159.886292	-0.530000	-0.530000	-0.530000
+2009-09-01	67.203346	-151.263611	-0.680000	-0.680000	-0.680000
+2009-09-01	62.582508	-157.595886	-0.950000	-0.950000	-0.950000
+3162961654 rows × 6 columns
+
+Methane Flux (FCH4)
+datetime	lat		lon		fch4			
+1994-06-02	70.281502	-148.884796	0.520894
+1994-06-03	70.281502	-148.884796	12.501460
+1994-06-04	70.281502	-148.884796	12.501460
+1994-06-05	70.281502	-148.884796	12.501460
+1994-06-06	70.281502	-148.884796	12.501460
+...	...	...	...
+2022-12-31	71.282402	-156.619400	10.856906
+2022-12-31	68.661102	-149.370499	9.164900
+2022-12-31	60.538200	-150.506104	0.332713
+2022-12-31	64.866302	-147.855499	7.258505
+2022-12-31	61.254799	-163.259003	2.843016
+5622225 rows × 3 columns
+
+Carbon Dioxide Flux (FC)
+datetime	lat		lon		fc			
+1994-06-02	70.281502	-148.884796	-0.000028
+1994-06-03	70.281502	-148.884796	-0.000028
+1994-06-04	70.281502	-148.884796	0.000048
+1994-06-05	70.281502	-148.884796	-0.000006
+1994-06-06	70.281502	-148.884796	0.000006
+...	...	...	...
+2022-12-31	60.538200	-150.506104	-0.000778
+2022-12-31	68.661102	-149.370499	0.000552
+2022-12-31	65.119797	-147.429001	-0.000148
+2022-12-31	61.254799	-163.259003	-0.000456
+2022-12-31	63.875702	-149.213303	0.000499
+5584983 rows × 3 columns
+
+Data File Properties
+L2 data products primarily reside here. L0 and L1 raw and intermediate data files are available from the author upon request. Individual cleaned datasets in native resolutions are provided as a form of preliminary benchmark and/or workflow compass that allows the user to target a feature. explore various cadences, and revisit the initial distribution of data variables.
+
+Data Details
+datetime: date, yyyy-mm-dd hh:mm:ss
+lat: latitude, decimal degrees
+lon: longitude, decimal degrees
+alt: active layer thickness, m
+fch4: methane flux, mg C m-2 day-1
+fc: carbon dioxide flux (nee, fc): g C m-2 day-1
+
+Data subset, e.g., alt_harmonized_1km_1800-2100.nc
+
+File "alt_harmonized_1km_1800-2100.nc"
+File type: Hierarchical Data Format, version 5
+ 
+netcdf file: /Users/bgay/Downloads/alt_harmonized_1km_1800-2100.nc {
+  dimensions:
+    time = 106322;
+    x = 1092;
+    y = 1092;
+    nv = 2;
+  variables:
+    float64 alt_max(time= 106322, y=1092, x=1092);
+      :grid_mapping = "crs";
+      :_FillValue = NaN; // string
+      :long_name = "Active layer thickness (ALT) expressed as thaw depth, active layer thickness, permafrost degradation, and thaw subsidence";
+      :units = "m";
+****      :_ChunkSizes = 1U, 136U, 2667U; // uint
+    char crs;
+      :grid_mapping_name = "cylindrical_equal_area";
+      :description = "NSIDC EASE-Grid Global (EPSG:3410)";
+      :longitude_of_central_meridian = 0; // int
+      :standard_parallel = 30; // int
+      :false_easting = 0; // int
+      :false_northing = 0; // int
+    datetime64[ns] datetime(time=1);
+      :standard_name = "time";
+      :units = "months since 1800-01-01 00:00:00";
+      :calendar = "365_day";
+      :description = "monthly";
+      :freq = None;
+      :_ChunkSizes = 1U; // uint
+    float32 lon(lon=1092);
+      :standard_name = "lon";
+      :long_name = "longitude coordinate of projection";
+      :units = "decimal degrees";
+      :_ChunkSizes = 1092U; // uint
+    float32 lat(lat=1092);
+      :standard_name = "lat";
+      :long_name = "latitude coordinate of projection";
+      :units = "decimal degrees";
+      :_ChunkSizes = 1092U; // uint
+
+global attributes:
+  :conventions = "CF-1.6"
+  :institution = "NASA Jet Propulsion Laboratory; California Institute of Technology";
+  :title = "GeoCryoAI Permafrost Carbon Feedback Modalities, Thaw Depth and Carbon Flux in Alaska, 1963-2022";
+  :project = "Arctic-Boreal Vulnerability Experiment";
+  :subproject = "Hydrology & Permafrost";
+  :contact = "bradley.a.gay@jpl.nasa.gov";
+  :references = "Gay, B.A.";
+  :publisher_institution = "Oak Ridge National Laboratory Distributed Active Archive Center (ORNL DAAC)";
+  :publisher_url = "https://daac.ornl.gov";
+  :publisher_email = "uso@daac.ornl.gov";
+
+Other Details
+Active layer thickness (ALT), thawing soil, frozen ground, active layer depth, thaw depth, thaw subsidence, and height displacement are often used interchangeably throughout this data product and publication, serving as proxies to determine the amount of permafrost degradation is occurring in space and time. Additionally, Net Ecosystem Exchange (NEE) was used as a proxy for carbon dioxide flux derived from TCFM-Arctic and eddy covariance flux towers (AmeriFlux), as it represents the difference between total carbon sequestration from photosynthesis (i.e., Gross Primary Productivity, GPP) and the total carbon release through evapotranspiration (i.e., Ecosystem Respiration, ER). Consequently, carbon dioxide flux, CO2 flux, and NEE are used interchangeably throughout this data product.
+
+---------------------------------------------------------------------
+SCALING MODALITIES
+
+IN SITU
+ALT, CH4, CO2
+- ALT (cm): 147 ground campaign sites (e.g., CALM/GTNP, UAF, ABoVE SMALT, ABoVE ReSALT, ABoVE SRS, 1002 Area, TTE); 71-121 m borehole, probe, and GPR transect surveys with 1-10 m sampling frequency, 1969-2022. Measurements quantifying groundwater and active layer measurements at permafrost sites were conducted at three NEON eddy covariance/flux towers (NSF), with data records documenting ground surface to thaw, ground surface to water, and active layer thickness from 2018-07 to 2022-12 (DP1.20099.001).
+- CH4, CO2 (nmolCH4mol-1, nmolCH4m-2s-1, mg C m-2 day-1; umolCO2mol-1, umolCO2m-2s-1, g C m-2 day-1): 44 flux tower sites, i.e., NEON (6), AmeriFlux (38) are spatially filtered to Alaska and provide 250 m - 3 km spatial footprints at 30-minute sampling frequency, 1994-2022.
+
+REMOTE SENSING
+ALT, CH4, CO2
+- UAVSAR (m): Frost heave-thaw subsidence dynamics (ALT; cm): 198 quad-polarized acquisitions were derived from the UAVSAR instrument and used for inSAR processing and interferometric phase unwrapping at 1.6 m resolution, 2017-2019, 2022.
+- AVIRIS-NG (mg C m-2 day-1, g C m-2 day-1): Carbon flux (CH4, CO2; mg C m-2 month-1): 653 radiance acquisitions were derived from AVIRIS-NG to generate CH4 and CO2 enhancement maps (ppm m) via spectrally-constrained column-wise match filtration (CMF), i.e., 117-band CH4 and 62-band CO2 CMF output at 5 m resolution with 5nm ± 0.5 nm spectral sampling frequency. Subsequently, these enhancements undergo path-integrated concentration to mass conversion (mg m-3) to carbon flux estimation (mg C m-2 day-1). The match filtered enhancements are converted to flux estimates with reanalysis and meteorological data derived from ERA5, i.e., wind speed and boundary layer height, 2017-2019, 2022.
+
+MODELING
+ALT, CH4, CO2
+- SIBBORK-TTE (m): Active layer depth (ALT; cm): 45 calibration/validation sites 16.25 million samples at 10 m resolution) were used to derive simulation matrices from SIBBORK-TTE, i.e., permafrost module and climate warming function, to estimate monthly thaw depth at 10 m resolution, 1800-2100. To clarify, these 45 sites were delineated temporally as follows: 37 301-year model simulation sites with CAL/VAL (1800-2100); 8 121-year model simulation sites with CAL/VAL (1980-2100).
+- TCFM-Arctic (CH4, nmol C m-2 day-1; NEE [CO2], umol C m-2 day-1): 26 simulations across 1699x2905 1 km grid outputting daily CH4 flux and NEE exchange (CO2 flux) derived from TCFM-Arctic, i.e., extracted from Circumarctic product and constrained to Alaska within the ABoVE Domain at 1 km resolution, 2003-2015.
+
+Active layer thickness (ALT) and carbon flux measurements were both down-sampled appropriately to represent and align with the designated 1 km footprint (i.e., ALT quantities were down-sampled in space and time from 71 - 121 m to 1 km and daily/seasonal/interannual measurements to monthly coverage (i.e., scaling ALT measurements to daily coverage was infeasible, as even the most advanced interpolation strategies resulted in duplicated series that not only posed issues with temporal autocorrelation testing but also generated nearly 87 billion rows of duplication, thus favoring monthly temporal scaling approaches). For in situ-derived thaw depth (ALT), measurements were quantified from previous field campaigns affiliated with NASA ABoVE, UAF, USGS, CALM, GTNP, and other previous field research. Most of these point-based measurements are discontinuous in time; meaning, aside from the few LTER sites employing conventional sampling methodologies regularly, many of the campaigns implemented variable yet explicit sampling protocol for specific research questions. But in general, funding restrictions and logistical challenges limit extending the temporal record across much of the Arctic. In addition, due to the relatively sparse spatial distribution of ALT measurements beyond the security of transportation routes, we extrapolated these points beyond the site-level to a much broader spatial characterization. Prior to down-sampling, thaw depth quantities were systematically appended to a spacetime geocube which contained datetime, latitude, longitude, active layer thickness (ALT), and active layer thickness rate of change (ALT_diff). To expedite computing, we removed ALT_diff from the geocube, as this column is the derivative of the ALT column and easily computed externally with a differencing method. Due to the sporadic spatial distribution of thaw depth measurements and the dynamic, heterogeneous landscape encompassing most of the State of Alaska, we probabilistically interpolated these measurements across space and time by generating a high-resolution mesh grid in alignment with the down-samapled 1 km spatial resolution of the NASADEM Global Digital Elevation Model(i.e., native resolution: 30 m). Moreover, this configuration was also preferred to align with the upscaled in situ carbon dioxide flux (fc) and methane flux (fch4) measurements derived from AmeriFlux previously. For the time dimension, the column of datetime items were converted to an integer value representing the number of days since acquiring the baseline (i.e., first) measurement relative to the datetime of the current iteration (i.e., range: 1963-06-13 to 2021-10-01, 21295 days). After stacking the elevation data with coincident spatial coordinates into an R-Tree for spatial referencing, the tree functions as a guide, receiving spatial queries for elevation searches at spatially-explicit locations where elevation data was modeled and ALT measurements were recorded. We extract these elevation values, append them to the thaw depth geocube, construct a multidimensional grid interpolator, redefine the high-resolution mesh grid to include both variables (i.e., ALT, elevation) relative to the spatial coordinates and datetime, augment the spatial resolution to align with the DEM grid, introduce minute jitter perturbation to avoid coplanarity, and finally implement nearest-neighbor interpolation for ALT. This process was conducted on the modified high-resolution mesh grid, and extracted elevation data from the DEM to facilitate and guide 5D interpolation with landscape characterization features unobserved by most conventional methods (e.g., IDW, Kriging, TIN). The resulting dataframe was time-chunked and forward-filled to facilitate NaN gap-filling via linear mean interpolation, however the daily aggregation of ALT resulted in innumerable duplicative rows. Consequently, we elected for monthly resampling, sorted datetime, reset the indices, and output the resulting ALT dataset in GeoTIFF, NetCDF4, and HDF5 format (i.e., for model purposes, an additional .parquet file was saved to disk to extract the clean dataframe expeditiously). For remotely-sensed ALT, thaw subsidence derived from UAVSAR and unwrapped interferometry, i.e., vertical displacement, was upscaled via aggregated resampling, i.e., 1.6 m to 1 km (scaling factor: 0.0016). Thaw subsidence (ALT) was scaled from cm to m (scaling factor: 0.001) to compute vertical height displacement and subsequent down-sampling to 1 km via bilinear interpolation. By computing the phase change and vertical displacement between different quad-polarimetric repeat-pass differential acquisitions (i.e., inSAR), seasonal and interannual frost heave-thaw subsidence was quantified based on the direction of signal propagation and attenuation and the displacement between the sensor and land surface (Parsekian et al., 2021). Sub-meter terradeformation from thaw subsidence and frost heave uplift were retrieved via phase-unwrapped interferometry, amplitude, azimuth and range offsetting, coherence masking, and phase difference to displacement conversion. We apply Equation for conversion: 𝑑𝑣 =− 𝜆 ∅−𝑑h𝑠𝑖𝑛(𝜃) [4𝜋 𝑐𝑜𝑠(𝜃)]^-1, where 𝑑𝑣 denotes vertical displacement (m), 𝜆 represents a mathematical constant, i.e., radar wavelength (m), 𝜋 is the mathematical constant pi, ∅ is the unwrapped phase difference between the two acquisitions (rad), 𝜃 represents the incident angle (deg), and 𝑑h represents a parameterized effect of the incident angle, i.e., horizontal displacement (m). The phase unwrapping workflow for identifying seasonal and interannual thaw subsidence variability is demonstrated in Gay et al., 2024. In total, 262.49 million samples comprising 198 unwrapped repeat-pass inSAR datasets were integrated into the multimodal dataset. Given the incremental change, we upscaled native 0.66-1.70 m pixel intervals with bilinear resampling to the TCFM-Arctic 1 km grid. For inSAR-derived ALT, the dataframe appears to only illustrate a temporal period of three years' of acquisitions for UAVSAR, the datetime field utilized the first flight line acquired, with the RPI file nomenclature deferring to repeat-pass duration (i.e., monthly, seasonal, interannual, multi-year campaign), flight number, and year of retrieval. Similarly, the dataframe contains latitude and longitude columns to retain spatial sampling consistencies across datasets; meaning, instead of utilizing the bounding box that is provided as an intermediate file (final_df_frame.csv), we computed the central coordinate between these bounds iteratively for all 184 flight lines (final_df.parquet). By default, the ALT matrices derived from SIBBORK-TTE are bounded by the spatial resolution of ArcticDEM model inputs (i.e., 1 km2 square grids constrained to 10 m resolution). SIBBORK-TTE utilizes the geometry of the ArcticDEM footprint during each spin-up to preserve the fidelity of each simulation year while its information is clipped, resampled (i.e., aggregated resampling; pixel down-sampling via bilinear interpolation), buffered with a 10 m multiplication factor, reprojected and reduced to derive the spatial extent of the vector. Each 2 m-resolved subplot is upscaled with a two-dimensional convolutional pooling operation to coarsen the resolution with a long short-term memory convolutional neural network from 10 m to 1 km.
+
+Methane (CH4) and carbon dioxide (CO2) flux were down-sampled from 30 m - 1 km to 1 km and hourly/daily temporal resolution to monthly sampling in alignment with ALT quantification and scaling methodologies mentioned previously). For in situ carbon flux, SRS forced diffusion soil respiration sites (Watts et al. 2021; Watts et al. 2022) were included; however, given the fact that most of the SRS synthesis dataset consisted of EC data and forced diffusion chamber measurements with a scaling factor of 100, we excluded this dataset from further evaluation due to this limitation. Without the necessary variables and parameters to quantify and scale the flux footprints associated with the SRS dataset, we proceeded without this data, preserving 99.56% of the original flux data. Footprints characterizing the flux tower measurements were computed with the Kormann and Meixner dynamic footprint approximation function (Kormann et al. 2001) and corresponding key variables including wind speed, wind direction, friction velocity, air temperature, sensible heat flux, precipitation, measurement height, carbon dioxide flux, and methane flux. Initially, we filtered carbon flux, sensible heat flux, and momentum flux (i.e., FC, FCH4, H, and TAU respectively) measurements where AmeriFlux QA/QC resulted in a zero classification, i.e., the values for these variables that passed QA/QC resulted in a classification of one or two (Foken et al. 1996; Foken et al. 2004). However, this eliminated nearly all of the dataset. Seeing this as impractical and current QA/QC standards should be revised to extend the temporal record instead of negating nearly 21 years of measurements (i.e., 1994-2015), we retained these critical measurements and instead, utilized the original and PI QA/QC gap-filled measurements (i.e., FC, FC_PI_F, FCH4, FCH4_PI_F, H, H_PI_F, TAU, TAU_PI_F), conducted our own QA/QC with the extracted dataset, and filtered the remaining data where precipitation (P) was greater than zero. Gap-filling included marginal distribution sampling (NEE), Reichstein partitioning (GPP, RECO), and Lasslop daytime partitioning (GPP, RECO). These footprints were spatially down-sampled to 1 km resolution. This process reprojected the flux sites' geometries to a UTM coordinate sytem, computed and scaled flux footprint areas with a buffering operation (1000 m radius), spatially aggregated flux data within the defined spatial bounds of the flux footprint, and applied unit conversion for subsequent harmonization. To reiterate, the reported units for these flux measurements remained in g C m-2 day-1 and mg C m-2 day-1 formatting to ease multifeature alignment during harmonization. Finally, temporal aggregation is implemented into the workflow to resolve flux variability with monthly coverage. In the interest of generating a robust dataset, we explored the potential to integrate various replicates and derivatives representing the measured fluxes; however, correlation testing, pairwise T-tests, and boxplot distributions confirmed that harmonizing the various replicates and data collection redundancies were too different in structure. We elected to use a priority system, whereby the measured variables would be the primary focal point for accurate and precise data folllowed by PI gap-filled datasets and subsequently, the first replicate. This was universal across the flux variables measured, i.e., FC, FCH4; FC_PI_F, FCH4_PI_Fl; FC_1_1_1, FCH4_1_1_1. Finally, both the in situ flux (i.e., carbon dioxide flux [fc] amd methane flux [fch4]) were concatenated together to form one cohesive in situ flux dataframe. Alternatively, remotely-sensed carbon flux estimations were derived from AVIRIS-NG acquisitions. These path-integrated concentration and mass conversion (enhancement maps) were upscaled via aggregated resampling, i.e., 5.0 m to 1 km (scaling factor: 0.005). Considering spectral sampling occurred seasonally and interannually, the temporal resolution associated with each flight campaign were scaled appropriately, i.e., daily to monthly interpolation depending on the research question(s), funding limitations, and return visit frequency. Though instantaneous in concept and computed as such, these acquisitions were rescaled and aggregated temporally to represent monthly retrievals with additional uncertainty. Concluding radiance sample retrievals and spatial aggregation after Gaussian enhancement with a column-wise match filter, enhancement maps were converted to path-integrated mass concentration discharge, we utilized ERA5 covariates to derive flux estimations with temporal referencing (i.e., most recent hourly reanalysis simulation output provides boundary layer height and wind components to convert and compute flux estimations from enhancement maps (ppm m), mass concentration (mg m-3), and mass flux (mg C m-2 day-1). Furthermore, we spatially disaggregated these mass concentrtions and up-sampled the ERA5 covariates with temporal referencing and spatial coordinate conversion from 5 m to 1 km (and ~30 km to 1 km) while the daily outputs were temporally disaggregated via rectilinear interpolation to represent scaled monthly flux estimates. For model-derived carbon flux, carbon flux estimations derived from TCFM-Arctic maintained the native spatial resolution (1 km); however, the temporal resolution was upscaled to monthly carbon flux (i.e., for CH4, nmol C m-2 day-1 to nmol C km-2 month-1; for CO2, µmol C m-2 day-1 to µmol C km-2 month-1).
+
+---------------------------------------------------------------------
+APPLICATION & DERIVATION 
+By incorporating multimodal datasets and simulating landscape-level ecological memory with learning encouragement, the methodological framework and architecture design seeks to better understand and characterize the spatiotemporal dynamics of subsurface properties and the PCF. Remote sensing observations and PBM outputs are implemented within the pre-trained network architecture and examined for merit and rigor. The fusion of ground-based measurements, remote sensing observations, PBM outputs, and AI may further elucidate PCF dynamics in space, time, and state by minimizing multimodal loss via radar return pooling, dropout, and concatenation with other pixelated arrays derived from remote imaging platforms, modeling reanalysis, and ground-based observations. Concluding model pre-training via in situ teacher forcing (Gay et al., 2023), the database is appended with model-derived thaw depth matrices, process-driven carbon flux outputs, inSAR height displacement profiles, and carbon flux quantities derived from CH4- and CO2-masked spectrally-constrained responses, enhancement maps, and reanalysis-informed outputs. Our approach overcomes traditional model inefficiencies and resolves spatiotemporal disparities by providing a novel methodology for assimilating contemporaneous multimodal information across scales. GeoCryoAI ingests 53.59 billion measurements and observations to scale, learn, simulate, and forecast the primary constituents of the PCF with prognostic and retrospective capabilities. It is essential to corroborate how permafrost degradation and thaw subsidence affect carbon loss by conserving energy balance. In addition, this study underscores the significance of thaw-induced climate change exacerbated by the PCF. It highlights the importance of resolving spatiotemporal variability of ALT as a sensitive harbinger of change.
+
+---------------------------------------------------------------------
+QUALITY ASSESSMENT
+The quantification of precision for permafrost degradation and carbon release were captured with each iteration of the pre-processing workflow prior to resampling, which required aggregation or interpolation, thus introducing generalization and further uncertainty. The uncertainty benchmarks were evaluated prior to and concluding resampling methods using the spatial average and standard deviation. All uncertainties were computed with the uncertain panda Python library. Collectively, ALT, CH4 flux, and CO2 flux and their derived monthly uncertainties were computed as -0.4238+/-0.134 m, 0.499+/-3.659 nmol C(CH4) km-2 month-1, and -5.272+/-127.717 µmol C(CO2) km-2 month-1 respectively. 
+
+
+IN SITU
+Mechanical probe measurements and ground-penetrating radar discriminating subsurface liquid water and infer ALT exhibited 3.0 cm of mechanical uncertainty and 8.00 cm of instrument uncertainty. Chamber-based and flux tower measurements for CH4 and CO2 flux were derived from ABoVE, USGS, and UAF field campaigns as well as the confederation of AmeriFlux and NEON eddy covariance flux towers. We selected key variables from the BASE flux datasets, filtered this dataframe to display values masked from precipitation events (df[df['P']==0]) - reducing the dataset by 28.86%, and finally propagating SIGMA error metrics from this dataframe (e.g., U_SIGMA, V_SIGMA, W_SIGMA, CO2_SIGMA) into the uncertainty propagation formula that was embedded within the Kormann & Meixner flux footprint displacement algorithm for ease of convenience and efficient tracking. The total uncertainty represents the various sources contribute to the total propagated uncertainty due to spatiotemporal aggregation for each carbon flux measurement per day. Flux uncertainties were weighted based on the number of active sites, i.e., site available at the time of acquisition (i.e., monthly active sites). These monthly uncertainty values were used to avoid any potential bias originating from inactive sites during each monthly period of acquisition. Additionally, propagating uncertainty with quadrature and integrating uncertainty metrics allowed us to examine the impacts and/or effects of measurement errors, replicate sampling, and spatiotemporal scaling biases.
+
+ALT UNCERTAINTY, IN SITU
+Native scale
+	ALT uncertainty: -0.4827+/-0.0004 m
+Aggregated scale
+	ALT uncertainty (1 km scaled): -0.4925+/-0.0003 m
+
+FCH4 UNCERTAINTY, IN SITU
+Native scale
+	CH4 flux uncertainty: 3.8948+/-0.0398 nmol C km-2 month-1
+Aggregated scale
+	CH4 flux uncertainty (1 km scaled): 8.2527+/-1.2241 nmol C km-2 month-1
+		12.5332+/-0.1433
+		-0.0241+/-0.0352 nmol CH4 m-2 s-1
+		3.7775+/-0.0376 nmolCH4 m-2 s-1
+
+FCO2 UNCERTAINTY, IN SITU
+Native scale
+	CO2 flux uncertainty: -0.6415597837147536+/-0.02910123080724301
+Aggregated scale
+	CO2 flux uncertainty (1 km scaled): 4.442491943090391+/-0.72223615258824481
+		-0.26+/-0.003
+		3438.8258+/-34.5078
+		64.97+/-1598.17 umol C m-2 s-1
+		-0.2190+/-0.0023 µmolCO2 m-2 s-1
+
+In situ uncertainties for ALT, CH4 flux, and CO2 flux and their derivatives ranged from -0.4925+/-0.0003 m, 8.2527+/-1.2241 nmol C(CH4) km-2 month-1, and 4.4425+/-0.7222 µmol C(CO2) km-2 month-1 respectively.
+
+
+REMOTE SENSING
+Considering spatial resolution varied among flight lines, we took the liberty of evaluating each acquisition’s spatial resolution and corresponding statistics to compute the most realistic scaling factor. We down-sampled UAVSAR height displacement (i.e., thaw subsidence) acquisitions from sub-meter resolution to 1 km and AVIRIS-NG radiance rasters from native resolution (i.e., ~0.4 - 5 m) to 1 km as the baseline resolutions and proceeded to apply scaling factors (i.e., 0.005) to each acquisition when upscaling (i.e., 1 km) during pre-processing. We derived frost heave-thaw subsidence and inferred active layer thickness from the backscattering of 198 quad-polarized UAVSAR-based synthetic aperture radar (SAR) acquisitions with subsequent interferometric SAR (inSAR) phase unwrapping and vertical displacement at 1.6 m resolution, 2017-2019, 2022. Scaled to 1 km, UAVSAR uncertainty for thaw subsidence (i.e., ∆h) is 1.98 ± 0.002 cm. We evaluated the spatial resolution of each AVIRIS-NG acquisition and coincident statistics to determine the most comprehensive and precise scaling factor application. The baseline resolution modulated near ~5 m for the acquisitions and we computed 639 scene-specific scaling factors (i.e., 1/1000/res) derived from the header files designed to upscale radiance data (uW nm-1 cm-2 sr-1) with 1 km down-sampling. In parallel, we temporally filtered and spatially down-scaled 639 ERA5 wind speed components (i.e., u, v) and boundary layer height values from 0.25 degrees to 1 km via bilinear up-sampling (i.e., 1 km ~ 0.007856848333836913 decimal degrees). These scaling and sampling methods permitted spatiotemporal carbon flux estimations (i.e., uW nm-1 cm-2 sr-1 to umol C mol -1) to be computed from radiance, enhancement maps, and mass concentration intermediates during pre-processing. By aligning the closest hourly wind speed (ws) computed from corresponding u and v wind components and boundary level height (blh) datasets with the enhancement maps based on the prior radiance acquisition time during this 4-year period. We used temporal referencing and spatial coordinate conversion to filter and align the reanalysis data with each acquisition. The spatial coverages and enhancement maps were combined, transformed, and spatially down-sampled (i.e., 5 m to 1 km) rectilinear interpolation to generate CH4 and CO2 flux estimations. AVIRIS-NG uncertainties for CH4 flux and CO2 flux scaled to 1 km ranged from -6.69±0.01 nmol CH4 mol-1 m-2 month-1 to -18.34 ± 0.03 umol CO2 mol-1 m-2 month-1 respectively.
+
+ALT UNCERTAINTY, REMOTE SENSING (UAVSAR)
+Native scale
+	ALT uncertainty: 0.0197+/-0.0018 m
+Aggregated scale
+	ALT uncertainty (1 km scaled): 0.0198+/-0.0016 m
+
+FCH4 UNCERTAINTY, REMOTE SENSING (AVIRIS-NG)
+Native scale
+	CH4 flux uncertainty: -6.68+/-0.01 nmol C mol-1 (uW nm-1 cm-2 sr-1 / ppb m / nmol C mol-1)
+Aggregated scale
+	CH4 flux uncertainty (1 km scaled): -6.6901+/-0.0122 nmol C mol-1 km-1 month-1
+
+FC UNCERTAINTY, REMOTE SENSING (AVIRIS-NG)
+Native scale
+	CO2 flux uncertainty: -18.3380+/-0.0321 umol C mol-1 (uW nm-1 cm-2 sr-1 / ppm m / umol C mol-1)
+Aggregated scale
+	CO2 flux uncertainty (1 km scaled): -18.3380+/-0.0336 umol C mol-1 km-1 month-1 (uW nm-1 cm-2 sr-1 / ppm m / umol C mol-1)
+
+Remote sensing uncertainties for ALT, CH4 flux, and CO2 flux and their derivatives ranged from 0.0198+/-0.0016 m, -6.6901+/-0.0122 nmol C(CH4) km-2 month-1, and -18.3380+/-0.0336 µmol C(CO2) km-2 month-1 respectively.
+
+
+MODELING
+Because TCFM-Arctic contains the coarsest product with a spatial resolution of 1 km, the native resolution remained static. To minimize information loss and retain critical biophysical indicators in the TCFM-Arctic grid cells, mean interpolation, i.e., down-scaling, was not employed. Consequently, the native resolution of SIBBORK-TTE - which utilizes Arctic DEM-guided 10 m tessellation - was disaggregated from 10 m to 1 km during pre-processing methods. The SIBBORK-TTE model simulates the behavior of frost heave uplift and thaw subsidence while capturing regional ALT variability relative to vegetation distribution patterns across Alaska. When coupled with climatological and topographic data, 19 continuous plots (CALM/ITEX, 1969-2022) and 26 discretized transect surveys and point-based datasets (NASA ABoVE SMALT-STDM, 2014-2018) were utilized for calibration and validation of derived thaw depth simulations (Figure S17; Table S6). The best-performing sites occurred in the interior boreal and North Slope regions (RMSE: 0.022835 ± 5.90 cm; 6.86 ± 4.46 cm), while the poorest-performing sites occurred in the Seward Peninsula (RMSE: 56.25 ± 3.50 cm). More details are available in the Supporting Information. For our study, the resulting outputs presented 45 300-year monthly 10 m thaw depth matrices containing 16.25 million data points. By default, these matrices are bounded by the spatial resolution of ArcticDEM model inputs (i.e., 1 km2 square grids constrained to 10 m resolution). SIBBORK-TTE utilizes the geometry of the ArcticDEM footprint during each spin-up to preserve the fidelity of each simulation year while its information is clipped, resampled (i.e., pixel down-sampling via bilinear interpolation), buffered with a 10 m multiplication factor, reprojected and reduced to derive the spatial extent of the vector. Each subplot is upscaled with a convolutional pooling operation to coarsen the resolution with a long short-term memory convolutional neural network from 10 m to 1 km. In response to aggregating 120-300-year monthly simulations of permafrost degradation and active layer thickness decay across 45 sites. These simulations were accompanied by strict CAL/VAL and QA/QC methodologies to ensure real-world dynamics captured the broad and persistent impacts of the permafrost carbon feedback at-scale. However, this aggregation resulted in a large dataset that required data cleaning, reformatting, and restructuring into a wider format that minimized uncertainty and elevated spatiotemporal synergies with coincident dataset input layers exhibiting the same resolution. However, due to the presence of a higher number of dimensions in column space, we dropped the site column and retained the datetime, latitude, longitude, and ALT columns for brevity and efficiency. We employed temporal segmentation to facilitate the sequence of training, validation, and testing for the SIBBORK-TTE ALT upscaling process. SIBBORK-TTE uncertainties for mean and maximum ALT scaled to 1 km ranged from 28.03 ± 0.03 cm to 54.84 ± 0.06 cm, respectively.
+
+Furthermore, we utilized a 13-year (i.e., 2003-2015) daily 1 km gridded Circumarctic dataset generated by the TCFM-Arctic model. This hybrid terrestrial carbon flux model is parameterized with environmental constraints, soil organic carbon pools, and calibrated flux tower data while using satellite-derived information and process-based physics to collectively simulate vegetation light-use efficiency (LUE)-based carbon uptake and ecosystem carbon decomposition rates (Farina et al., 2022; Kimball et al., 2016; Liu et al., 2022; Loboda et al., 2017; Virkkala et al., 2021; Virkkala et al., 2021; Watts et al., 2021; Watts et al., 2023). The dimensionality of this 13-year (2003-2015) daily 1 km gridded CH4 and CO2 (NEE) product was sliced and reduced by spatially constraining the Circumarctic dataset [90, 180, 49, -180] to Alaska [72.00, -139.00, 54.00, -170.00] and temporally down-sampling daily to monthly data for multimodal unity. The spatial scale was preserved for spatial alignment during multimodal data assimilation. we elected to preserve the TCFM-Arctic datasets at native resolution (1 km) to compensate for these spatiotemporal complexities, synergize scaling efforts, and reduce bias. After that, CH4 and CO2 (NEE) features were selected and reshaped via spatiotemporal formatting. Carbon flux uncertainty ranged from 10.68 ± 15.41 nmol CH4 mol-1 m-2 month-1 to -0.14 ± 0.68 umol CO2 mol-1 m-2 month-1.
+
+ALT UNCERTAINTY, MODELING (SIBBORK-TTE)
+Native scale
+	ALT uncertainty: 0.3510+/-0.0124 m
+Aggregated scale
+	ALT uncertainty (1 km scaled): 0.3149+/-0.0391 m
+
+FCH4 UNCERTAINTY, MODELING (TCFM-ARCTIC)
+Native scale
+	FCH4 uncertainty: 10.54+/-13.40 nmol C m-2 day-1
+Aggregated scale
+	FCH4 uncertainty (1 km scaled): 10.68+/-15.41 nmol CH4 mol-1 m-2 month-1
+
+FC UNCERTAINTY, MODELING (TCFM-ARCTIC)
+Native scale
+	FC uncertainty: -0.08+-0.48 umol C m-2 day-1
+Aggregated scale
+	FC uncertainty (1 km scaled): -0.14+/-0.68 umol CO2 mol-1 m-2 month-1
+
+Modeling uncertainties for ALT, CH4 flux, and CO2 flux and their derivatives ranged from 0.3149+/-0.0391 m, 10.68+/-15.41 nmol C(CH4) km-2 month-1, and -0.14+/-0.68 µmol C(CO2) km-2 month-1 respectively.
+
+---------------------------------------------------------------------
+STATISTICS
+
+METHANE FLUX (fch4)
+Resampled Monthly Sum Mean
+ACF: Methane flux measurements indicate a strong positive autocorrelation with short time lags, exponentially decaying over time as lag increases (i.e., autoregression). Beyond lag 5, past quantities exhibit minimal effect on present quantities of methane flux, potentially elucidating on trends related to diurnality as opposed to seasonality and interannual variability.
+PACF: The presence of a strong significant spike at lag 1 and the subsequent rapid signal drop-off suggests - coupled with previous ACF analyses - that a first-order autoregression model may potentially capture the large deterministic autocorrelation structure and behavior of methane flux as opposed to a rather stochastic model.
+ADF: (-10.587852657784047, 6.645031959602426e-19, 31, 8495, {'1%': -3.4311200149601633, '5%': -2.861880294169002, '10%': -2.5669511336862976}, 150772.1730354488). These values indicate strong evidence that methane flux exhibits stationarity with respect to mean reversion and therefore rejects the null hypothesis and by extension, the presence of a unit root presence.
+KPSS: (1.2955695854953728, 0.01, 19, {'10%': 0.347, '5%': 0.463, '2.5%': 0.574, '1%': 0.739}). These values indicate a detection of a slight trend or shift, potentially indicating stationarity. To dispell this uncertainty, the consistent decay illustrated by the ACF coupled with the confirmation of stationarity from ADF analysis, the stationarity signal indicated by KPSS analysis confirms this behavior and may also point to the detection of minor seasonal, interannual, and/or solar cyclicality.
+Moran's I: Furthermore, spatial autocorrelation testing was conducted and indicated spatial clustering (Moran's I: 0.2196, p < 0.001); consequently, the null hypothesis supporting the presence of a random distribution was rejected.
+
+
+CARBON DIOXIDE FLUX (fc)
+Resampled Monthly Sum Mean
+ACF: Carbon dioxide flux measurements indicate a high negative autocorrelation with short time lags, slowly decaying over time as lag increases (i.e., non-stationarity). With these tendencies, however, most of the ACF values for carbon dioxide flux stay within the confidence interval, signifying that longer lags are less influential and this flux series exhibits short-term temporal dependencies similar to methane flux but may not exhibit strong seasonal temporal signatures. 
+PACF: The presence of a strong significant spike at lag 1 and the subsequent rapid drop-off and diminishing lag effects - coupled with previous ACF analyses - suggests adopting a first-order autoregression model may capture the autocorrelation structure and behavior of carbon dioxide flux.
+ADF: (-6.278019775737163, 3.8575933967746434e-08, 33, 8493, {'1%': -3.4311201963443336, '5%': -2.861880374318062, '10%': -2.566951176350284}, 58139.56354470836). For carbon dioxide flux, the ADF test statistic is significantly lower than computed critical values, thereby strengthening the resolve to reject the null hypothesis of non-stationarity, i.e., a unit root may be present. This behavior confirms that carbon dioxide flux measurements exhibit some degree of nonlinearity, deviating from stationarity in sporadic but short-term intervals relative to mean reversion.
+KPSS: (4.277055966105635, 0.01, 1, {'10%': 0.347, '5%': 0.463, '2.5%': 0.574, '1%': 0.739}). To confirm the overarching trend of non-stationarity, we conducted KPSS testing, which surprisingly detected a slight trend or shift as displayed by the metrics, i.e., a potential form of stationarity was detected. With the consistent decay illustrated by the ACF and subsequent confirmation of stationarity from ADF metrics previously computed suggest a detrending methodology should be implemented despite the subtle stationarity signal detected by the KPSS metrics. 
+Moran's I: Furthermore, spatial autocorrelation testing was conducted and indicated spatial clustering (Moran's I: 0.2545, p < 0.001); consequently, the null hypothesis supporting the presence of a random distribution was rejected.
+
+Given the fact ADF suggests non-stationarity, periodic, episodic, and/or sporadic short- to long-term lag intervals, indicated by the PACF, may need to be reconciled in simulated domains, even relatively short-term perturbations. Consequently, we do not have enough evidence to reject the null hypothesis; therefore, the next stage requires trend removal (i.e., detrending via first- or second-order differencing) to restore stationarity to carbon dioxide flux series ahead of model training and development. First-order differencing eliminated the presence of a unit root and removed serial dependencies amplified as autocorrelations to highlight and retain partial autocorrelation signals of significance without diminishing trends of significance. The ACF plot now shows no significant autocorrelation beyond lag 0, indicating that any serial dependence has been largely removed by the differencing. The PACF plot also only shows a spike at lag 1 and no other significant partial autocorrelation values, supporting the notion that the differenced series has minimal autocorrelation. Concluding differencing and after examining the updated ACF and PACF plots, carbon dioxide flux displays signal similarities to white noise. Any evidence of residual autocorrelation is not apparent, signifying that further differencing, detrending, and/or high-order autogressive, moving average, autoregressive integrated moving average, and/or seasonal autoregressive integrated moving average functions are unnecessary. To lend credence and further evidence to this conclusion, post-differencing ADF metrics (i.e., -10.5879, p-value: 6.64e-19) indicates significantly lower test statistics than the critical values computed at all significance levels, providing the necessary rationale to strongly reject the null hypothesis of non-stationarity after first differencing and subsequent unit root elimination. Likewise, KPSS metrics displayed KPSS test statistics (i.e., 1.2956, p-value: 0.01) higher than critical values for all significance levels, an indication that the null hypothesis of stationarity is rejected and suggests that concluding detrending, the differenced carbon dioxide flux series still possesses non-stationary component(s). Residual non-stationarity may be indicative of remaining trends that require detrending; however, considering the strong indication of stationarity illustrated by ACF, PACF, and ADF metrics (i.e., trend stationarity), further detrending is avoided to preserve any remaining signals of significance. This particular discrepancy originating from KPSS metrics may be a result of the test's sensitivity.
+
+
+ACTIVE LAYER THICKNESS (alt)
+Resampled Monthly Minimum
+Temporal, spatial, and serial autocorrelation testing was conducted on the original ALT dataset.
+ACF: ALT measurements indicate a strong positive autocorrelation with short time lags, exponentially decaying over time as lag increases (i.e., autoregression). Beyond lag 2, past quantities exhibit minimal effect on present quantification of active layer thickness, potentially elucidating on trends related to diurnality, seasonality, and/or interannual variability.
+PACF: The presence of a strong significant spike at lag 1 and the subsequent rapid signal drop-off suggests - coupled with coincident ACF analyses below - that a first-order autoregression model may potentially capture the large deterministic autocorrelation structure and behavior of active layer thickness as opposed to the implementation of a stochastic model.
+ADF: (-562.4154, 0.0, 0, 316300, {'1%': -3.4303706745275706, '5%': -2.8615491378861413, '10%': -2.5667748637650356}). Series is stationary.
+KPSS: (0.2263, 0.10, 10, {10%: 0.347, 5%: 0.463, 2.5%: 0.574, 1%: 0.739}). Series is stationary.
+Moran's I: 0.0042, p-value: 0.001 (p < 0.05)
+
+The magnitude of the ADF statistic is -562.4154 with a p-value approaching zero (i.e., p < 0.05). This very low ADF test statistic is well beyond the critical value thresholds and strongly indicates that the null hypothesis of a unit root (non-stationarity) should be rejected, with a statistical significance indicating that the test statistic generated would virtually never be observed under the null hypothesis scenario. Additionally, 316,300 observations were utilized for this test case - a subset that reflects 0.01% sample size of the entirety of the dataset - while zero lags were selected in this particular test because it is likely this time series exhibits minimal autocorrelation tendencies; thus, the optimal lag length as determined by this metric was zero. Therefore, stationarity is clearly demonstrated in the ALT time series. Because of the large sample size, it is common for a large subset of observations to amplify or increase the perceived likelihood to reject the null hypothesis; however, because the statistical significance is particularly low, coupled with a strong negative ADF test statistic, stationarity is certainly conclusive. Consequently, based on the ADF metric - and the corresponding rejection of the null hypothesis and absence of a unit root - trend differencing is unnecessary. If differencing is implemented, over-differencing artifacts may occur which could lead to undesirable consequences with time series modeling. To model this stationary time series, utilizing models including ARIMA and other forecasting methods including deep neural networks may be implemented without the need to transform the dataset to counteract the effects of stationarity. However, to avoid overfitting, integrate the appropriate order of differencing, i.e., zero-order differencing. 
+
+To corroborate these ACF, PACF, and ADF results and justify the unnecessary implementation of trend differencing, we conducted KPSS testing on the ALT dataset to validate these claims. This test statistic is used to quantify the series' deviation from stationarity, i.e., smaller values indicate stationarity. The KPSS test statistic is 0.2263 with a p-value of 0.0760 (i.e., p > 0.05), which falls within a range that supports stationarity under the null hypothesis of the KPSS test. In other words, we fail to reject the null hypothesis and therefore conclude the series is stationary. Additionally, the test statistic demonstrates a lower value than the critical values of statistical significance levels evaluated; therefore, the series is stationary and therefore provides evidential support in tandem with the aforementioned conclusions from three other autocorrelation tests. For comprehensive evaluation and to verify the sensitivity of lag length and other parameters, 14 lags were utilized when computing this test statistic to identify serial correlation probability and reconcile serial autocorrelation inherent to temporally autocorrelated residuals. Therefore, with the robust and conclusive support for stationarity illustrated by all temporal autocorrelation tests highlighted above, the ALT dataset exhibits stationary, trend differencing is unnecessary, and as such, consistent multivariate modeling frameworks may ensue. Furthermore, spatial autocorrelation testing was conducted and indicated slight spatial clustering (Moran's I: 0.0042, p < 0.001); consequently, the null hypothesis supporting the presence of a random distribution was rejected.
+
+---------------------------------------------------------------------
+DATA ACQUISITION, MATERIALS & METHODS
+Ground truth data was acquired from field campaigns (2022, 2023) and ORNL DAAC (ABoVE), CALM, GTNP, AmeriFlux, and NEON. AmeriFlux data were made available through the data portal (https://ameriflux.lbl.gov) and processing maintained by the AmeriFlux Management Project, supported by the U.S. Department of Energy Office of Science, Office of Biological and Environmental Research, under contract number DE-AC02-05CH11231. The base dataset, multimodal dataset, and codebases for teacher forcing (Gay et al., 2023) and this expanded version of this research are preserved here at the Oak Ridge National Laboratory Distributed Active Archive Center (ORNL DAAC): https://doi.org/10.3334/ORNLDAAC/2371. Repeat-pass interferometric and quad-polarimetric UAVSAR data is used for discriminating change in thaw subsidence over time across Alaska, while radiance and reflectance retrievals acquired from the AVIRIS-NG instrument are used to quantify the presence and regularity of CH4 and CO2 fluxes. Moreover, HITRAN and associated carbon flux spectra were used to generate laboratory reference files for match filtering CH4 and CO2 across each AVIRIS-NG acquisition. These datasets are preserved and available with CC BY 4.0 Licenses and DOIs. For anomaly detection, pre-processing synthesis, and multimodal dataset generation for model training, open-source code was integrated into the workflow (i.e., airborne remote sensing carbon flux observations) to identify and assimilate CH4 and CO2 flux into the GeoCryoAI architecture. The tools, utilities, and insight used for AVIRIS-NG image processing and carbon flux outputs (i.e., column-wise matched filter algorithm) are derived from the Benchmark for Methane Source Detection from Imaging Spectrometer Data and the Methane SourceFinder (i.e., details are available in Data Citations). The CH4 and CO2 spectra utilized for anomaly detection were derived from NIST and VPL MSD, while spectral convolutions were implemented with the assistance of the HITRAN Application Programming Interface (HAPI). In addition, Methane SourceFinder software is available via Apache License Version 2.0 and is preserved at https://github.com/dsmbgu8/srcfinder/tree/master. For PBM, orthorectification and resampling required gridded formatting, i.e., ArcticDEM Mosaic Tile (48_13_1_1_2m_v4.1), Resolution: 2m, Aspect: 192 deg, Slope: 1 deg, Ellipsoidal height: 661.89m, Orthometric height: 647.55m). The DEMs were accessed on 08 March 2022 from https://registry.opendata.aws/pgc-arcticdem.
+
+Spatial and temporal autocorrelation testing and statistical relationships were examined in relation to the permafrost carbon feedback covariates in question, i.e., active layer thickness, methane flux, and carbon dioxide flux. With respect to ALT, temporal autocorrelation testing (ACF, PACF, Durbin-Watson statistic: 2.6153) indicated low negative autocorrelation for ALT and slow sustained long-term dependencies across multiple lags. Spatial autocorrelation testing indicates slight spatial clustering (Moran's I: 0.0054, p < 0.01) and therefore, the null hypothesis positing a random distribution can be rejected. For methane flux (CH4), temporal autocorrelation testing (ACF, PACF, Durbin-Watson statistic: 2.9802) indicated low negative autocorrelation for CH4 flux and slow long-term dependencies across multiple lags. Spatial autocorrelation testing indicates spatial clustering (Moran's I: 0.2196, p < 0.001) and therefore, the null hypothesis positing a random distribution can be rejected. Furthermore, the temporal autocorrelation of carbon dioxide flux (ACF, PACF, Durbin-Watson statistic: 2.9955) confirmed this relationship, illustrating very high correlation values initially at lag 1 and diminishing correlation thereafter (beyond lag 50), which is indicative of a potential trend-dominated non-stationary dataset. After differencing, the initial high correlation pulse is rapidly followed by a reduction in correlation after the first lag and subsequent stability around zero thereafter. Given the sharp reduction in autocorrelative structure and persistent long-term dependencies across multiple lags illustrated in the PACF, it is clear that the differenced CO2 flux dataset is stationary. Spatial autocorrelation testing indicates spatial clustering (Moran's I: 0.2545, p < 0.001) and therefore, the null hypothesis positing a random distribution can be rejected.
+
+Multiple datasets were harvested and assimilated into the modeling frameworks. For SIBBORK-TTE, we conducted model calibration, validation, and thaw depth output; for TCFM-Arctic, we extracted, transformed, and assimilated the carbon flux datasets from the ORNL DAAC (Watts et al., 2023). For SIBBORK-TTE processing, we utilized MERRA-2, SoilGrids, and CMIP6. LARC-POWER data was obtained from the NASA Langley Research Center Prediction of Worldwide Energy Resource (POWER) Project funded through the NASA Earth Science/Applied Science Program. The data was obtained on 04 July 2022 from the POWER Project’s Hourly 2.x.x version on 2022/07/04. https://power.larc.nasa.gov/docs/services/api/temporal/climatology/. The code necessary for the SIBBORK-TTE model runs is available with a GPL-2.0 License and is preserved at the following address: https://github.com/aharmstrong/above-sibbork. For TCFM-Arctic, gridded CH4 and CO2 flux estimates were extracted across Alaska from 2003-2015. These datasets were accessed at the following DOIs and contain pointers and directories to additional documentation and relevant literature: https://doi.org/10.3334/ORNLDAAC/2121, https://daac.ornl.gov/daacdata/above/ABoVE_CO2_CH4_Flux_Estimates/. A comprehensive list of the datasets supporting the findings of this study is available in the Data Citations subsection below and openly accessible through the Oak Ridge National Laboratory Distributed Active Archive Center (ORNL DAAC). Additional long-form background and methods are provided in the Supporting Information, and the Jupyter Notebook used for pre-processing, model development, and analyses is available at the following domains, with an executable version hosted on GitHub and available in the cloud at the following addresses: https://github.com/bradleygay/geocryoai/tree/main/notebooks/GeoCryoAI_Codebase_v2.ipynb, https://obscure-bassoon-547gxwvj4p42pvv4.github.dev/?editor=jupyter. Furthermore, an iterative list of Python packages and data science libraries used throughout this study is serialized and available for open distribution as a configuration file (.yml) in the central repository: https://www.github.com/bradleygay/geocryoai.
+
+IN SITU
+- Roche, A. Anaktuvuk Fire Scar, AK, US (2008-2021)
+- ABoVE: Soil Active Layer Thaw Depths at CRREL sites near Fairbanks, Alaska, 2014-2018. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/1701)
+- Watts, J.D. Global ALT (1997-2020)
+- GTNP, CALM (1963-2022)
+- AmeriFlux (1996-2022)
+- NSF NEON (2018-2022)
+- Genet, H., Pastick, N.J., et al. (2022). 
+- Hung, J., YKD Flux Measurements, 2019-2022 (Ludwig, S. M., Schiferl, L., Hung, J., Natali, S. M., & Commane, R. (2024). Resolving heterogeneous fluxes from tundra halves the growing season carbon budget. Biogeosciences, 21(5), 1301–1321. https://doi.org/10.5194/bg-21-1301-2024)
+- Ludwig, S. M., Schiferl, L., Hung, J., Natali, S. M., & Commane, R. (2024). Resolving heterogeneous fluxes from tundra halves the growing season carbon budget. Biogeosciences, 21(5), 1301–1321. https://doi.org/10.5194/bg-21-1301-2024
+
+REMOTE SENSING
+- Miller, C.E., R.O. Green, D.R. Thompson, A.K. Thorpe, M. Eastwood, I.B. Mccubbin, W. Olson-Duvall, M. Bernas, C.M. Sarture, S. Nolte, L.M. Rios, M.A. Hernandez, B.D. Bue, and S.R. Lundeen. 2024. ABoVE: AVIRIS-NG Imaging Spectroscopy for Alaska, Canada, and Iceland, 2017-2022, V3. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/2362.
+- Miller, C. E., Griffith, P. C., Hoy, E., Pinto, N. S., Lou, Y., Hensley, S., Chapman, B. D., Baltzer, J., Bakian-Dogaheh, K., Bolton, W. R., Bourgeau-Chavez, L., Chen, R. H., Choe, B.-H., Clayton, L. K., Douglas, T. A., French, N., Holloway, J. E., Hong, G., Huang, L., Iwahana, G., Jenkins, L., Kimball, J. S., Loboda, T., Mack, M., Marsh, P., Michaelides, R. J., Moghaddam, M., Parsekian, A., Schaefer, K., Siqueira, P. R., Singh, D., Tabatabaeenejad, A., Turetsky, M., Touzi, R., Wig, E., Wilson, C. J., Wilson, P., Wullschleger, S. D., Yi, Y., Zebker, H. A., Zhang, Y., Zhao, Y., and Goetz, S. J.: The ABoVE L-band and P-band airborne synthetic aperture radar surveys, Earth Syst. Sci. Data, 16, 2605–2624, https://doi.org/10.5194/essd-16-2605-2024, 2024.
+
+MODELING
+- Watts, J. D., Farina, M., Kimball, J. S., Schiferl, L. D., Liu, Z., Arndt, K. A., Zona, D., Ballantyne, A., Euskirchen, E. S., Parmentier, F.-J., Helbig, M., Sonnentag, O., Tagesson, T., Rinne, J., Ikawa, H., Ueyama, M., Kobayashi, H., Sachs, T., Nadeau, D. F. … Oechel, W. C. (2023). Carbon uptake in Eurasian boreal forests dominates the high-latitude net ecosystem carbon budget. Global Change Biology, 29, 1870–1889. https://doi.org/10.1111/gcb.16553.
+- Farina, M.K., and J.D. Watts. 2022. Gridded CO2 and CH4 Flux Estimates for pan-Arctic and Boreal Regions, 2003-2015. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/2121.
+- Brazhnik, K., & Shugart, H. H. (2016). SIBBORK: A new spatially-explicit gap model for boreal forest. Ecological Modelling, 320, 182–196. https://doi.org/10.1016/j.ecolmodel.2015.09.016.
+- Armstrong (TE 2018): Vulnerability of the Taiga-Tundra Ecotone: Predicting the Magnitude, Variability, and Rate of Change at the Intersection of Arctic and Boreal Ecosystems: https://above.nasa.gov/profiles_/above_people.html?projType=project&projID=3983&progID=6
+
+Browse Image: image2.png
+Image File Name: /geocryoai/docs/images/image2.png
+Image Description: The panels above illustrate the methodology surrounding multimodal data acquisition and pre-processing of in situ measurements, airborne remote sensing observations, and process-based modeling outputs. The top panel depicts the State of Alaska, with the left figure consisting of white points representing over 3.17 billion in situ and flux tower data measurements from 1030 sites distributed across four census tract-delineated subdomains denoted by colorized polygons (i.e., The North Slope [blue], Interior Boreal [violet], Seward Peninsula [green], and the Yukon-Kuskokwim Delta [red]). The ground-based measurements associated with the PCF (i.e., CH4, CO2, ALT) served as teacher forcing data points during the preliminary stages of the model training process (Gay et al., 2023). In addition, the middle figure in the top panel illustrates the distribution of airborne acquisitions with over 6.71 billion data points (i.e., 198 UAVSAR and 653 AVIRIS-NG flight lines, 2017-2019, 2022) while the rightmost figure resolves 4.79 billion process-based model outputs derived from SIBBORK- TTE (i.e., 300-year 100 m2 spatially-explicit subplots, i.e., red boxes [1800-2100]) and TCFM- Arctic (i.e., 13-year 1 km2 mesh grid quantifying carbon fluxes [2003-2015]. The middle panel illustrates each data modality; the leftmost diagram depicts in situ and flux tower collection; the middle figure illustrates airborne-derived observations; and the rightmost displays process-based model simulations. The bottom panel consists of data representation and scaling methods for assimilation, i.e., from left to right: ground-based and flux-derived time series pre-processing, imaging spectroscopic anomaly detection, and interferometric-derived height displacement (i.e., frost heave, thaw subsidence), and process-based model output post-processing. Imagery data and software attribution: Data SIO, NOAA, US Navy, NGA, GEBCO, Landsat/Copernicus, IBCAO, LDEO-Columbia, NSF, US Census Bureau, Google, Polar Geospatial Center, NASA/JPL-Caltech, and ENVI (NV5 Geospatial). (Gay, B.A., et al., 2024).
+
+Browse Image: image3.png
+Image File Name: /geocryoai/docs/images/image3.png
+Image Description: The schematic above illustrates the methodology and parallelized workflow surrounding multimodal data acquisition and pre-processing. The top and middle rows illustrate the multimodal data acquisition process (i.e., in situ measurements, airborne remote sensing observations, process-based modeling outputs). The bottom row schematic elucidates on the data pre-processing methodology, i.e., data cleaning, unit conversion, dimensionality reduction, prior to data harmonization and model development (Gay, B.A., et al., 2024).
+
+Browse Image: image4.png
+Image File Name: /geocryoai/docs/images/image4.png
+Image Description: The schematic above illustrates the methodology and parallelized workflow surrounding the data harmonization methodology prior to model development, i.e., resampling, partitioning, transformation, batching) followed by model assembly and analyses. Imagery data and software attribution: NASA/JPL-Caltech, ENVI (NV5 Geospatial) (Gay, B.A. et al., 2024).
+
+---------------------------------------------------------------------
+GEOCRYOAI DEVELOPMENT AND SYNTHESIS
+
+GeoCryoAI is a hybridized process-constrained ensemble learning framework consisting of stacked convolutionally layered long short-term memory-encoded recurrent neural networks (Figure 4). This architecture leverages a multimodal composite of in situ measurements (Gay et al., 2023), airborne remote sensing observations, and PBM outputs to ensure biogeophysical processes are emulated by physical laws while improving the performance and predictive accuracy of the model. Moreover, this framework integrates optimization equations, regularization cost functions, and a Bayesian Optimization search algorithm to populate a hyperparameter dictionary, reconcile data mismatches, expedite convergence, and minimize error residuals during teacher forcing. Furthermore, GeoCryoAI rectifies disparities with scaling laws, pre-training verification, and training validation criteria.
+
+The dataset was normalized, timestamp-encoded to seconds from epoch for capturing periodicity while spatial coordinates were geocoded, chunked, and grid-mapped, spatiotemporal duplicates were dropped and/or trimmed (i.e., initially, the dataset was padded but after normalization and subsequent padding of zero values, we elected to trim the dataset (as many of the records were duplicative in nature) to adequately reshape the dataset for subsequent modular frameworks prior to ensemble fusion), unique records were used to generate tensors, missing values (i.e., NaN) were filled via Gaussian filtration (i.e., sigma=1), and tensors were reshaped and reframed with supervision and appended with learning encouragement (i.e., time lag and lead). To ensure ensemble fusion and learning commences, common intersections among spatiotemporal elements of the PCF datasets required further extraction, i.e., the 1800-2100 ALT dataset required temporal trimming to align with 1994-2022 fc and fch4 datasets. Spatial gridding retained the 1 km (0.009º) resolution due to previous downsampling efforts.
+
+	+ Active Layer Thickness (ALT) tensor shape: (3163257965,) --> (233, 30, 1092, 1092, 1) --> (314, 2070, 4178, 1)
+	+ Methane Flux (FCH4) tensor shape: (96654894,) --> (10, 30, 1092, 1092, 1) --> (314, 2070, 4178, 1)
+	+ Carbon Dioxide Flux (FC) tensor shape: (96654894,) --> (10, 30, 1092, 1092, 1) --> (314, 2070, 4178, 1)
+	+ Ensemble (ALT, FCH4, FC) tensor shape: (314, 2070, 4178, 3)
+
+More explicitly, supervision utilizes labeled data from input and output variables to guide learning during training and allows the model to effectively learn spatiotemporal patterns while adhering to well-established physical laws. Learning encouragement refers to various learning implementations in recurrent architecture that determine how much emphasis should be placed on the prior structure and prediction performance for long-term memory storage and to back-propagate to subsequent training iterations, e.g., integrating additional dropout and regularization layers of supervision in a deep learning algorithm expedites the learning process by preventing model overfitting while penalizing physically implausible predictions respectively. These features ensure learning encouragement occurs as the model fits to the training data, the model generalizes robustly, and the model adheres to physical principles.
+
+These a priori pre-processing steps of detrending, correlation testing, and linear-nonlinear covariance prompted us to examine the most efficient method for emulating PCF nonlinearities. Because linearized frameworks are often underfitted due to oversimplifying the cost function (e.g., ARIMA, OLS, Ridge), we were motivated by the potential deeper connections and second-order dynamics affecting the Arctic system (Helin et al., 2023). For this endeavor, we applied a flexible classification-regression-uncertainty complex to quantify, validate, and predict permafrost degradation and carbon efflux dynamics across Alaska with experimental methods and preliminary naïve modeling forecasts. These efforts yielded standardized, detrended, and reduced enhancements that allow the model to delegate more compute to memory retention and performance (S8). Inverse transformations were applied before feature forecasting to quantify and evaluate performance.
+
+After transformation, dimensionality reduction, trend removal, time-delayed supervision, and regression analyses, a preliminary learning method, i.e., teacher forcing, was introduced to GeoCryoAI in Gay et al., 2023 that allowed the model to predict the spatiotemporal feedback mechanisms of the PCF from in situ measurements across Alaska from 1963-2022. Learning from ground-based site-level measurements provided real-world specificity in terms of the evolution of these dynamics and bolstered such predictions. By adopting a robust multimodal data retrieval and harmonization method in conjunction with a hybridized ensemble learning model in this study, we can examine the subsurface properties and dynamics that are not readily observable while capturing, quantifying, and promoting a more comprehensive understanding of ecological memory and its utility and impact within the Arctic system (Khalighi et al., 2022). By considering past environmental conditions and the current state of permafrost - and with the assimilation of multimodal datasets - we expand the foundational knowledge for learning during the training phase by introducing physical constraints and initial boundary condition limitations directly within the algorithm - and indirectly from assimilating PBM inputs - while capturing system-level nonlinearities associated with the PCF. This data enrichment process provides a more comprehensive lens when deriving loss functions and subsequent predictions during GeoCryoAI formulation.
+
+In Table 1, we delineate how the model was developed and evaluated, explicitly address the critical aspects of training, validation, and test set sampling designs, sampling distributions, and frequency, and detail the processes for selecting and tuning model hyperparameterization and optimization strategies with a separate validation set. We retain the testing set in isolation to prevent data leakage, model overfitting, over-inflated performance, and transfer of generalizability error, which is used only once to determine the model's predictive capacity. Concluding detrending, differencing, and spatial autocorrelation testing, we split the datasets into training, validation, and testing sets with temporal sampling due to spatial clustering followed by standardization
+
+Model selection criteria consisted of determining the most efficient yet comprehensive framework that captured the spatiotemporal variability of the PCF covariates. Three specialized component models were developed to accommodate each covariate. These component models were trained with different subsets of the data using boosting and bagging algorithms to learn, improve, and reduce error and variance iteratively. Thereafter, we stacked the predictions from these component models using a dense neural network to determine the most optimal configuration of these predictions. In addition to plot graphs illustrating the component model architectures, a dictionary of hyperparameters (e.g., learning rates, filters, kernels, activation functions) derived from a Bayesian Optimization search algorithm applied during training is provided for each component model in S8. Model training initializes 12.4 million parameters to ingest and analyze the high-dimensional, time-variant multimodal dataset simultaneously. The network derived from Gay et al. 2023 is expanded and configured with flexible formatting to emulate and learn permafrost carbon dynamics with pre-training knowledge and phase change. The structural foundation is broadened with a convolutional autoencoder with spatiospectral discriminance. Specifically, the modular architectures and subsequent output shapes characterizing thaw depth and carbon release - and the connections between each feature and layer - capture and emulate in situ measurements and remote sensing observations with sequential call operations.
+
+---------------------------------------------------------------------
+DATA ACCESS
+This data is available through the Oak Ridge National Laboratory (ORNL) Distributed Active Archive Center (DAAC).
+GeoCryoAI Permafrost Carbon Feedback Modalities, Thaw Depth and Carbon Flux in Alaska, 1963-2022
+
+Contact for Data Center Access Information:
+E-mail: uso@daac.ornl.gov
+Telephone: +1 (865) 241-3952
+
+---------------------------------------------------------------------
+REFERENCES
+Bakian-Dogaheh, K., R.H. Chen, M. Moghaddam, Y. Yi, and A. Tabatabaeenejad. 2020. ABoVE: Active Layer Soil Characterization of Permafrost Sites, Northern Alaska, 2018. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/1759
+
+Berk, A., Conforti, P., Kennett, R., Perkins, T., Hawes, F., & van den Bosch, J. (2014). MODTRAN6: a major upgrade of the MODTRAN radiative transfer code. Proc. SPIE 9088, Algorithms and Technologies for Multispectral, Hyperspectral, and Ultraspectral Imagery XX, 90880H. https://doi.org/10.1117/12.2050433
+
+Burba, G. (2022). Eddy covariance method: For scientific, regulatory, and commercial applications. LI-COR Biosciences.
+
+Chen, A., A. Parsekian, K. Schaefer, E. Jafarov, S.K. Panda, L. Liu, T. Zhang, and H.A. Zebker. 2015. Pre-ABoVE: Ground-penetrating Radar Measurements of ALT on the Alaska North Slope. ORNL DAAC, Oak Ridge, Tennessee, USA. http://dx.doi.org/10.3334/ORNLDAAC/1265.
+
+Chen, R.H., R.J. Michaelides, J. Chen, A.C. Chen, L.K. Clayton, K. Bakian-Dogaheh, L. Huang, E. Jafarov, L. Liu, M. Moghaddam, A.D. Parsekian, T.D. Sullivan, A. Tabatabaeenejad, E. Wig, H.A. Zebker, and Y. Zhao. 2022. ABoVE: Active Layer Thickness from Airborne L- and P- band SAR, Alaska, 2017, Ver. 3. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/2004
+
+Copernicus Climate Change Service, Climate Data Store, (2023): ERA5 hourly data on single levels from 1940 to present. Copernicus Climate Change Service (C3S) Climate Data Store (CDS), DOI: 10.24381/cds.adbb2d47 (Accessed on 15-Jul-2024)
+
+Douglas, T.A. 2019. ABoVE: Soil Active Layer Thaw Depths at CRREL sites near Fairbanks, Alaska, 2014-2018. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/1701
+
+Elder, C., P. Hanke, K.W. Anthony, D.R. Thompson, C.E. Miller, and A.K. Thorpe. 2020. ABoVE: Methane Flux across Two Thermokarst Lake Ecosystems, Interior Alaska, 2018. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/1778
+
+Farina, M.K., & J.D. Watts. (2022). Gridded CO2 and CH4 Flux Estimates for pan-Arctic and Boreal Regions, 2003-2015. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/2121
+
+Foken, T. and Wichura, B., 1996. Tools for quality assessment of surface-based flux measurements. Agricultural and Forest Meteorology, 78: 83-105. https://doi.org/10.1016/0168-1923(95)02248-1
+
+Foken, T., Göockede, M., Mauder, M., Mahrt, L., Amiro, B., Munger, W. (2004). Post-Field Data Quality Control. In: Lee, X., Massman, W., Law, B. (eds) Handbook of Micrometeorology. Atmospheric and Oceanographic Sciences Library, vol 29. Springer, Dordrecht. https://doi.org/10.1007/1-4020-2265-4_9
+
+Gao, B.C., K.H.Heidebrecht, and A.F.H. Goetz. 1993. Derivation of scaled surface reflectances from AVIRIS data, Remote Sens. Env., 44, 165-178. https://doi.org/10.1016/0034-4257(93)90014-O
+
+Gay, B.A., Pastick, N.J., Zuefle, A.E., Armstrong, A.H., Miner, K.R., & Qu, J.J. (2023). Investigating permafrost carbon dynamics in Alaska with artificial intelligence, Environmental Research Letters 18, 125001. https://iopscience.iop.org/article/10.1088/1748-9326/ad0607/
+
+Helin, R. (2023). Exploring the transition from traditional data analysis to machine- and deep learning approaches [Doctoral thesis, Norwegian University of Life Sciences, Ås]. https://nmbu.brage.unit.no/nmbu-xmlui/handle/11250/3090487
+
+Hersbach, H., Bell, B., Berrisford, P., Biavati, G., Horányi, A., Muñoz Sabater, J., Nicolas, J., Peubey, C., Radu, R., Rozum, I., Schepers, D., Simmons, A., Soci, C., Dee, D., Thépaut, J-N. (2023): ERA5 hourly data on single levels from 1940 to present. Copernicus Climate Change Service (C3S) Climate Data Store (CDS), DOI: 10.24381/cds.adbb2d47 (Accessed on 15-Jul-2024)
+
+Hung, J. K. Y. and A., Kyle A. and Murphy, Patrick and Montemayor, Marco and Rodenhizer, Heidi and Ludwig, Sarah M. and Rogers, Brendan M. and Natali, Susan M. (2024). Slow post-fire carbon balance recovery despite increased net uptake rates in Alaskan tundra. Environmental Research Letters. http://iopscience.iop.org/article/10.1088/1748-9326/ad8764
+
+Jafarov, E. E., Parsekian, A. D., Schaefer, K., Liu, L., Chen, A. C., Panda, S. K., & Zhang, T. (2017). Estimating active layer thickness and volumetric water content from ground penetrating radar measurements in Barrow, Alaska. Geoscience data journal, 4(2), 72â€“79. https://doi.org/10.1002/gdj3.49
+
+Jafarov, E., A. Parsekian, K. Schaefer, L. Liu, A. Chen, S.K. Panda, and T. Zhang. 2018. Pre-ABoVE: Active Layer Thickness and Soil Water Content, Barrow, Alaska, 2013. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/1355
+
+Kimball, J.S., L.A. Jones, J.P. Glassy, & R. Reichle. (2016). SMAP L4 Global Daily 9 km Carbon Net Ecosystem Exchange, Version 2. NASA National Snow and Ice Data Center Distributed Active Archive Center. https://doi.org/10.5067/UBKO5ZUI7I5V
+
+Kljun, N., Calanca, P., Rotach, M. W., and Schmid, H. P.: A simple two-dimensional parameterisation for Flux Footprint Prediction (FFP), Geosci. Model Dev., 8, 3695–3713, https://doi.org/10.5194/gmd-8-3695-2015, 2015.
+
+Kormann, R., Meixner, F.X. An Analytical Footprint Model For Non-Neutral Stratification. Boundary-Layer Meteorology 99, 207–224 (2001). https://doi.org/10.1023/A:1018991015119
+
+Liu, L., K. Schaefer, A. Chen, A. Gusmeroli, E. Jafarov, S. Panda, A. Parsekian, T. Schaefer, H. A. Zebker, T. Zhang. 2015. Pre-ABoVE: Remotely Sensed Active Layer Thickness, Barrow, Alaska, 2006-2011. ORNL DAAC, Oak Ridge, Tennessee, USA. http://dx.doi.org/10.3334/ORNLDAAC/1266
+
+Liu, L., K. Schaefer, A. Chen, A. Gusmeroli, E. Jafarov, S. Panda, A. Parsekian, T. Schaefer, H. A. Zebker, T. Zhang. 2015. Pre-ABoVE: Remotely Sensed Active Layer Thickness, Prudhoe Bay, Alaska, 1992-2000. ORNL DAAC, Oak Ridge, Tennessee, USA. http://dx.doi.org/10.3334/ORNLDAAC/1267
+
+Liu, Z., Kimball, J.S., Ballantyne, A.P., Parazoo, N.C., Wang, W.J., Bastos, A., Madani, N., Natali, S.M., Watts, J.D., Rogers, B.M. and Ciais, P., (2022). Respiratory loss during late-growing season determines the net carbon dioxide sink in northern permafrost regions. Nature communications, 13(1), p.5626. https://doi.org/10.1038/s41467-022-33293-x
+
+Loboda, T.V., E.E. Hoy, and M.L. Carroll. 2017. ABoVE: Study Domain and Standard Reference Grids. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/1367
+
+Ludwig, S. M., Schiferl, L., Hung, J., Natali, S. M., & Commane, R. (2024). Resolving heterogeneous fluxes from tundra halves the growing season carbon budget. Biogeosciences, 21(5), 1301–1321. https://doi.org/10.5194/bg-21-1301-2024
+
+Miller, C.E., P.C. Griffith, S.J. Goetz, E.E. Hoy, N. Pinto, I.B. McCubbin, A.K. Thorpe, M. Hofton, D. Hodkinson, C. Hansen, J. Woods, E. Larson, E.S. Kasischke, & H.A. Margolis. (2019). An overview of ABoVE airborne campaign data acquisitions and science opportunities. Environmental Research Letters 14:080201. https://doi.org/10.1088/1748-9326/ab0d44
+
+Miller, C., Griffith, P. C., Hoy, E., Pinto, N. S., Lou, Y., Hensley, S., Chapman, B. D., Baltzer, J., Bakian-Dogaheh, K., Bolton, W. R., Bourgeau-Chavez, L., Chen, R. H., Choe, B.-H., Clayton, L. K., Douglas, T. A., French, N., Holloway, J. E., Hong, G., Huang, L., Iwahana, G., Jenkins, L., Kimball, J. S., Loboda, T., Mack, M., Marsh, P., Michaelides, R. J., Moghaddam, M., Parsekian, A., Schaefer, K., Siqueira, P. R., Singh, D., Tabatabaeenejad, A., Turetsky, M., Touzi, R., Wig, E., Wilson, C., Wilson, P., Wullschleger, S. D., Yi, Y., Zebker, H. A., Zhang, Y., Zhao, Y., and Goetz, S. J.: The ABoVE L-band and P-band Airborne SAR Surveys, Earth Syst. Sci. Data Discuss. [preprint], https://doi.org/10.5194/essd-2021-172, in review, 2023.
+
+Miller, C.E., P. Griffith, E.E. Hoy, N. Pinto, Y. Lou, S. Hensley, B. Chapman, J.L. Baltzer, K. Bakian-Dogaheh, W.R. Bolton, L.L. Bourgeau-Chavez, R.H. Chen, B-H. Choe, L.K. Clayton, T.A. Douglas, N.H.F. French, J.E. Holloway, G. Hong, L. Huang, G. Iwahana, L.K. Jenkins, J.S. Kimball, T.V. Loboda, M.C. Mack, P. Marsh, R.J. Michaelides, M. Moghaddam, A.D. Parsekian, K. Schaefer, P. Siqueira, D. Singh, A. Tabatabaeenejad, M.R. Turetsky, R. Touzi, E. Wig, P. Wilson, C.J. Wilson, S.D. Wullschleger, Y. Yi, H.A. Zebker, Y. Zhang, Y. Zhao, and S.J. Goetz. 2023. Summary of the ABoVE L-band and P-band Airborne SAR Surveys, 2012-2022. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/2150
+
+Miller, C.E., R.O. Green, D.R. Thompson, A.K. Thorpe, M. Eastwood, I.B. Mccubbin, W. Olson-Duvall, M. Bernas, C.M. Sarture, S. Nolte, L.M. Rios, M.A. Hernandez, B.D. Bue, and S.R. Lundeen. (2022). ABoVE: Hyperspectral Imagery AVIRIS-NG, Alaskan and Canadian Arctic, 2017-2019 V2. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/2009
+
+NEON (National Ecological Observatory Network). Bundled data products - eddy covariance (DP4.00200.001), provisional data. Dataset accessed from https://data.neonscience.org/data-products/DP4.00200.001 on October 16, 2023. Data archived at [https://doi.org/10.3334/ORNLDAAC/2371].
+
+NEON (National Ecological Observatory Network). Bundled data products - eddy covariance (DP4.00200.001), RELEASE-2024. https://doi.org/10.48443/j9pt-m241. Dataset accessed from https://data.neonscience.org/data-products/DP4.00200.001/RELEASE-2024 on October 16, 2023.
+NEON (National Ecological Observatory Network). Groundwater and active layer measurements at permafrost sites (DP1.20099.001), RELEASE-2024. https://doi.org/10.48443/de1x-8332. Dataset accessed from https://data.neonscience.org/data-products/DP1.20099.001/RELEASE-2024 on October 7, 2023.
+
+NEON (National Ecological Observatory Network). Groundwater and active layer measurements at permafrost sites (DP1.20099.001), provisional data. Dataset accessed from https://data.neonscience.org/data-products/DP1.20099.001 on October 7, 2023. Data archived at [DOI 10.3334/ORNLDAAC/2371].
+
+Parsekian, A.D., Chen, R.H., Michaelides, R.J., Sullivan, T.D., Clayton, L.K., et al. (2021). Validation of Permafrost Active Layer Estimates from Airborne SAR Observations. Remote Sensing 13. https://doi.org/10.3390/rs13152876
+
+Rey-Sanchez, C., Arias-Ortiz, A., Kasak, K., Chu, H., Szutu, D., Verfaillie, J., & Baldocchi, D. (2022). Detecting hot spots of methane flux using footprint-weighted flux maps. Journal of Geophysical Research: Biogeosciences, 127, e2022JG006977. https://doi.org/10.1029/2022JG006977
+
+Schaefer, K., R.J. Michaelides, R.H. Chen, T.D. Sullivan, A.D. Parsekian, Y. Zhao, K. Bakian-Dogaheh, A. Tabatabaeenejad, M. Moghaddam, J. Chen, A.C. Chen, L. Liu, and H.A. Zebker. 2021. ABoVE: Active Layer Thickness Derived from Airborne L- and P-band SAR, Alaska, 2017. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/1796
+Whitley, M., G. Frost, M.T. Jorgenson, M. Macander, C.V. Maio, and S.G. Winder. 2018. ABoVE: Permafrost Measurements and Distribution Across the Y-K Delta, Alaska, 2016. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/1598
+
+Thompson, D.R., B.C. Gao, R.O. Green, P.E. Dennison, D.A. Roberts, and S. Lundeen. 2015. Atmospheric Correction for Global Mapping Spectroscopy: ATREM Advances for the HyspIRI Preparatory Campaign. Remote Sens. of Env., 167: 64-77. https://doi.org/10.1016/j.rse.2015.02.010
+
+Virkkala, A.M., Aalto, J., Rogers, B.M., Tagesson, T., Treat, C.C., Natali, S.M., Watts, J.D., Potter, S., Lehtonen, A., Mauritz, M. and Schuur, E.A., 2021. Statistical upscaling of ecosystem CO2 fluxes across the terrestrial tundra and boreal domain: Regional patterns and uncertainties. Global Change Biology, 27(17), pp.4040-4059. https://doi.org/10.1111/gcb.15659
+
+Virkkala, A.M., Natali, S.M., Rogers, B.M., Watts, J.D., Savage, K., Connon, S.J., Mauritz, M., Schuur, E.A., Peter, D., Minions, C. and Nojeim, J., 2021. The ABCflux database: Arctic-boreal CO 2 flux observations and ancillary information aggregated to monthly time steps across terrestrial ecosystems. Earth System Science Data Discussions, 2021, pp.1-54. https://doi.org/10.5194/essd-14-179-2022
+
+Volk, J. M., Huntington, J., Melton, F. S., Allen, R., Anderson, M. C., Fisher, J. B., et al. (2023). Development of a Benchmark Eddy Flux Evapotranspiration Dataset for Evaluation of Satellite-Driven Evapotranspiration Models Over the CONUS. Agricultural and Forest Meteorology (331), https://doi.org/10.1016/j.agrformet.2023.109307.
+
+Wang Y, Yuan F, Arndt KA, Liu J, He L, Zuo Y, Zona D, Lipson DA, Oechel WC, Ricciuto DM, Wullschleger SD, Thornton PE and Xu X (2022) Upscaling Methane Flux From Plot Level to Eddy Covariance Tower Domains in Five Alaskan Tundra Ecosystems. Front. Environ. Sci. 10:939238. https://doi.org/10.3389/fenvs.2022.939238
+
+Watts, J.D., M. Farina, J.S. Kimball, L.D. Schiferl, Z. Liu, K.A. Arndt, D. Zona, A. Ballantyne, E.S. Euskirchen, F-J. W. Parmentier, M. Helbig, O. Sonnentag, T. Tagesson, J. Rinne, H. Ikawa, M. Ueyama, R. Suzuki, H. Kobayashi, T. Sachs, D.F. Nadeau, J. Kochendorfer, M.Jackowicz-Korczynski, A. Virkkala, M. Aurela, R. Commane, B.K. Byrne, L. Birch, M. Johnson, N. Madani, B. Rogers, J. Du, A. Endsley, K. Savage, B. Poulter, Z. Zhang, L.M. Bruhwiler, C. Miller, S. Goetz, and W.C. Oechel. 2023. Carbon uptake in Eurasian boreal forests dominates the high-latitude net ecosystem carbon budget. Global Change Biology 29:1870-1889. https://doi.org/10.1111/gcb.16553
+
+Watts, J.D., Natali, S.M., Minions, C., Risk, D., Arndt, K., Zona, D., Euskirchen, E.S., Rocha, A.V., Sonnentag, O., Helbig, M. and Kalhori, A., 2021. Soil respiration strongly offsets carbon uptake in Alaska and Northwest Canada. Environmental Research Letters, 16(8), p.084051. https://doi.org/10.1088/1748-9326/ac1222
+
+Watts, J.D., Soil Respiration Maps for the ABoVE Domain, 2016-2017 (Watts, J.D., S. Natali, and C. Minions. 2022. Soil Respiration Maps for the ABoVE Domain, 2016-2017. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/1935)
+
+---------------------------------------------------------------------
+DATA REFERENCES
+IN SITU
+CH4, CO2 | Ground campaigns
+Dave Billesbach, Ryan Sullivan (2022), AmeriFlux BASE US-A03 ARM-AMF3-Oliktok, Ver. 5-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1498752
+Dave Billesbach, Ryan Sullivan (2021), AmeriFlux BASE US-A10 ARM-NSA-Barrow, Ver. 4-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1498753
+Adrian Rocha, Gaius Shaver, John Hobbie (2020), AmeriFlux BASE US-An1 Anaktuvuk River Severe Burn, Ver. 2-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1246142
+Adrian Rocha, Gaius Shaver, John Hobbie (2020), AmeriFlux BASE US-An2 Anaktuvuk River Moderate Burn, Ver. 2-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1246143
+Adrian Rocha, Gaius Shaver, John Hobbie (2020), AmeriFlux BASE US-An3 Anaktuvuk River Unburned, Ver. 2-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1246144
+Donatella Zona, Walt Oechel (2016), AmeriFlux BASE US-Atq Atqasuk, Ver. 1-1, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1246029
+James Randerson (2016), AmeriFlux BASE US-Bn1 Bonanza Creek, 1920 Burn site near Delta Junction, Ver. 1-1, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1246033
+James Randerson (2016), AmeriFlux BASE US-Bn2 Bonanza Creek, 1987 Burn site near Delta Junction, Ver. 1-1, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1246034
+James Randerson (2016), AmeriFlux BASE US-Bn3 Bonanza Creek, 1999 Burn site near Delta Junction, Ver. 1-1, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1246035
+Donatella Zona, Walt Oechel (2016), AmeriFlux BASE US-Brw Barrow, Ver. 2-1, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1246041
+Eugenie Euskirchen (2022), AmeriFlux BASE US-BZB Bonanza Creek Thermokarst Bog, Ver. 4-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1773401
+Eugenie Euskirchen (2022), AmeriFlux BASE US-BZF Bonanza Creek Rich Fen, Ver. 4-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1756433
+Eugenie Euskirchen (2022), AmeriFlux BASE US-BZo Bonanza Creek Old Thermokarst Bog, Ver. 3-5,
+AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1846662
+Eugenie Euskirchen (2022), AmeriFlux BASE US-BZS Bonanza Creek Black Spruce, Ver. 3-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1756434
+Akira Miyata, Yoshinobu Harazono (2023), AmeriFlux BASE US-Cms Central Marsh, Ver. 1-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1987602
+Rosvel Bracho, Gerardo Celis, Heidi Rodenhizer, Craig See, Edward A. Schuur (2021), AmeriFlux BASE US-EML Eight Mile Lake Permafrost thaw gradient, Healy Alaska., Ver. 4-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1418678
+Masahito Ueyama, Hiroki Iwata, Yoshinobu Harazono (2023), AmeriFlux BASE US-Fcr Cascaden Ridge Fire Scar, Ver. 3-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1562388
+Walt Oechel (2016), AmeriFlux BASE US-HVa Happy Valley, Ver. 2-1, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1246064
+Akira Miyata, Yoshinobu Harazono (2023), AmeriFlux BASE US-HVs Happy Valley Wet Sedge Tundra, Ver. 1-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1964087
+Eugenie Euskirchen, Gaius Shaver, Syndonia Bret-Harte (2024), AmeriFlux BASE US-ICh Imnavait Creek Watershed Heath Tundra, Ver. 5-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1246133
+Eugenie Euskirchen, Gaius Shaver, Syndonia Bret-Harte (2024), AmeriFlux BASE US-ICs Imnavait Creek Watershed Wet Sedge Tundra, Ver. 8-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1246130
+Eugenie Euskirchen, Gaius Shaver, Syndonia Bret-Harte (2024), AmeriFlux BASE US-ICt Imnavait Creek Watershed Tussock Tundra, Ver. 6-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1246131
+Donatella Zona, Walter Oechel (2019), AmeriFlux BASE US-Ivo Ivotuk, Ver. 4-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1246067
+Patrick Sullivan (2023), AmeriFlux BASE US-KPL Lily Lake Fen, Ver. 2-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1865478
+Margaret Torn, Sigrid Dengel (2023), AmeriFlux BASE US-NGB NGEE Arctic Barrow, Ver. 5-5, AmeriFlux
+AMP, (Dataset). https://doi.org/10.17190/AMF/1436326
+Margaret Torn, Sigrid Dengel (2023), AmeriFlux BASE US-NGC NGEE Arctic Council, Ver. 3-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1634883
+Go Iwahana, Hideki Kobayashi, Hiroki Ikawa, Rikie Suzuki (2023), AmeriFlux BASE US-Prr Poker Flat
+Research Range Black Spruce Forest, Ver. 4-5, AmeriFlux AMP, (Dataset).
+https://doi.org/10.17190/AMF/1246153
+Masahito Ueyama, Hiroki Iwata, Yoshinobu Harazono (2024), AmeriFlux BASE US-Rpf Poker Flat Research Range: Succession from fire scar to deciduous forest, Ver. 10-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1579540
+Akira Miyata, Yoshinobu Harazono (2023), AmeriFlux BASE US-Sag Sag River, Ver. 1-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1987604
+Masahito Ueyama, Hiroki Iwata, Yoshinobu Harazono (2024), AmeriFlux BASE US-Uaf University of Alaska, Fairbanks, Ver. 12-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1480322
+Walt Oechel (2019), AmeriFlux BASE US-Upa Upad, Ver. 3-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1246108
+Susan Natali (2024), AmeriFlux BASE US-YK1 Yukon-Kuskokwim Delta, Izaviknek-Kingaglia uplands, Burned 2015, Ver. 1-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/2331384
+Sue Natali (2024), AmeriFlux BASE US-YK2 Yukon-Kuskokwim Delta, Izaviknek-Kingaglia uplands, Unburned, Ver. 1-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/2331385
+Dataset: AmeriFlux BASE US-A03 ARM-AMF3-Oliktok, Ver. 5-5
+Dataset: AmeriFlux BASE US-A10 ARM-NSA-Barrow, Ver. 4-5
+Dataset: AmeriFlux BASE US-An1 Anaktuvuk River Severe Burn, Ver. 2-5
+Dataset: AmeriFlux BASE US-An2 Anaktuvuk River Moderate Burn, Ver. 2-5
+Dataset: AmeriFlux BASE US-An3 Anaktuvuk River Unburned, Ver. 2-5
+Dataset: AmeriFlux BASE US-Atq Atqasuk, Ver. 1-1
+Dataset: AmeriFlux BASE US-Bn1 Bonanza Creek, 1920 Burn site near Delta Junction, Ver. 1-1
+Dataset: AmeriFlux BASE US-Bn2 Bonanza Creek, 1987 Burn site near Delta Junction, Ver. 1-1
+Dataset: AmeriFlux BASE US-Bn3 Bonanza Creek, 1999 Burn site near Delta Junction, Ver. 1-1
+Dataset: AmeriFlux BASE US-Brw Barrow, Ver. 2-1
+Dataset: AmeriFlux BASE US-BZB Bonanza Creek Thermokarst Bog, Ver. 4-5
+Dataset: AmeriFlux BASE US-BZF Bonanza Creek Rich Fen, Ver. 4-5
+Dataset: AmeriFlux BASE US-BZo Bonanza Creek Old Thermokarst Bog, Ver. 3-5
+Dataset: AmeriFlux BASE US-BZS Bonanza Creek Black Spruce, Ver. 3-5
+Dataset: AmeriFlux BASE US-Cms Central Marsh, Ver. 1-5
+Dataset: AmeriFlux BASE US-EML Eight Mile Lake Permafrost thaw gradient, Healy Alaska., Ver. 4-5
+Dataset: AmeriFlux BASE US-Fcr Cascaden Ridge Fire Scar, Ver. 3-5
+Dataset: AmeriFlux BASE US-HVa Happy Valley, Ver. 2-1
+Dataset: AmeriFlux BASE US-HVs Happy Valley Wet Sedge Tundra, Ver. 1-5
+Dataset: AmeriFlux BASE US-ICh Imnavait Creek Watershed Heath Tundra, Ver. 5-5
+Dataset: AmeriFlux BASE US-ICs Imnavait Creek Watershed Wet Sedge Tundra, Ver. 8-5
+Dataset: AmeriFlux BASE US-ICt Imnavait Creek Watershed Tussock Tundra, Ver. 6-5
+Dataset: AmeriFlux BASE US-Ivo Ivotuk, Ver. 4-5
+Dataset: AmeriFlux BASE US-KPL Lily Lake Fen, Ver. 2-5
+Dataset: AmeriFlux BASE US-NGB NGEE Arctic Barrow, Ver. 5-5
+Dataset: AmeriFlux BASE US-NGC NGEE Arctic Council, Ver. 3-5
+Dataset: AmeriFlux BASE US-Prr Poker Flat Research Range Black Spruce Forest, Ver. 4-5
+Dataset: AmeriFlux BASE US-Rpf Poker Flat Research Range: Succession from fire scar to deciduous forest, Ver. 10-5
+Dataset: AmeriFlux BASE US-Sag Sag River, Ver. 1-5
+Dataset: AmeriFlux BASE US-Uaf University of Alaska, Fairbanks, Ver. 12-5
+Dataset: AmeriFlux BASE US-Upa Upad, Ver. 3-5
+Dataset: AmeriFlux BASE US-xBA NEON Barrow Environmental Observatory (BARR), Ver. 8-5
+Dataset: AmeriFlux BASE US-xBN NEON Caribou Creek - Poker Flats Watershed (BONA), Ver. 9-5
+Dataset: AmeriFlux BASE US-xDJ NEON Delta Junction (DEJU), Ver. 9-5
+Dataset: AmeriFlux BASE US-xHE NEON Healy (HEAL), Ver. 9-5
+Dataset: AmeriFlux BASE US-xTL NEON Toolik (TOOL), Ver. 9-5
+Dataset: AmeriFlux BASE US-YK1 Yukon-Kuskokwim Delta, Izaviknek-Kingaglia uplands, Burned 2015, Ver. 1-5
+Dataset: AmeriFlux BASE US-YK2 Yukon-Kuskokwim Delta, Izaviknek-Kingaglia uplands, Unburned, Ver. 1-5
+SITE_ID,filename,start_year,end_year,version,filetype,timestamp
+AA-Flx,AMF_AA-Flx_BIF_LEGACY_20240930.xlsx,,,20240930,BADM,202409301435
+AA-Net,AMF_AA-Net_BIF_LEGACY_20240930.xlsx,,,20240930,BADM,202409301437
+US-A03,AMF_US-A03_BASE_HH_5-5.csv,2014,2021,5-5,FLUX-MET,202202281237
+US-A03,AMF_US-A03_BIF_20210820.xlsx,,,20210820,BADM,202108201508
+US-A10,AMF_US-A10_BASE_HH_4-5.csv,2011,2020,4-5,FLUX-MET,202103311254
+US-A10,AMF_US-A10_BIF_20210820.xlsx,,,20210820,BADM,202108201508
+US-An1,AMF_US-An1_BASE_HH_2-5.csv,2008,2019,2-5,FLUX-MET,202009022210
+US-An1,AMF_US-An1_BIF_20211015.xlsx,,,20211015,BADM,202110151606
+US-An2,AMF_US-An2_BASE_HH_2-5.csv,2008,2019,2-5,FLUX-MET,202009022209
+US-An2,AMF_US-An2_BIF_20211015.xlsx,,,20211015,BADM,202110151606
+US-An3,AMF_US-An3_BASE_HH_2-5.csv,2008,2019,2-5,FLUX-MET,202009022211
+US-An3,AMF_US-An3_BIF_20211015.xlsx,,,20211015,BADM,202110151606
+US-Atq,AMF_US-Atq_BASE_HH_1-1.csv,1999,2006,1-1,FLUX-MET,201602060503
+US-Atq,AMF_US-Atq_BIF_20211015.xlsx,,,20211015,BADM,202110151606
+US-Bn1,AMF_US-Bn1_BASE_HH_1-1.csv,2002,2004,1-1,FLUX-MET,201605150147
+US-Bn1,AMF_US-Bn1_BIF_20211015.xlsx,,,20211015,BADM,202110151606
+US-Bn2,AMF_US-Bn2_BASE_HH_1-1.csv,2002,2004,1-1,FLUX-MET,201605150147
+US-Bn2,AMF_US-Bn2_BIF_20211015.xlsx,,,20211015,BADM,202110151606
+US-Bn3,AMF_US-Bn3_BASE_HH_1-1.csv,2002,2004,1-1,FLUX-MET,201605150147
+US-Bn3,AMF_US-Bn3_BIF_20211015.xlsx,,,20211015,BADM,202110151606
+US-Brw,AMF_US-Brw_BASE_HH_2-1.csv,1998,2007,2-1,FLUX-MET,201602060503
+US-Brw,AMF_US-Brw_BIF_20211015.xlsx,,,20211015,BADM,202110151606
+US-BZB,AMF_US-BZB_BASE_HH_4-5.csv,2011,2022,4-5,FLUX-MET,202210030830
+US-BZB,AMF_US-BZB_BIF_20221003.xlsx,,,20221003,BADM,202210031507
+US-BZF,AMF_US-BZF_BASE_HH_4-5.csv,2011,2022,4-5,FLUX-MET,202210030826
+US-BZF,AMF_US-BZF_BIF_20221003.xlsx,,,20221003,BADM,202210031507
+US-BZo,AMF_US-BZo_BASE_HH_3-5.csv,2018,2022,3-5,FLUX-MET,202210030832
+US-BZo,AMF_US-BZo_BIF_20221003.xlsx,,,20221003,BADM,202210031507
+US-BZS,AMF_US-BZS_BASE_HH_3-5.csv,2010,2021,3-5,FLUX-MET,202204281405
+US-BZS,AMF_US-BZS_BIF_20230922.xlsx,,,20230922,BADM,202309221537
+US-Cms,AMF_US-Cms_BASE_HH_1-5.csv,1999,2000,1-5,FLUX-MET,202306291618
+US-Cms,AMF_US-Cms_BIF_20231208.xlsx,,,20231208,BADM,202312081746
+US-EML,AMF_US-EML_BASE_HH_4-5.csv,2008,2020,4-5,FLUX-MET,202105131704
+US-EML,AMF_US-EML_BIF_20240401.xlsx,,,20240401,BADM,202404012230
+US-Fcr,AMF_US-Fcr_BASE_HH_3-5.csv,2011,2014,3-5,FLUX-MET,202306291615
+US-Fcr,AMF_US-Fcr_BIF_20240401.xlsx,,,20240401,BADM,202404012230
+US-HVa,AMF_US-HVa_BASE_HH_2-1.csv,1994,1995,2-1,FLUX-MET,201602060503
+US-HVa,AMF_US-HVa_BIF_20211015.xlsx,,,20211015,BADM,202110151606
+US-HVs,AMF_US-HVs_BASE_HH_1-5.csv,1995,1995,1-5,FLUX-MET,202303301747
+US-HVs,AMF_US-HVs_BIF_20231208.xlsx,,,20231208,BADM,202312081746
+US-ICh,AMF_US-ICh_BASE_HH_5-5.csv,2007,2023,5-5,FLUX-MET,202407301644
+US-ICh,AMF_US-ICh_BIF_20231031.xlsx,,,20231031,BADM,202310311717
+US-ICs,AMF_US-ICs_BASE_HH_8-5.csv,2007,2023,8-5,FLUX-MET,202407301645
+US-ICs,AMF_US-ICs_BIF_20230331.xlsx,,,20230331,BADM,202303311042
+US-ICt,AMF_US-ICt_BASE_HH_6-5.csv,2007,2023,6-5,FLUX-MET,202407301654
+US-ICt,AMF_US-ICt_BIF_20230331.xlsx,,,20230331,BADM,202303311042
+US-Ivo,AMF_US-Ivo_BASE_HH_4-5.csv,2003,2016,4-5,FLUX-MET,201902011247
+US-Ivo,AMF_US-Ivo_BIF_20231208.xlsx,,,20231208,BADM,202312081746
+US-KPL,AMF_US-KPL_BASE_HH_2-5.csv,2021,2022,2-5,FLUX-MET,202306291618
+US-KPL,AMF_US-KPL_BIF_20240731.xlsx,,,20240731,BADM,202407310149
+US-NGB,AMF_US-NGB_BASE_HH_5-5.csv,2012,2023,5-5,FLUX-MET,202312081611
+US-NGB,AMF_US-NGB_BIF_20231208.xlsx,,,20231208,BADM,202312081746
+US-NGC,AMF_US-NGC_BASE_HH_3-5.csv,2017,2023,3-5,FLUX-MET,202312081610
+US-NGC,AMF_US-NGC_BIF_20231208.xlsx,,,20231208,BADM,202312081746
+US-Prr,AMF_US-Prr_BASE_HH_4-5.csv,2010,2022,4-5,FLUX-MET,202309221312
+US-Prr,AMF_US-Prr_BIF_20230629.xlsx,,,20230629,BADM,202306292242
+US-Rpf,AMF_US-Rpf_BASE_HH_10-5.csv,2008,2023,10-5,FLUX-MET,202402281852
+US-Rpf,AMF_US-Rpf_BIF_20240401.xlsx,,,20240401,BADM,202404012230
+US-Sag,AMF_US-Sag_BASE_HH_1-5.csv,1996,1996,1-5,FLUX-MET,202306291609
+US-Sag,AMF_US-Sag_BIF_20231208.xlsx,,,20231208,BADM,202312081746
+US-Uaf,AMF_US-Uaf_BASE_HH_12-5.csv,2003,2023,12-5,FLUX-MET,202404012121
+US-Uaf,AMF_US-Uaf_BIF_20240401.xlsx,,,20240401,BADM,202404012230
+US-Upa,AMF_US-Upa_BASE_HH_3-5.csv,1994,1994,3-5,FLUX-MET,201908301559
+US-Upa,AMF_US-Upa_BIF_20231208.xlsx,,,20231208,BADM,202312081746
+US-xBA,AMF_US-xBA_BASE_HH_8-5.csv,2017,2023,8-5,FLUX-MET,202407301643
+US-xBA,AMF_US-xBA_BIF_20240229.xlsx,,,20240229,BADM,202402290057
+US-xBN,AMF_US-xBN_BASE_HH_9-5.csv,2017,2023,9-5,FLUX-MET,202407301653
+US-xBN,AMF_US-xBN_BIF_20240229.xlsx,,,20240229,BADM,202402290058
+US-xDJ,AMF_US-xDJ_BASE_HH_9-5.csv,2017,2023,9-5,FLUX-MET,202407301646
+US-xDJ,AMF_US-xDJ_BIF_20240229.xlsx,,,20240229,BADM,202402290058
+US-xHE,AMF_US-xHE_BASE_HH_9-5.csv,2017,2023,9-5,FLUX-MET,202407301656
+US-xHE,AMF_US-xHE_BIF_20230629.xlsx,,,20230629,BADM,202306292242
+US-xTL,AMF_US-xTL_BASE_HH_9-5.csv,2017,2023,9-5,FLUX-MET,202407301656
+US-xTL,AMF_US-xTL_BIF_20231031.xlsx,,,20231031,BADM,202310311718
+US-YK1,AMF_US-YK1_BASE_HH_1-5.csv,2019,2022,1-5,FLUX-MET,202404012123
+US-YK1,AMF_US-YK1_BIF_20240731.xlsx,,,20240731,BADM,202407310149
+US-YK2,AMF_US-YK2_BASE_HH_1-5.csv,2019,2022,1-5,FLUX-MET,202404012123
+US-YK2,AMF_US-YK2_BIF_20240731.xlsx,,,20240731,BADM,202407310149
+Dataset: NEON (National Ecological Observatory Network) (2024), AmeriFlux BASE US-xBA NEON Barrow Environmental Observatory (BARR), Ver. 8-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1671892
+Dataset: NEON (National Ecological Observatory Network) (2024), AmeriFlux BASE US-xBN NEON Caribou Creek - Poker Flats Watershed (BONA), Ver. 9-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1617727
+Dataset: NEON (National Ecological Observatory Network) (2024), AmeriFlux BASE US-xDJ NEON Delta Junction (DEJU), Ver. 9-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1634884
+Dataset: NEON (National Ecological Observatory Network) (2024), AmeriFlux BASE US-xHE NEON Healy (HEAL), Ver. 9-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1617729
+Dataset: NEON (National Ecological Observatory Network) (2024), AmeriFlux BASE US-xTL NEON Toolik (TOOL), Ver. 9-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1617739
+
+REMOTE SENSING
+ALT | UAVSAR
+University of Alaska - Fairbanks, NASA Alaska Satellite Facility, Vertex: https://github.com/asfadmin/Discovery-SearchUI
+Copernicus Sentinel data [year of data acquisition]. Retrieved from ASF DAAC [day month year of data access], processed by ESA.
+Copernicus Sentinel data [year of data acquisition], processed by ESA.
+Dataset: UAVSAR, NASA [year of data acquisition]. Retrieved from ASF DAAC [day month year of data access].
+UAVSAR RPI: 10.5067/R0ARICRBAKYE
+UAVSAR POLSAR: 10.5067/7PEQV8SVR4DM
+ASF Data Search Vertex: https://search.asf.alaska.edu/#/?dataset=UAVSAR
+- Dataset: UAVSAR, NASA 2017. Retrieved from ASF DAAC 19 November 2023. DOI 10.5067/7PEQV8SVR4DM
+- Dataset: UAVSAR, NASA 2017. Retrieved from ASF DAAC 19 November 2023. DOI 10.5067/R0ARICRBAKYE
+- Dataset: UAVSAR, NASA 2018. Retrieved from ASF DAAC 19 November 2023. DOI 10.5067/7PEQV8SVR4DM
+- Dataset: UAVSAR, NASA 2018. Retrieved from ASF DAAC 19 November 2023. DOI 10.5067/R0ARICRBAKYE
+- Dataset: UAVSAR, NASA 2019. Retrieved from ASF DAAC 19 November 2023. DOI 10.5067/7PEQV8SVR4DM
+- Dataset: UAVSAR, NASA 2019. Retrieved from ASF DAAC 19 November 2023. DOI 10.5067/R0ARICRBAKYE
+- Dataset: UAVSAR, NASA 2022. Retrieved from ASF DAAC 19 November 2023. DOI 10.5067/7PEQV8SVR4DM
+- Dataset: UAVSAR, NASA 2022. Retrieved from ASF DAAC 19 November 2023. DOI 10.5067/R0ARICRBAKYE
+ambler_03001_17067-006_17097-008_0088d_s01_L090_01
+ambler_03001_17067-006_17097-008_0088d_s01_L090_01
+ambler_03001_17067-006_17097-008_0088d_s01_L090_01
+ambler_03001_17067-006_17097-008_0088d_s01_L090_01
+ambler_03001_17097-008_18054-009_0351d_s01_L090_01
+ambler_03001_17097-008_18054-009_0351d_s01_L090_01
+ambler_03001_17097-008_18054-009_0351d_s01_L090_01
+ambler_03001_17097-008_18054-009_0351d_s01_L090_01
+ambler_03001_18054-009_19062-006_0376d_s01_L090_01
+ambler_03001_18054-009_19062-006_0376d_s01_L090_01
+ambler_03001_18054-009_19062-006_0376d_s01_L090_01
+ambler_03001_18054-009_19062-006_0376d_s01_L090_01
+ambler_03001_19062-006_22035-006_1072d_s01_L090_01
+ambler_03001_19062-006_22035-006_1072d_s01_L090_01
+ambler_03001_19062-006_22035-006_1072d_s01_L090_01
+ambler_03001_19062-006_22035-006_1072d_s01_L090_01
+anaktE_34408_17069-006_17098-004_0087d_s01_L090_01
+anaktE_34408_17069-006_17098-004_0087d_s01_L090_01
+anaktE_34408_17069-006_17098-004_0087d_s01_L090_01
+anaktE_34408_17069-006_17098-004_0087d_s01_L090_01
+anaktW_16405_17069-005_17098-003_0087d_s01_L090_01
+anaktW_16405_17069-005_17098-003_0087d_s01_L090_01
+anaktW_16405_17069-005_17098-003_0087d_s01_L090_01
+anaktW_16405_17069-005_17098-003_0087d_s01_L090_01
+atqasu_34509_17069-002_17098-000_0087d_s01_L090_01
+atqasu_34509_17069-002_17098-000_0087d_s01_L090_01
+atqasu_34509_17069-002_17098-000_0087d_s01_L090_01
+atqasu_34509_17069-002_17098-000_0087d_s01_L090_01
+barrow_15018_17069-003_17098-001_0087d_s01_L090_01
+barrow_15018_17069-003_17098-001_0087d_s01_L090_02
+barrow_15018_17069-003_17098-001_0087d_s01_L090_02
+barrow_15018_17069-003_17098-001_0087d_s01_L090_02
+barrow_15018_17069-003_17098-001_0087d_s01_L090_02
+bonanE_03604_17065-004_17100-005_0095d_s01_L090_01
+bonanE_03604_17065-004_17100-005_0095d_s01_L090_01
+bonanE_03604_17065-004_17100-005_0095d_s01_L090_01
+bonanE_03604_17065-004_17100-005_0095d_s01_L090_01
+bonanE_03604_17100-005_18051-006_0342d_s01_L090_01
+bonanE_03604_17100-005_18051-006_0342d_s01_L090_01
+bonanE_03604_17100-005_18051-006_0342d_s01_L090_01
+bonanE_03604_17100-005_18051-006_0342d_s01_L090_01
+bonanE_03604_18051-006_19063-010_0382d_s01_L090_01
+bonanE_03604_18051-006_19063-010_0382d_s01_L090_01
+bonanE_03604_18051-006_19063-010_0382d_s01_L090_01
+bonanE_03604_18051-006_19063-010_0382d_s01_L090_01
+bonanW_03603_17065-003_17100-004_0095d_s01_L090_01
+bonanW_03603_17065-003_17100-004_0095d_s01_L090_01
+bonanW_03603_17065-003_17100-004_0095d_s01_L090_01
+bonanW_03603_17065-003_17100-004_0095d_s01_L090_01
+bonanW_03603_17100-004_18051-002_0342d_s01_L090_01
+bonanW_03603_17100-004_18051-002_0342d_s01_L090_01
+bonanW_03603_17100-004_18051-002_0342d_s01_L090_01
+bonanW_03603_17100-004_18051-002_0342d_s01_L090_01
+bonanW_03603_18051-002_19062-007_0382d_s01_L090_01
+bonanW_03603_18051-002_19062-007_0382d_s01_L090_01
+bonanW_03603_18051-002_19062-007_0382d_s01_L090_01
+bonanW_03603_18051-002_19062-007_0382d_s01_L090_01
+chevak_01813_17066-005_17099-008_0092d_s01_L090_01
+chevak_01813_17066-005_17099-008_0092d_s01_L090_01
+chevak_01813_17066-005_17099-008_0092d_s01_L090_01
+chevak_01813_17066-005_17099-008_0092d_s01_L090_01
+coldfo_20026_17067-010_17097-012_0088d_s01_L090_01
+coldfo_20026_17067-010_17097-012_0088d_s01_L090_01
+coldfo_20026_17067-010_17097-012_0088d_s01_L090_01
+coldfo_20026_17067-010_17097-012_0088d_s01_L090_01
+coldfo_20026_17097-012_18050-009_0345d_s01_L090_01
+coldfo_20026_17097-012_18050-009_0345d_s01_L090_01
+coldfo_20026_17097-012_18050-009_0345d_s01_L090_01
+coldfo_20026_17097-012_18050-009_0345d_s01_L090_01
+coldfo_20026_18050-009_19063-008_0383d_s01_L090_01
+coldfo_20026_18050-009_19063-008_0383d_s01_L090_01
+coldfo_20026_18050-009_19063-008_0383d_s01_L090_01
+coldfo_20026_18050-009_19063-008_0383d_s01_L090_01
+counci_32519_17067-002_17097-003_0088d_s01_L090_01
+counci_32519_17067-002_17097-003_0088d_s01_L090_02
+counci_32519_17067-002_17097-003_0088d_s01_L090_02
+counci_32519_17067-002_17097-003_0088d_s01_L090_02
+counci_32519_17067-002_17097-003_0088d_s01_L090_02
+deltaR_12227_17101-002_19064-002_0724d_s01_L090_01
+deltaR_12227_17101-002_19064-002_0724d_s01_L090_01
+deltaR_12227_17101-002_19064-002_0724d_s01_L090_01
+deltaR_12227_17101-002_19064-002_0724d_s01_L090_01
+deltaR_30221_17101-001_18051-004_0341d_s01_L090_01
+deltaR_30221_17101-001_18051-004_0341d_s01_L090_01
+deltaR_30221_17101-001_18051-004_0341d_s01_L090_01
+deltaR_30221_17101-001_18051-004_0341d_s01_L090_01
+deltjA_30407_17064-008_17095-010_0087d_s01_L090_01
+deltjA_30407_17064-008_17095-010_0087d_s01_L090_01
+deltjA_30407_17064-008_17095-010_0087d_s01_L090_01
+deltjA_30407_17064-008_17095-010_0087d_s01_L090_01
+deltjB_10204_17064-009_17095-011_0087d_s01_L090_01
+deltjB_10204_17064-009_17095-011_0087d_s01_L090_01
+deltjB_10204_17064-009_17095-011_0087d_s01_L090_01
+deltjB_10204_17064-009_17095-011_0087d_s01_L090_01
+deltjB_10204_17101-000_18049-006_0338d_s01_L090_01
+deltjB_10204_17101-000_18049-006_0338d_s01_L090_01
+deltjB_10204_17101-000_18049-006_0338d_s01_L090_01
+deltjB_10204_17101-000_18049-006_0338d_s01_L090_01
+deltjC_30204_17066-009_17100-000_0094d_s01_L090_01
+deltjC_30204_17066-009_17100-000_0094d_s01_L090_01
+deltjC_30204_17066-009_17100-000_0094d_s01_L090_01
+deltjC_30204_17066-009_17100-000_0094d_s01_L090_01
+deltjC_30204_17100-000_18052-007_0343d_s01_L090_01
+deltjC_30204_17100-000_18052-007_0343d_s01_L090_01
+deltjC_30204_17100-000_18052-007_0343d_s01_L090_01
+deltjC_30204_17100-000_18052-007_0343d_s01_L090_01
+denalN_09115_17066-008_17100-003_0094d_s01_L090_01
+denalN_09115_17066-008_17100-003_0094d_s01_L090_01
+denalN_09115_17066-008_17100-003_0094d_s01_L090_01
+denalN_09115_17066-008_17100-003_0094d_s01_L090_01
+denalS_09114_17065-002_17100-002_0095d_s01_L090_01
+denalS_09114_17065-002_17100-002_0095d_s01_L090_01
+denalS_09114_17065-002_17100-002_0095d_s01_L090_01
+denalS_09114_17065-002_17100-002_0095d_s01_L090_01
+dhorse_18519_17069-008_17098-005_0087d_s01_L090_01
+dhorse_18519_17069-008_17098-005_0087d_s01_L090_02
+dhorse_18519_17069-008_17098-005_0087d_s01_L090_02
+dhorse_18519_17069-008_17098-005_0087d_s01_L090_02
+dhorse_18519_17069-008_17098-005_0087d_s01_L090_02
+djNEON_00101_17064-007_17095-012_0087d_s01_L090_01
+djNEON_00101_17064-007_17095-012_0087d_s01_L090_01
+djNEON_00101_17064-007_17095-012_0087d_s01_L090_01
+djNEON_00101_17064-007_17095-012_0087d_s01_L090_01
+djNEON_00101_17095-012_18051-005_0351d_s01_L090_01
+djNEON_00101_17095-012_18051-005_0351d_s01_L090_01
+djNEON_00101_17095-012_18051-005_0351d_s01_L090_01
+djNEON_00101_17095-012_18051-005_0351d_s01_L090_01
+djNEON_00101_18051-005_19064-003_0383d_s01_L090_01
+djNEON_00101_18051-005_19064-003_0383d_s01_L090_01
+djNEON_00101_18051-005_19064-003_0383d_s01_L090_01
+djNEON_00101_18051-005_19064-003_0383d_s01_L090_01
+ftyuko_04707_17069-010_17098-007_0087d_s01_L090_01
+ftyuko_04707_17069-010_17098-007_0087d_s01_L090_01
+ftyuko_04707_17069-010_17098-007_0087d_s01_L090_01
+ftyuko_04707_17069-010_17098-007_0087d_s01_L090_01
+huslia_25516_17067-000_17097-001_0088d_s01_L090_01
+inigok_04603_17069-004_17098-002_0087d_s01_L090_01
+inigok_04603_17069-004_17098-002_0087d_s01_L090_01
+inigok_04603_17069-004_17098-002_0087d_s01_L090_01
+inigok_04603_17069-004_17098-002_0087d_s01_L090_01
+ivotuk_03111_17067-008_17097-010_0088d_s01_L090_01
+ivotuk_03111_17067-008_17097-010_0088d_s01_L090_01
+ivotuk_03111_17067-008_17097-010_0088d_s01_L090_01
+ivotuk_03111_17067-008_17097-010_0088d_s01_L090_01
+kougar_08502_17067-005_17097-006_0088d_s01_L090_01
+kougar_08502_17067-005_17097-006_0088d_s01_L090_01
+kougar_08502_17067-005_17097-006_0088d_s01_L090_01
+kougar_08502_17067-005_17097-006_0088d_s01_L090_01
+koyukk_25517_17067-001_17097-002_0088d_s01_L090_01
+koyukk_25517_17067-001_17097-002_0088d_s01_L090_01
+koyukk_25517_17067-001_17097-002_0088d_s01_L090_01
+koyukk_25517_17067-001_17097-002_0088d_s01_L090_01
+noatak_28508_17067-007_17097-009_0088d_s01_L090_01
+oldcrB_24401_17068-021_17096-007_0085d_s01_L090_01
+oldcrB_24401_17068-021_17096-007_0085d_s01_L090_01
+oldcrB_24401_17068-021_17096-007_0085d_s01_L090_01
+oldcrB_24401_17068-021_17096-007_0085d_s01_L090_01
+poorma_08911_17066-007_17099-010_0092d_s01_L090_01
+poorma_08911_17066-007_17099-010_0092d_s01_L090_01
+poorma_08911_17066-007_17099-010_0092d_s01_L090_01
+poorma_08911_17066-007_17099-010_0092d_s01_L090_01
+snagyk_31040_17064-006_17095-007_0087d_s01_L090_01
+snagyk_31040_17064-006_17095-007_0087d_s01_L090_01
+snagyk_31040_17064-006_17095-007_0087d_s01_L090_01
+snagyk_31040_17064-006_17095-007_0087d_s01_L090_01
+sriver_32608_17066-001_17099-005_0092d_s01_L090_01
+sriver_32608_17066-001_17099-005_0092d_s01_L090_01
+sriver_32608_17066-001_17099-005_0092d_s01_L090_01
+sriver_32608_17066-001_17099-005_0092d_s01_L090_01
+teller_04806_17067-004_17097-004_0088d_s01_L090_01
+teller_04806_17067-004_17097-004_0088d_s01_L090_01
+teller_04806_17067-004_17097-004_0088d_s01_L090_01
+teller_04806_17067-004_17097-004_0088d_s01_L090_01
+toolik_05300_17067-009_17097-011_0088d_s01_L090_01
+toolik_05300_17067-009_17097-011_0088d_s01_L090_01
+toolik_05300_17067-009_17097-011_0088d_s01_L090_01
+toolik_05300_17067-009_17097-011_0088d_s01_L090_01
+toolik_05300_17097-011_18050-008_0345d_s01_L090_01
+toolik_05300_17097-011_18050-008_0345d_s01_L090_01
+toolik_05300_17097-011_18050-008_0345d_s01_L090_01
+toolik_05300_17097-011_18050-008_0345d_s01_L090_01
+yflatE_21609_17069-011_17098-008_0087d_s01_L090_01
+yflatE_21609_17069-011_17098-008_0087d_s01_L090_01
+yflatE_21609_17069-011_17098-008_0087d_s01_L090_01
+yflatE_21609_17069-011_17098-008_0087d_s01_L090_01
+yflatW_21508_17069-009_17098-006_0087d_s01_L090_01
+yflatW_21508_17069-009_17098-006_0087d_s01_L090_01
+yflatW_21508_17069-009_17098-006_0087d_s01_L090_01
+yflatW_21508_17069-009_17098-006_0087d_s01_L090_01
+ykdelA_26905_17066-002_17099-006_0092d_s01_L090_01
+ykdelA_26905_17066-002_17099-006_0092d_s01_L090_02
+ykdelA_26905_17066-002_17099-006_0092d_s01_L090_02
+ykdelA_26905_17066-002_17099-006_0092d_s01_L090_02
+ykdelA_26905_17066-002_17099-006_0092d_s01_L090_02
+ykdelB_26906_17066-004_17099-007_0092d_s01_L090_01
+ykdelB_26906_17066-004_17099-007_0092d_s01_L090_02
+ykdelB_26906_17066-004_17099-007_0092d_s01_L090_02
+ykdelB_26906_17066-004_17099-007_0092d_s01_L090_02
+ykdelB_26906_17066-004_17099-007_0092d_s01_L090_02
+Flightlines without incidence angle files in both portals:
+#ambler_03001_17067-006_17097-008_0088d_s01_L090_01, anaktW_16405_17069-005_17098-003_0087d_s01_L090_01, bonanE_03604_17065-004_17100-005_0095d_s01_L090_01, deltjA_30407_17064-008_17095-010_0087d_s01_L090_01, deltjB_10204_17064-009_17095-011_0087d_s01_L090_01, ftyuko_04707_17069-010_17098-007_0087d_s01_L090_01, huslia_25516_17067-000_17097-001_0088d_s01_L090_01, inigok_04603_17069-004_17098-002_0087d_s01_L090_01, ivotuk_03111_17067-008_17097-010_0088d_s01_L090_01, koyukk_25517_17067-001_17097-002_0088d_s01_L090_01, noatak_28508_17067-007_17097-009_0088d_s01_L090_01, oldcrB_24401_17068-021_17096-007_0085d_s01_L090_01, sriver_32608_17066-001_17099-005_0092d_s01_L090_01, teller_04806_17067-004_17097-004_0088d_s01_L090_01, toolik_05300_17097-011_18050-008_0345d_s01_L090_01, yflatE_21609_17069-011_17098-008_0087d_s01_L090_01, yflatW_21508_17069-009_17098-006_0087d_s01_L090_01, ykdelA_26905_17066-002_17099-006_0092d_s01_L090_01, ykdelA_26905_17066-002_17099-006_0092d_s01_L090_02, ykdelB_26906_17066-004_17099-007_0092d_s01_L090_01, ykdelB_26906_17066-004_17099-007_0092d_s01_L090_02
+
+CH4, CO2 | AVIRIS-NG
+AVIRIS Data Distribution: https://avng.jpl.nasa.gov/avng/
+AVIRIS Data Portal: https://popo.jpl.nasa.gov/mmgis-aviris/?mission=AVIRIS
+AVIRIS Quicklooks: https://avirisng.jpl.nasa.gov/quicklooks.html
+- Dataset: AVIRIS-NG, NASA 2017. Retrieved from AVIRIS-NG Data Portal 19 November 2023. DOI 10.3334/ORNLDAAC/2009; DOI 10.3334/ORNLDAAC/2362
+- Dataset: AVIRIS-NG, NASA 2018. Retrieved from AVIRIS-NG Data Portal 19 November 2023. DOI 10.3334/ORNLDAAC/2009; DOI 10.3334/ORNLDAAC/2362
+- Dataset: AVIRIS-NG, NASA 2019. Retrieved from AVIRIS-NG Data Portal 19 November 2023. DOI 10.3334/ORNLDAAC/2009; DOI 10.3334/ORNLDAAC/2362
+- Dataset: AVIRIS-NG, NASA 2022. Retrieved from AVIRIS-NG Data Portal 19 November 2023. DOI 10.3334/ORNLDAAC/2009; DOI 10.3334/ORNLDAAC/2362
+ang20170706t180635_rdn_v2p9
+ang20170706t181605_rdn_v2p9
+ang20170706t183519_rdn_v2p9
+ang20170706t184209_rdn_v2p9
+ang20170706t185049_rdn_v2p9
+ang20170706t190214_rdn_v2p9
+ang20170706t191053_rdn_v2p9
+ang20170706t192052_rdn_v2p9
+ang20170706t193409_rdn_v2p9
+ang20170706t193608_rdn_v2p9
+ang20170706t195616_rdn_v2p9
+ang20170706t201837_rdn_v2p9
+ang20170706t203356_rdn_v2p9
+ang20170706t204753_rdn_v2p9
+ang20170706t210717_rdn_v2p9
+ang20170706t211917_rdn_v2p9
+ang20170706t214051_rdn_v2p9
+ang20170706t220340_rdn_v2p9
+ang20170707t001810_rdn_v2p9
+ang20170707t003935_rdn_v2p9
+ang20170707t004917_rdn_v2p9
+ang20170707t005533_rdn_v2p9
+ang20170707t010430_rdn_v2p9
+ang20170707t182443_rdn_v2p9
+ang20170707t183615_rdn_v2p9
+ang20170707t190303_rdn_v2p9
+ang20170707t191547_rdn_v2p9
+ang20170707t200100_rdn_v2p9
+ang20170707t201715_rdn_v2p9
+ang20170707t203340_rdn_v2p9
+ang20170707t204858_rdn_v2p9
+ang20170707t230715_rdn_v2p9
+ang20170707t231429_rdn_v2p9
+ang20170707t233001_rdn_v2p9
+ang20170707t233757_rdn_v2p9
+ang20170708t181228_rdn_v2p9
+ang20170708t181720_rdn_v2p9
+ang20170708t183626_rdn_v2p9
+ang20170708t184436_rdn_v2p9
+ang20170708t191716_rdn_v2p9
+ang20170708t193118_rdn_v2p9
+ang20170708t194013_rdn_v2p9
+ang20170708t195324_rdn_v2p9
+ang20170708t200159_rdn_v2p9
+ang20170708t202625_rdn_v2p9
+ang20170708t204342_rdn_v2p9
+ang20170708t205457_rdn_v2p9
+ang20170708t210315_rdn_v2p9
+ang20170708t211541_rdn_v2p9
+ang20170708t212546_rdn_v2p9
+ang20170708t213057_rdn_v2p9
+ang20170708t214134_rdn_v2p9
+ang20170708t230956_rdn_v2p9
+ang20170708t232509_rdn_v2p9
+ang20170708t233803_rdn_v2p9
+ang20170709t000442_rdn_v2p9
+ang20170709t001900_rdn_v2p9
+ang20170709t003728_rdn_v2p9
+ang20170709t004846_rdn_v2p9
+ang20170709t010449_rdn_v2p9
+ang20170709t012605_rdn_v2p9
+ang20170709t013933_rdn_v2p9
+ang20170709t191907_rdn_v2p9
+ang20170709t192500_rdn_v2p9
+ang20170709t193321_rdn_v2p9
+ang20170709t195215_rdn_v2p9
+ang20170709t201525_rdn_v2p9
+ang20170709t203930_rdn_v2p9
+ang20170709t224222_rdn_v2p9
+ang20170709t224839_rdn_v2p9
+ang20170709t225457_rdn_v2p9
+ang20170709t230326_rdn_v2p9
+ang20170709t231121_rdn_v2p9
+ang20170709t231636_rdn_v2p9
+ang20170709t232308_rdn_v2p9
+ang20170709t233755_rdn_v2p9
+ang20170709t234558_rdn_v2p9
+ang20170709t235600_rdn_v2p9
+ang20170710t000507_rdn_v2p9
+ang20170711t191158_rdn_v2p9
+ang20170711t193324_rdn_v2p9
+ang20170711t195235_rdn_v2p9
+ang20170711t200250_rdn_v2p9
+ang20170711t201317_rdn_v2p9
+ang20170711t202239_rdn_v2p9
+ang20170711t203304_rdn_v2p9
+ang20170712t212935_rdn_v2p9
+ang20170712t214253_rdn_v2p9
+ang20170712t215346_rdn_v2p9
+ang20170712t221426_rdn_v2p9
+ang20170712t223021_rdn_v2p9
+ang20170712t225153_rdn_v2p9
+ang20170712t225940_rdn_v2p9
+ang20170713t005409_rdn_v2p9
+ang20170713t011317_rdn_v2p9
+ang20170713t011945_rdn_v2p9
+ang20170713t012435_rdn_v2p9
+ang20170713t013826_rdn_v2p9
+ang20170713t015120_rdn_v2p9
+ang20170713t015932_rdn_v2p9
+ang20170713t021219_rdn_v2p9
+ang20170713t021704_rdn_v2p9
+ang20170713t022519_rdn_v2p9
+ang20170713t024534_rdn_v2p9
+ang20170713t030114_rdn_v2p9
+ang20170713t192145_rdn_v2p9
+ang20170713t193807_rdn_v2p9
+ang20170713t195536_rdn_v2p9
+ang20170713t201001_rdn_v2p9
+ang20170713t202702_rdn_v2p9
+ang20170713t204737_rdn_v2p9
+ang20170713t210131_rdn_v2p9
+ang20170713t211515_rdn_v2p9
+ang20170713t212839_rdn_v2p9
+ang20170713t214235_rdn_v2p9
+ang20170713t215054_rdn_v2p9
+ang20170714t000338_rdn_v2p9
+ang20170714t001457_rdn_v2p9
+ang20170714t002620_rdn_v2p9
+ang20170714t003820_rdn_v2p9
+ang20170714t004926_rdn_v2p9
+ang20170714t010055_rdn_v2p9
+ang20170714t011326_rdn_v2p9
+ang20170714t012440_rdn_v2p9
+ang20170714t183042_rdn_v2p9
+ang20170714t184714_rdn_v2p9
+ang20170714t191123_rdn_v2p9
+ang20170714t192043_rdn_v2p9
+ang20170714t192619_rdn_v2p9
+ang20170714t193527_rdn_v2p9
+ang20170714t194611_rdn_v2p9
+ang20170714t200532_rdn_v2p9
+ang20170714t201641_rdn_v2p9
+ang20170714t205712_rdn_v2p9
+ang20170714t211031_rdn_v2p9
+ang20170714t211620_rdn_v2p9
+ang20170714t212331_rdn_v2p9
+ang20170714t212855_rdn_v2p9
+ang20170714t213741_rdn_v2p9
+ang20170714t214452_rdn_v2p9
+ang20170714t232619_rdn_v2p9
+ang20170714t235124_rdn_v2p9
+ang20170715t000804_rdn_v2p9
+ang20170715t001841_rdn_v2p9
+ang20170715t005002_rdn_v2p9
+ang20170715t010040_rdn_v2p9
+ang20170715t011416_rdn_v2p9
+ang20170715t184225_rdn_v2p9
+ang20170715t192632_rdn_v2p9
+ang20170715t195741_rdn_v2p9
+ang20170718t183636_rdn_v2p9
+ang20170718t184240_rdn_v2p9
+ang20170718t185828_rdn_v2p9
+ang20170718t191510_rdn_v2p9
+ang20170718t192901_rdn_v2p9
+ang20170718t201541_rdn_v2p9
+ang20170718t202618_rdn_v2p9
+ang20170718t205714_rdn_v2p9
+ang20170718t210900_rdn_v2p9
+ang20170718t211455_rdn_v2p9
+ang20170718t213400_rdn_v2p9
+ang20170719t190355_rdn_v2p9
+ang20170719t193152_rdn_v2p9
+ang20170719t194625_rdn_v2p9
+ang20170720t000120_rdn_v2p9
+ang20170720t000608_rdn_v2p9
+ang20170720t000942_rdn_v2p9
+ang20170720t002332_rdn_v2p9
+ang20170720t003346_rdn_v2p9
+ang20170720t004130_rdn_v2p9
+ang20170720t010323_rdn_v2p9
+ang20170720t011907_rdn_v2p9
+ang20170720t210910_rdn_v2p9
+ang20170720t212431_rdn_v2p9
+ang20170720t214520_rdn_v2p9
+ang20170720t221509_rdn_v2p9
+ang20170720t222512_rdn_v2p9
+ang20170720t224114_rdn_v2p9
+ang20170720t225802_rdn_v2p9
+ang20180721t183446_rdn_v2r2
+ang20180721t185956_rdn_v2r2
+ang20180721t190644_rdn_v2r2
+ang20180721t192935_rdn_v2r2
+ang20180721t193822_rdn_v2r2
+ang20180721t194449_rdn_v2r2
+ang20180721t195600_rdn_v2r2
+ang20180721t200319_rdn_v2r2
+ang20180721t201426_rdn_v2r2
+ang20180721t204253_rdn_v2r2
+ang20180721t210335_rdn_v2r2
+ang20180721t211126_rdn_v2r2
+ang20180721t211703_rdn_v2r2
+ang20180721t212319_rdn_v2r2
+ang20180721t213123_rdn_v2r2
+ang20180721t213924_rdn_v2r2
+ang20180721t214721_rdn_v2r2
+ang20180721t220102_rdn_v2r2
+ang20180721t220552_rdn_v2r2
+ang20180721t221025_rdn_v2r2
+ang20180721t221814_rdn_v2r2
+ang20180721t223058_rdn_v2r2
+ang20180722t180508_rdn_v2r2
+ang20180722t181536_rdn_v2r2
+ang20180722t182214_rdn_v2r2
+ang20180722t182956_rdn_v2r2
+ang20180722t185317_rdn_v2r2
+ang20180722t194510_rdn_v2r2
+ang20180722t200512_rdn_v2r2
+ang20180722t203748_rdn_v2r2
+ang20180722t204801_rdn_v2r2
+ang20180722t205755_rdn_v2r2
+ang20180722t210953_rdn_v2r2
+ang20180722t214026_rdn_v2r2
+ang20180722t215812_rdn_v2r2
+ang20180722t221648_rdn_v2r2
+ang20180722t230037_rdn_v2r2
+ang20180723t193341_rdn_v2r2
+ang20180723t193953_rdn_v2r2
+ang20180723t194529_rdn_v2r2
+ang20180723t195338_rdn_v2r2
+ang20180723t200207_rdn_v2r2
+ang20180723t201102_rdn_v2r2
+ang20180723t202850_rdn_v2r2
+ang20180723t204128_rdn_v2r2
+ang20180723t204511_rdn_v2r2
+ang20180723t204900_rdn_v2r2
+ang20180723t205227_rdn_v2r2
+ang20180723t205626_rdn_v2r2
+ang20180724t183517_rdn_v2r2
+ang20180724t184947_rdn_v2r2
+ang20180724t190505_rdn_v2r2
+ang20180724t191928_rdn_v2r2
+ang20180724t193427_rdn_v2r2
+ang20180724t194858_rdn_v2r2
+ang20180725t000450_rdn_v2r2
+ang20180729t193331_rdn_v2r2
+ang20180729t195825_rdn_v2r2
+ang20180729t201348_rdn_v2r2
+ang20180729t202435_rdn_v2r2
+ang20180729t203700_rdn_v2r2
+ang20180729t204735_rdn_v2r2
+ang20180729t210144_rdn_v2r2
+ang20180729t211026_rdn_v2r2
+ang20180729t211537_rdn_v2r2
+ang20180729t212028_rdn_v2r2
+ang20180729t212542_rdn_v2r2
+ang20180729t213052_rdn_v2r2
+ang20180729t213943_rdn_v2r2
+ang20180729t215135_rdn_v2r2
+ang20180729t215535_rdn_v2r2
+ang20180729t220810_rdn_v2r2
+ang20180730t014127_rdn_v2r2
+ang20180812t221620_rdn_v2r2
+ang20180812t222847_rdn_v2r2
+ang20180812t223939_rdn_v2r2
+ang20180812t225201_rdn_v2r2
+ang20180812t230327_rdn_v2r2
+ang20180812t231551_rdn_v2r2
+ang20180812t232708_rdn_v2r2
+ang20180812t233938_rdn_v2r2
+ang20180812t235430_rdn_v2r2
+ang20180813t000356_rdn_v2r2
+ang20180814t191455_rdn_v2r2
+ang20180814t192458_rdn_v2r2
+ang20180814t193310_rdn_v2r2
+ang20180814t194203_rdn_v2r2
+ang20180814t195236_rdn_v2r2
+ang20180814t224053_rdn_v2r2
+ang20180814t225221_rdn_v2r2
+ang20180814t234424_rdn_v2r2
+ang20180814t235951_rdn_v2r2
+ang20180815t001445_rdn_v2r2
+ang20180815t003030_rdn_v2r2
+ang20180815t004542_rdn_v2r2
+ang20180815t010206_rdn_v2r2
+ang20180815t012018_rdn_v2r2
+ang20180815t015701_rdn_v2r2
+ang20180815t203458_rdn_v2r2
+ang20180815t210120_rdn_v2r2
+ang20180815t220100_rdn_v2r2
+ang20180815t222106_rdn_v2r2
+ang20180815t224039_rdn_v2r2
+ang20180815t230026_rdn_v2r2
+ang20180815t232013_rdn_v2r2
+ang20180815t233957_rdn_v2r2
+ang20180818t192851_rdn_v2r2
+ang20180818t194758_rdn_v2r2
+ang20180818t200730_rdn_v2r2
+ang20180818t202459_rdn_v2r2
+ang20180818t203358_rdn_v2r2
+ang20180818t205326_rdn_v2r2
+ang20180818t211227_rdn_v2r2
+ang20180818t232352_rdn_v2r2
+ang20180819t000224_rdn_v2r2
+ang20180819t002232_rdn_v2r2
+ang20180819t004028_rdn_v2r2
+ang20190703t002744_rdn_v2v1
+ang20190704t193319_rdn_v2v2
+ang20190704t194936_rdn_v2v2
+ang20190704t195946_rdn_v2v2
+ang20190704t201036_rdn_v2v2
+ang20190704t201715_rdn_v2v2
+ang20190704t202628_rdn_v2v2
+ang20190704t211515_rdn_v2v2
+ang20190704t213321_rdn_v2v2
+ang20190704t220610_rdn_v2v2
+ang20190704t222130_rdn_v2v2
+ang20190704t223716_rdn_v2v2
+ang20190704t230104_rdn_v2v2
+ang20190705t173943_rdn_v2v2
+ang20190705t174411_rdn_v2v2
+ang20190705t175209_rdn_v2v2
+ang20190705t175603_rdn_v2v2
+ang20190705t181521_rdn_v2v2
+ang20190705t182451_rdn_v2v2
+ang20190705t183406_rdn_v2v2
+ang20190705t184244_rdn_v2v2
+ang20190705t185207_rdn_v2v2
+ang20190705t190858_rdn_v2v2
+ang20190705t192514_rdn_v2v2
+ang20190705t194149_rdn_v2v2
+ang20190705t201300_rdn_v2v2
+ang20190705t203320_rdn_v2v2
+ang20190705t203904_rdn_v2v2
+ang20190705t204649_rdn_v2v2
+ang20190705t205605_rdn_v2v2
+ang20190705t213350_rdn_v2v2
+ang20190705t213948_rdn_v2v2
+ang20190705t214942_rdn_v2v2
+ang20190706t191924_rdn_v2v2
+ang20190706t192454_rdn_v2v2
+ang20190706t193356_rdn_v2v2
+ang20190706t210739_rdn_v2v2
+ang20190706t213057_rdn_v2v2
+ang20190706t214402_rdn_v2v2
+ang20190706t233606_rdn_v2v2
+ang20190706t233851_rdn_v2v2
+ang20190706t234547_rdn_v2v2
+ang20190706t235120_rdn_v2v2
+ang20190707t000208_rdn_v2v2
+ang20190707t000910_rdn_v2v2
+ang20190707t001434_rdn_v2v2
+ang20190707t002307_rdn_v2v2
+ang20190707t002939_rdn_v2v2
+ang20190707t003638_rdn_v2v2
+ang20190707t004725_rdn_v2v2
+ang20190707t005706_rdn_v2v2
+ang20190707t010559_rdn_v2v2
+ang20190707t011602_rdn_v2v2
+ang20190707t013009_rdn_v2v2
+ang20190707t020232_rdn_v2v2
+ang20190707t023526_rdn_v2v2
+ang20190707t032100_rdn_v2v2
+ang20190707t194442_rdn_v2v2
+ang20190707t195230_rdn_v2v2
+ang20190707t200027_rdn_v2v2
+ang20190707t200750_rdn_v2v2
+ang20190707t201743_rdn_v2v2
+ang20190707t203417_rdn_v2v2
+ang20190707t204439_rdn_v2v2
+ang20190707t225214_rdn_v2v2
+ang20190707t230232_rdn_v2v2
+ang20190707t231539_rdn_v2v2
+ang20190707t234959_rdn_v2v2
+ang20190709t184153_rdn_v2v2
+ang20190709t193940_rdn_v2v2
+ang20190709t194829_rdn_v2v2
+ang20190709t195734_rdn_v2v2
+ang20190709t200636_rdn_v2v2
+ang20190709t201645_rdn_v2v2
+ang20190709t202721_rdn_v2v2
+ang20190709t203755_rdn_v2v2
+ang20190709t205007_rdn_v2v2
+ang20190709t205928_rdn_v2v2
+ang20190709t212331_rdn_v2v2
+ang20190709t213747_rdn_v2v2
+ang20190710t003005_rdn_v2v2
+ang20190710t003915_rdn_v2v2
+ang20190710t004802_rdn_v2v2
+ang20190710t005719_rdn_v2v2
+ang20190710t010938_rdn_v2v2
+ang20190710t012039_rdn_v2v2
+ang20190710t013115_rdn_v2v2
+ang20190710t014346_rdn_v2v2
+ang20190710t015246_rdn_v2v2
+ang20190710t021538_rdn_v2v2
+ang20190712t211107_rdn_v2v2
+ang20190712t211646_rdn_v2v2
+ang20190712t212208_rdn_v2v2
+ang20190712t212749_rdn_v2v2
+ang20190712t213356_rdn_v2v2
+ang20190712t213935_rdn_v2v2
+ang20190712t214601_rdn_v2v2
+ang20190712t215039_rdn_v2v2
+ang20190712t215625_rdn_v2v2
+ang20190712t221928_rdn_v2v2
+ang20190712t223019_rdn_v2v2
+ang20190712t224105_rdn_v2v2
+ang20190712t230321_rdn_v2v2
+ang20190712t231624_rdn_v2v2
+ang20190712t232437_rdn_v2v2
+ang20190712t233049_rdn_v2v2
+ang20190712t233644_rdn_v2v2
+ang20190712t234240_rdn_v2v2
+ang20190712t234843_rdn_v2v2
+ang20190713t002123_rdn_v2v2
+ang20190713t015946_rdn_v2v2
+ang20190713t020943_rdn_v2v2
+ang20190713t023324_rdn_v2v2
+ang20190713t024201_rdn_v2v2
+ang20190713t024938_rdn_v2v2
+ang20190713t025848_rdn_v2v2
+ang20190713t030616_rdn_v2v2
+ang20190724t200349_rdn_v2v2
+ang20190724t201912_rdn_v2v2
+ang20190724t215452_rdn_v2v2
+ang20220705t182659_rdn_v2aa2
+ang20220705t190701_rdn_v2aa2
+ang20220705t191559_rdn_v2aa2
+ang20220705t192222_rdn_v2aa2
+ang20220705t193142_rdn_v2aa2
+ang20220705t194817_rdn_v2aa2
+ang20220705t205405_rdn_v2aa2
+ang20220705t210526_rdn_v2aa2
+ang20220705t211243_rdn_v2aa2
+ang20220705t212024_rdn_v2aa2
+ang20220705t212742_rdn_v2aa2
+ang20220705t213518_rdn_v2aa2
+ang20220705t214519_rdn_v2aa2
+ang20220705t215512_rdn_v2aa2
+ang20220705t220638_rdn_v2aa2
+ang20220705t221652_rdn_v2aa2
+ang20220705t222637_rdn_v2aa2
+ang20220705t223607_rdn_v2aa2
+ang20220705t224552_rdn_v2aa2
+ang20220706t175251_rdn_v2aa2
+ang20220706t180754_rdn_v2aa2
+ang20220706t181557_rdn_v2aa2
+ang20220706t182419_rdn_v2aa2
+ang20220706t183240_rdn_v2aa2
+ang20220706t184054_rdn_v2aa2
+ang20220706t184902_rdn_v2aa2
+ang20220706t185721_rdn_v2aa2
+ang20220706t190617_rdn_v2aa2
+ang20220706t191537_rdn_v2aa2
+ang20220706t194511_rdn_v2aa2
+ang20220706t205105_rdn_v2aa2
+ang20220706t210143_rdn_v2aa2
+ang20220706t211214_rdn_v2aa2
+ang20220706t212310_rdn_v2aa2
+ang20220706t213435_rdn_v2aa2
+ang20220706t214602_rdn_v2aa2
+ang20220706t220248_rdn_v2aa2
+ang20220706t221650_rdn_v2aa2
+ang20220709t184317_rdn_v2aa2
+ang20220709t185833_rdn_v2aa2
+ang20220709t192338_rdn_v2aa2
+ang20220709t194206_rdn_v2aa2
+ang20220709t195140_rdn_v2aa2
+ang20220709t195950_rdn_v2aa2
+ang20220709t200532_rdn_v2aa2
+ang20220709t202251_rdn_v2aa2
+ang20220709t203401_rdn_v2aa2
+ang20220709t205405_rdn_v2aa2
+ang20220709t205821_rdn_v2aa2
+ang20220709t210547_rdn_v2aa2
+ang20220709t212448_rdn_v2aa2
+ang20220709t213543_rdn_v2aa2
+ang20220709t214748_rdn_v2aa2
+ang20220709t215954_rdn_v2aa2
+ang20220709t233937_rdn_v2aa2
+ang20220710t000447_rdn_v2aa2
+ang20220710t001649_rdn_v2aa2
+ang20220710t002801_rdn_v2aa2
+ang20220710t004003_rdn_v2aa2
+ang20220710t004851_rdn_v2aa2
+ang20220710t005818_rdn_v2aa2
+ang20220710t192903_rdn_v2aa2
+ang20220710t194053_rdn_v2aa2
+ang20220710t195200_rdn_v2aa2
+ang20220710t200340_rdn_v2aa2
+ang20220710t201434_rdn_v2aa2
+ang20220710t202605_rdn_v2aa2
+ang20220710t203709_rdn_v2aa2
+ang20220710t204836_rdn_v2aa2
+ang20220710t205955_rdn_v2aa2
+ang20220710t211132_rdn_v2aa2
+ang20220710t212310_rdn_v2aa2
+ang20220710t213552_rdn_v2aa2
+ang20220710t214323_rdn_v2aa2
+ang20220710t215049_rdn_v2aa2
+ang20220710t215837_rdn_v2aa2
+ang20220710t220523_rdn_v2aa2
+ang20220710t221231_rdn_v2aa2
+ang20220710t221951_rdn_v2aa2
+ang20220710t235944_rdn_v2aa2
+ang20220711t000631_rdn_v2aa2
+ang20220711t001143_rdn_v2aa2
+ang20220711t001706_rdn_v2aa2
+ang20220711t002111_rdn_v2aa2
+ang20220711t003358_rdn_v2aa2
+ang20220711t004217_rdn_v2aa2
+ang20220711t004723_rdn_v2aa2
+ang20220711t005408_rdn_v2aa2
+ang20220711t005928_rdn_v2aa2
+ang20220711t012750_rdn_v2aa2
+ang20220711t013821_rdn_v2aa2
+ang20220711t014741_rdn_v2aa2
+ang20220711t015748_rdn_v2aa2
+ang20220713t184619_rdn_v2aa2
+ang20220713t185239_rdn_v2aa2
+ang20220713t185851_rdn_v2aa2
+ang20220713t190501_rdn_v2aa2
+ang20220713t191139_rdn_v2aa2
+ang20220713t191820_rdn_v2aa2
+ang20220713t192431_rdn_v2aa2
+ang20220713t193145_rdn_v2aa2
+ang20220713t193757_rdn_v2aa2
+ang20220713t194445_rdn_v2aa2
+ang20220713t203837_rdn_v2aa2
+ang20220713t210930_rdn_v2aa2
+ang20220713t212449_rdn_v2aa2
+ang20220713t213808_rdn_v2aa2
+ang20220713t214809_rdn_v2aa2
+ang20220713t220329_rdn_v2aa2
+ang20220713t222716_rdn_v2aa2
+ang20220714t002411_rdn_v2aa2
+ang20220714t003149_rdn_v2aa2
+ang20220714t003950_rdn_v2aa2
+ang20220714t004735_rdn_v2aa2
+ang20220723t184235_rdn_v2aa2
+ang20220723t185054_rdn_v2aa2
+ang20220723t190114_rdn_v2aa2
+ang20220723t190728_rdn_v2aa2
+ang20220723t191332_rdn_v2aa2
+ang20220723t191937_rdn_v2aa2
+ang20220723t192604_rdn_v2aa2
+ang20220723t193409_rdn_v2aa2
+ang20220723t194021_rdn_v2aa2
+ang20220723t200852_rdn_v2aa2
+ang20220723t205534_rdn_v2aa2
+ang20220723t210424_rdn_v2aa2
+ang20220723t215027_rdn_v2aa2
+ang20220723t215722_rdn_v2aa2
+ang20220724t180806_rdn_v2aa2
+ang20220724t181713_rdn_v2aa2
+ang20220724t184244_rdn_v2aa2
+ang20220724t185059_rdn_v2aa2
+ang20220724t185921_rdn_v2aa2
+ang20220724t193249_rdn_v2aa2
+ang20220724t194218_rdn_v2aa2
+ang20220724t195146_rdn_v2aa2
+ang20220724t200056_rdn_v2aa2
+ang20220724t200949_rdn_v2aa2
+ang20220724t204908_rdn_v2aa2
+ang20220724t211933_rdn_v2aa2
+ang20220724t212655_rdn_v2aa2
+ang20220724t220656_rdn_v2aa2
+ang20220724t221509_rdn_v2aa2
+ang20220727t193504_rdn_v2aa2
+ang20220727t194555_rdn_v2aa2
+ang20220727t195722_rdn_v2aa2
+ang20220727t200512_rdn_v2aa2
+ang20220727t201731_rdn_v2aa2
+ang20220727t202416_rdn_v2aa2
+ang20220727t203018_rdn_v2aa2
+ang20220727t203832_rdn_v2aa2
+ang20220727t204539_rdn_v2aa2
+ang20220727t205249_rdn_v2aa2
+ang20220727t214823_rdn_v2aa2
+ang20220728t001323_rdn_v2aa2
+ang20220728t002530_rdn_v2aa2
+ang20220728t003722_rdn_v2aa2
+ang20220728t004852_rdn_v2aa2
+ang20220728t010037_rdn_v2aa2
+ang20220728t011324_rdn_v2aa2
+ang20220728t012525_rdn_v2aa2
+ang20220728t014519_rdn_v2aa2
+ang20220728t015753_rdn_v2aa2
+ang20220728t021157_rdn_v2aa2
+ang20220728t022516_rdn_v2aa2
+ang20220728t023855_rdn_v2aa2
+ang20220728t025106_rdn_v2aa2
+ang20220729t191800_rdn_v2aa2
+ang20220729t194345_rdn_v2aa2
+ang20220729t195320_rdn_v2aa2
+ang20220729t200401_rdn_v2aa2
+ang20220729t201616_rdn_v2aa2
+ang20220729t202656_rdn_v2aa2
+ang20220729t203757_rdn_v2aa2
+ang20220729t204815_rdn_v2aa2
+ang20220729t205835_rdn_v2aa2
+ang20220729t211937_rdn_v2aa2
+ang20220729t212755_rdn_v2aa2
+ang20220803t191639_rdn_v2aa2
+ang20220803t192536_rdn_v2aa2
+ang20220803t193441_rdn_v2aa2
+ang20220803t194346_rdn_v2aa2
+ang20220803t200138_rdn_v2aa2
+ang20220803t201043_rdn_v2aa2
+ang20220803t201834_rdn_v2aa2
+ang20220803t202738_rdn_v2aa2
+ang20220803t203646_rdn_v2aa2
+ang20220803t204623_rdn_v2aa2
+ang20220803t205447_rdn_v2aa2
+ang20220803t210306_rdn_v2aa2
+ang20220803t211123_rdn_v2aa2
+ang20220803t211946_rdn_v2aa2
+ang20220803t212727_rdn_v2aa2
+ang20220803t213549_rdn_v2aa2
+ang20220803t214340_rdn_v2aa2
+ang20220803t215149_rdn_v2aa2
+ang20220803t215954_rdn_v2aa2
+ang20220803t221642_rdn_v2aa2
+ang20220803t222500_rdn_v2aa2
+ang20220803t223302_rdn_v2aa2
+ang20220804t002940_rdn_v2aa2
+ang20220804t004319_rdn_v2aa2
+ang20220804t005158_rdn_v2aa2
+ang20220804t010021_rdn_v2aa2
+ang20220804t010826_rdn_v2aa2
+ang20220804t013417_rdn_v2aa2
+ang20220804t194227_rdn_v2aa2
+ang20220804t200028_rdn_v2aa2
+ang20220804t201001_rdn_v2aa2
+ang20220804t202253_rdn_v2aa2
+ang20220804t203120_rdn_v2aa2
+ang20220804t204025_rdn_v2aa2
+ang20220804t205713_rdn_v2aa2
+ang20220804t210708_rdn_v2aa2
+ang20220804t211630_rdn_v2aa2
+ang20220804t212550_rdn_v2aa2
+ang20220804t213517_rdn_v2aa2
+ang20220804t214450_rdn_v2aa2
+ang20220804t215324_rdn_v2aa2
+ang20220804t221020_rdn_v2aa2
+ang20220804t221832_rdn_v2aa2
+ang20220804t222653_rdn_v2aa2
+ang20220804t223528_rdn_v2aa2
+
+MODELING
+ALT | SIBBORK-TTE
+Brazhnik, K., & Shugart, H. H. (2016). SIBBORK: A new spatially-explicit gap model for boreal forest. Ecological Modelling, 320, 182–196. https://doi.org/10.1016/j.ecolmodel.2015.09.016
+SIBBORK Model: https://github.com/SIBBORK/SIBBORK
+ABoVE SIBBORK-TTE Model: https://github.com/aharmstrong/above-sibbork
+- Dataset: ArcticDEM: High-resolution digital surface model of the Arctic; 10x10-m pixel, 1-km2 plot. (Porter et al., 2018)
+- Dataset: MERRA-2: Global atmospheric reanalysis product. (Global Modeling and Assimilation Office, 2015).
+- Dataset: SoilGrids: Digital global digitized map of soil profile and properties. (Batjes et al. 2019).
+- Dataset: CMIP6: Coupled Model Intercomparison Project, National Center for Meteorological Research - Centre Européen de Recherche et de Formation Avancée en Calcul Scientifique (CNRM-CERFACS): CNRM-CM6-1, CNRM-ESM2-1, CNRM-CM6-1HR; high-resolution atmospheric and oceanic-coupled climate model configuration (Voldoire et al., 2019).
+
+CH4, CO2 | TCFM-Arctic
+ORNL DAAC, NASA ABoVE: https://daac.ornl.gov/daacdata/above/ABoVE_CO2_CH4_Flux_Estimates/data
+- Dataset: TCFM-Arctic, NASA 2003. Retrieved from ORNL DAAC 1 March 2023. DOI 10.3334/ORNLDAAC/2121
+- Dataset: TCFM-Arctic, NASA 2004. Retrieved from ORNL DAAC 1 March 2023. DOI 10.3334/ORNLDAAC/2121
+- Dataset: TCFM-Arctic, NASA 2005. Retrieved from ORNL DAAC 1 March 2023. DOI 10.3334/ORNLDAAC/2121
+- Dataset: TCFM-Arctic, NASA 2006. Retrieved from ORNL DAAC 1 March 2023. DOI 10.3334/ORNLDAAC/2121
+- Dataset: TCFM-Arctic, NASA 2007. Retrieved from ORNL DAAC 1 March 2023. DOI 10.3334/ORNLDAAC/2121
+- Dataset: TCFM-Arctic, NASA 2008. Retrieved from ORNL DAAC 1 March 2023. DOI 10.3334/ORNLDAAC/2121
+- Dataset: TCFM-Arctic, NASA 2009. Retrieved from ORNL DAAC 1 March 2023. DOI 10.3334/ORNLDAAC/2121
+- Dataset: TCFM-Arctic, NASA 2010. Retrieved from ORNL DAAC 1 March 2023. DOI 10.3334/ORNLDAAC/2121
+- Dataset: TCFM-Arctic, NASA 2011. Retrieved from ORNL DAAC 1 March 2023. DOI 10.3334/ORNLDAAC/2121
+- Dataset: TCFM-Arctic, NASA 2012. Retrieved from ORNL DAAC 1 March 2023. DOI 10.3334/ORNLDAAC/2121
+- Dataset: TCFM-Arctic, NASA 2013. Retrieved from ORNL DAAC 1 March 2023. DOI 10.3334/ORNLDAAC/2121
+- Dataset: TCFM-Arctic, NASA 2014. Retrieved from ORNL DAAC 1 March 2023. DOI 10.3334/ORNLDAAC/2121
+- Dataset: TCFM-Arctic, NASA 2015. Retrieved from ORNL DAAC 1 March 2023. DOI 10.3334/ORNLDAAC/2121
+
+SUPPLEMENTARY RESOURCES
+https://daac.ornl.gov/data/above/
+https://daac.ornl.gov/daacdata/above/?C=M;O=D
+https://www2.gwu.edu/~calm/data/north.htm
+http://gtnpdatabase.org/activelayers
+https://ameriflux.lbl.gov/sites/site-search/
+https://data.neonscience.org/data-products/explore
+https://daac.ornl.gov/daacdata/above/ABoVE_SAR_Surveys/
+https://doi.org/10.5067/7PEQV8SVR4DM
+https://doi.org/10.5067/R0ARICRBAKYE 
+https://uavsar.jpl.nasa.gov/cgi-bin/data.pl
+https://daac.ornl.gov/daacdata/above/ABoVE_Airborne_AVIRIS_NG_V2/data/
+https://avirisng.jpl.nasa.gov/quicklooks.html
+https://avirisng.jpl.nasa.gov/dataportal/
+https://popo.jpl.nasa.gov/avng/
+https://daac.ornl.gov/cgi-bin/dataset_lister.pl?p=34
+https://popo.jpl.nasa.gov/mmgis-aviris/?mission=AVIRIS
+https://avirisng.jpl.nasa.gov/aviris-ng.html
+https://aviris.jpl.nasa.gov/proceedings/1991_toc.html
+https://aviris.jpl.nasa.gov/proceedings/workshops/99_docs/55.pdf
+https://avirisng.jpl.nasa.gov/greenhouse_gas_mapping.html
+https://webbook.nist.gov/cgi/cbook.cgi?Name=methane&Units=SI
+https://webbook.nist.gov/cgi/cbook.cgi?Name=carbon+dioxide&Units=SI
+https://webbook.nist.gov/cgi/cbook.cgi?ID=C74828&Units=SI&Type=IR-SPEC&Index=1#IR-SPEC
+https://webbook.nist.gov/cgi/cbook.cgi?ID=C124389&Units=SI&Type=IR-SPEC&Index=1#IR-SPEC
+https://webbook.nist.gov/cgi/cbook.cgi?JCAMP=C74828&Index=1&Type=IR
+https://webbook.nist.gov/cgi/cbook.cgi?JCAMP=С124389&Index=1&Type=IR
+https://chemcompute.org/datasets
+https://uv-vis-spectral-atlas-mainz.org/uvvis/index.html
+https://vpl.astro.washington.edu/spectra/
+
+---------------------------------------------------------------------
+DATASET REVISIONS
+
+Though not an existing dataset published at the ORNL DAAC, partial use of this dataset is from a previous publication (in situ teacher forcing, Gay et al., 2023) and preliminary derivation details are documented in the Github repository outlined below.
+
+Gay, B.A., Pastick, N.J., Zuefle, A.E., Armstrong, A.H., Miner, K.R., & Qu, J.J. (2023). Investigating permafrost carbon dynamics in Alaska with artificial intelligence, Environmental Research Letters 18, 125001. https://iopscience.iop.org/article/10.1088/1748-9326/ad0607/
+Gay, B., Pastick, N., Watts, J., Armstrong, A., Miner, K., & Miller, C. (2024). geocryoai (Version 1.0.0) [Computer software]. https://github.com/bradleygay/geocryoai/tree/main/ [https://doi.org/10.3334/ORNLDAAC/2371]
+
+The preprocessing in situ dataset available here is an amalgamation of ground campaign and eddy covariance tower flux networks, corresponding PCF covariate acquisitions, and a 1-km down-sampled in situ dataset guided by the topography and landscape characterization derived from NASA SRTM DEM 30-m upscaled projections across the State of Alaska. Additionally, uncertainty propagation with flux footprint quadrature calculations was computed for each carbon dioxide and methane flux measurement in space and time. These efforts were conducted to spatially align with a multimodal harmonization process to aggregate, append, and synthesize these measurements across space, time, and instrumentation.
+
+---------------------------------------------------------------------
